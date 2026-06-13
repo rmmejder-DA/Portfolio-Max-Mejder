@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" href="favicon.ico">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Apercu-LightItalic&display=swap" rel="stylesheet">
+    <title>Portfolio Max Mejder</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <header class="header">
+        <h1>Max</h1>
+        <div class="header-right">
+            <div class="nav">
+                <a href="#about">About Me</a>
+                <a href="#skills">Skills</a>
+                <a href="#projects">Portfolio</a>
+            </div>
+            <div class="translate-buttons">
+                <button type="button"
+                    onclick="setActiveLanguage(this); if (typeof translateDE === 'function') { translateDE(); }">DE</button>
+                <button type="button" class="is-active"
+                    onclick="setActiveLanguage(this); if (typeof translateEN === 'function') { translateEN(); }">EN</button>
+            </div>
+        </div>
+    </header>
+    <section id="about" class="about">
+        <div class="profile-background">
+            <img class="profile-img" src="img/Max.png" alt="Profile Picture">
+            <div class="floating-skill-icons" aria-hidden="true">
+                <img src="img/html-icon.png" alt="" class="floating-icon icon-1">
+                <img src="img/css-icon.png" alt="" class="floating-icon icon-2">
+                <img src="img/js-icon.png" alt="" class="floating-icon icon-3">
+                <img src="img/typescript-icon.svg" alt="" class="floating-icon icon-4">
+                <img src="img/angular-icon.svg" alt="" class="floating-icon icon-5">
+                <img src="img/selbstpraesentation-icon.svg" alt="" class="floating-icon icon-6">
+                <img src="img/n8n-icon.svg" alt="" class="floating-icon icon-7">
+            </div>
+        </div>
+        <div class="introduction">
+            <h2 class="vertical-headline">I am</h2>
+            <div class="job-name">
+                <div class="horizontal-headline">
+                    <h3 class="Name">Max Mejder</h3>
+                    <h4 class="job-title">FRONTEND DEVELOPER</h4>
+                </div>
+            <button type="button" class="lets-talk-button">Let's talk!</button>
+            </div>
+    </section>
+    <section class="footer">
+        <div class="socials">
+            <span class="border-left"></span>
+            <a class="social-link social-link-light" rel="noopener noreferrer"
+                href="https://www.linkedin.com/in/max-mejder-91591b1a1" target="_blank" aria-label="LinkedIn">
+                <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+                    <path
+                        d="M4.98 3.5A2.5 2.5 0 1 0 5 8.5a2.5 2.5 0 0 0-.02-5ZM3 9h4v12H3V9Zm7 0h3.8v1.7h.05c.53-1 1.82-2.05 3.75-2.05C21.6 8.65 24 11.06 24 15.6V21h-4v-4.8c0-2.3-.04-5.25-3.2-5.25-3.2 0-3.69 2.5-3.69 5.1V21H9V9h1Z" />
+                </svg>
+            </a>
+            <a class="social-link social-link-light" rel="noopener noreferrer" href="https://github.com/rmmejder-DA"
+                target="_blank" aria-label="GitHub">
+                <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+                    <path
+                        d="M12 .297a12 12 0 0 0-3.794 23.385c.6.111.82-.258.82-.577v-2.234c-3.338.726-4.043-1.61-4.043-1.61-.546-1.387-1.333-1.757-1.333-1.757-1.09-.745.083-.73.083-.73 1.205.084 1.84 1.237 1.84 1.237 1.07 1.834 2.807 1.304 3.492.997.108-.775.418-1.305.762-1.605-2.665-.304-5.467-1.334-5.467-5.93 0-1.31.468-2.381 1.236-3.221-.124-.303-.535-1.523.117-3.176 0 0 1.008-.322 3.3 1.23a11.49 11.49 0 0 1 6.005 0c2.29-1.552 3.296-1.23 3.296-1.23.655 1.653.244 2.873.12 3.176.77.84 1.235 1.911 1.235 3.221 0 4.608-2.807 5.623-5.48 5.921.43.372.814 1.103.814 2.222v3.293c0 .322.216.694.825.576A12.003 12.003 0 0 0 12 .297" />
+                </svg>
+            </a>
+            <a class="social-link social-link-light" href="mailto:rmmejder@gmail.com" aria-label="E-Mail">
+                <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+                    <path
+                        d="M2 5.5A2.5 2.5 0 0 1 4.5 3h15A2.5 2.5 0 0 1 22 5.5v13a2.5 2.5 0 0 1-2.5 2.5h-15A2.5 2.5 0 0 1 2 18.5v-13Zm2.6-.5 7.4 5.6L19.4 5h-14.8Zm15.4 2.5-6.8 5.2a2 2 0 0 1-2.4 0L4 7.5v11c0 .3.2.5.5.5h15c.3 0 .5-.2.5-.5v-11Z" />
+                </svg>
+            </a>
+            <a class="mail-to" href="mailto:rmmejder@gmail.com" aria-label="E-Mail">rmmejder@gmail.com</a>
+        </div>
+        <span class="scrollDown-vertical">Scroll down<p class="arrow">&#x279C;</p>
+        </span>
+    </section>
+    <section class="about-me" id="about_me">
+
+    </section>
+
+    <section class="skills" id="skills">
+
+    </section>
+
+    <section class="portfolio" id="portfolio">
+
+    </section>
+
+    <section class="contact" id="contact">
+
+    </section>
+
+    <footer class="footer">
+        <div class="legal-notice-left">
+            <h1>Max</h1>
+            <p>Legal Notice</p>
+        </div>
+        <p>© 2026 Max Mejder</p>
+        <div class="legal-notice-right">
+            <a class="social-link social-link-light footer-icon" href="https://www.linkedin.com/in/max-mejder-91591b1a1"
+                target="_blank" rel="noopener noreferrer" aria-label="LinkedIn">
+                <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+                    <path
+                        d="M4.98 3.5A2.5 2.5 0 1 0 5 8.5a2.5 2.5 0 0 0-.02-5ZM3 9h4v12H3V9Zm7 0h3.8v1.7h.05c.53-1 1.82-2.05 3.75-2.05C21.6 8.65 24 11.06 24 15.6V21h-4v-4.8c0-2.3-.04-5.25-3.2-5.25-3.2 0-3.69 2.5-3.69 5.1V21H9V9h1Z" />
+                </svg>
+            </a>
+            <a class="social-link social-link-light footer-icon" href="https://github.com/rmmejder-DA" target="_blank"
+                rel="noopener noreferrer" aria-label="GitHub">
+                <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+                    <path
+                        d="M12 .297a12 12 0 0 0-3.794 23.385c.6.111.82-.258.82-.577v-2.234c-3.338.726-4.043-1.61-4.043-1.61-.546-1.387-1.333-1.757-1.333-1.757-1.09-.745.083-.73.083-.73 1.205.084 1.84 1.237 1.84 1.237 1.07 1.834 2.807 1.304 3.492.997.108-.775.418-1.305.762-1.605-2.665-.304-5.467-1.334-5.467-5.93 0-1.31.468-2.381 1.236-3.221-.124-.303-.535-1.523.117-3.176 0 0 1.008-.322 3.3 1.23a11.49 11.49 0 0 1 6.005 0c2.29-1.552 3.296-1.23 3.296-1.23.655 1.653.244 2.873.12 3.176.77.84 1.235 1.911 1.235 3.221 0 4.608-2.807 5.623-5.48 5.921.43.372.814 1.103.814 2.222v3.293c0 .322.216.694.825.576A12.003 12.003 0 0 0 12 .297" />
+                </svg>
+            </a>
+            <a class="social-link social-link-light footer-icon" href="mailto:rmmejder@gmail.com" aria-label="E-Mail">
+                <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+                    <path
+                        d="M2 5.5A2.5 2.5 0 0 1 4.5 3h15A2.5 2.5 0 0 1 22 5.5v13a2.5 2.5 0 0 1-2.5 2.5h-15A2.5 2.5 0 0 1 2 18.5v-13Zm2.6-.5 7.4 5.6L19.4 5h-14.8Zm15.4 2.5-6.8 5.2a2 2 0 0 1-2.4 0L4 7.5v11c0 .3.2.5.5.5h15c.3 0 .5-.2.5-.5v-11Z" />
+                </svg>
+            </a>
+        </div>
+    </footer>
+
+    <script>
+        function setActiveLanguage(clickedButton) {
+            const languageButtons = document.querySelectorAll('.translate-buttons button');
+            languageButtons.forEach((button) => button.classList.remove('is-active'));
+            clickedButton.classList.add('is-active');
+        }
+    </script>
+</body>
+
+</html>
