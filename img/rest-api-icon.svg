@@ -1,0 +1,5 @@
+<svg width="64" height="64" viewBox="0 0 64 64" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <path d="M16 32C16 23.2 23.2 16 32 16C40.8 16 48 23.2 48 32C48 40.8 40.8 48 32 48C23.2 48 16 40.8 16 32Z" fill="#F8F8F8"/>
+  <path d="M12 30L16 30M12 34L16 34M52 30L48 30M52 34L48 34M30 12L30 16M34 12L34 16M30 52L30 48M34 52L34 48" stroke="#F8F8F8" stroke-width="3" stroke-linecap="round"/>
+  <text x="32" y="38" text-anchor="middle" fill="#141D2F" font-size="16" font-family="Arial, sans-serif" font-weight="700">API</text>
+</svg>
