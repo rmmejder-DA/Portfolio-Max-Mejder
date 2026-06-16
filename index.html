@@ -13,238 +13,287 @@
 </head>
 
 <body>
-    <header class="header">
-        <h1>Max</h1>
-        <div class="header-right">
-            <div class="nav">
-                <a href="#about">About Me</a>
-                <a href="#skills">Skills</a>
-                <a href="#projects">Portfolio</a>
-            </div>
-            <div class="translate-buttons">
-                <button type="button"
-                    onclick="setActiveLanguage(this); if (typeof translateDE === 'function') { translateDE(); }">DE</button>
-                <button type="button" class="is-active"
-                    onclick="setActiveLanguage(this); if (typeof translateEN === 'function') { translateEN(); }">EN</button>
+    <header>
+        <div class="header">
+            <h1>Max</h1>
+            <div class="header-right">
+                <div class="nav">
+                    <a href="#about_me">About me</a>
+                    <a href="#skills">Skills</a>
+                    <a href="#portfolio">Portfolio</a>
+                </div>
+                <div class="translate-buttons">
+                    <button type="button"
+                        onclick="setActiveLanguage(this); if (typeof translateDE === 'function') { translateDE(); }">DE</button>
+                    <button type="button" class="is-active"
+                        onclick="setActiveLanguage(this); if (typeof translateEN === 'function') { translateEN(); }">EN</button>
+                </div>
             </div>
         </div>
     </header>
-    <section id="about" class="about">
-        <div class="profile-background">
-            <img class="profile-img" src="img/Max.png" alt="Profile Picture">
-            <div class="floating-skill-icons" aria-hidden="true">
-                <img src="img/html-icon.png" alt="" class="floating-icon icon-1">
-                <img src="img/css-icon.png" alt="" class="floating-icon icon-2">
-                <img src="img/js-icon.png" alt="" class="floating-icon icon-3">
-                <img src="img/typescript-icon.svg" alt="" class="floating-icon icon-4">
-                <img src="img/angular-icon.svg" alt="" class="floating-icon icon-5">
-                <img src="img/selbstpraesentation-icon.svg" alt="" class="floating-icon icon-6">
-                <img src="img/n8n-icon.svg" alt="" class="floating-icon icon-7">
-            </div>
-        </div>
-        <div class="introduction">
-            <h2 class="vertical-headline">I am</h2>
-            <div class="job-name">
-                <div class="horizontal-headline">
-                    <h3 class="Name">Max Mejder</h3>
-                    <h4 class="job-title">FRONTEND DEVELOPER</h4>
+    <main class="main-content">
+        <section id="about" class="about">
+            <div class="profile-background">
+                <img class="profile-img" src="img/Max.png" alt="Profile Picture">
+                <div class="floating-skill-icons" aria-hidden="true">
+                    <img src="img/html-icon.png" alt="" class="floating-icon icon-1">
+                    <img src="img/css-icon.png" alt="" class="floating-icon icon-2">
+                    <img src="img/js-icon.png" alt="" class="floating-icon icon-3">
+                    <img src="img/typescript-icon.svg" alt="" class="floating-icon icon-4">
+                    <img src="img/angular-icon.svg" alt="" class="floating-icon icon-5">
+                    <img src="img/selbstpraesentation-icon.svg" alt="" class="floating-icon icon-6">
+                    <img src="img/n8n-icon.svg" alt="" class="floating-icon icon-7">
                 </div>
-                <button type="button" class="lets-talk-button">Let's talk!</button>
             </div>
-    </section>
-    <section class="footer">
-        <div class="socials">
-            <span class="border-left"></span>
-            <a class="social-link social-link-light" rel="noopener noreferrer"
-                href="https://www.linkedin.com/in/max-mejder-91591b1a1" target="_blank" aria-label="LinkedIn">
-                <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false">
-                    <path
-                        d="M4.98 3.5A2.5 2.5 0 1 0 5 8.5a2.5 2.5 0 0 0-.02-5ZM3 9h4v12H3V9Zm7 0h3.8v1.7h.05c.53-1 1.82-2.05 3.75-2.05C21.6 8.65 24 11.06 24 15.6V21h-4v-4.8c0-2.3-.04-5.25-3.2-5.25-3.2 0-3.69 2.5-3.69 5.1V21H9V9h1Z" />
-                </svg>
-            </a>
-            <a class="social-link social-link-light" rel="noopener noreferrer" href="https://github.com/rmmejder-DA"
-                target="_blank" aria-label="GitHub">
-                <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false">
-                    <path
-                        d="M12 .297a12 12 0 0 0-3.794 23.385c.6.111.82-.258.82-.577v-2.234c-3.338.726-4.043-1.61-4.043-1.61-.546-1.387-1.333-1.757-1.333-1.757-1.09-.745.083-.73.083-.73 1.205.084 1.84 1.237 1.84 1.237 1.07 1.834 2.807 1.304 3.492.997.108-.775.418-1.305.762-1.605-2.665-.304-5.467-1.334-5.467-5.93 0-1.31.468-2.381 1.236-3.221-.124-.303-.535-1.523.117-3.176 0 0 1.008-.322 3.3 1.23a11.49 11.49 0 0 1 6.005 0c2.29-1.552 3.296-1.23 3.296-1.23.655 1.653.244 2.873.12 3.176.77.84 1.235 1.911 1.235 3.221 0 4.608-2.807 5.623-5.48 5.921.43.372.814 1.103.814 2.222v3.293c0 .322.216.694.825.576A12.003 12.003 0 0 0 12 .297" />
-                </svg>
-            </a>
-            <a class="social-link social-link-light" href="mailto:rmmejder@gmail.com" aria-label="E-Mail">
-                <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false">
-                    <path
-                        d="M2 5.5A2.5 2.5 0 0 1 4.5 3h15A2.5 2.5 0 0 1 22 5.5v13a2.5 2.5 0 0 1-2.5 2.5h-15A2.5 2.5 0 0 1 2 18.5v-13Zm2.6-.5 7.4 5.6L19.4 5h-14.8Zm15.4 2.5-6.8 5.2a2 2 0 0 1-2.4 0L4 7.5v11c0 .3.2.5.5.5h15c.3 0 .5-.2.5-.5v-11Z" />
-                </svg>
-            </a>
-            <a class="mail-to" href="mailto:rmmejder@gmail.com" aria-label="E-Mail">rmmejder@gmail.com</a>
-        </div>
-        <span class="scrollDown-vertical">Scroll down<p class="arrow">&#x279C;</p>
-        </span>
-    </section>
-    <section class="about-me" id="about_me">
-        <div class="about-me-background">
-            <h2 class="section-title">About Me</h2>
-            <p class="about-me-text">Write some information about yourself that is IT related.
-                Why are you passionate about coding? What is your source of inspiration for improving your programming
-                skills?
-            </p>
-            <div class="located">
-                <img class="location-icon" src="img/location-icon.svg" alt="Location Icon">
-                <p class="location-text">Where are you located? Are you open to different ways of working, such as
-                    working remotely or even relocating?</p>
-            </div>
-
-            <div class="open-minded">
-                <img class="open-minded-icon" src="img/open-minded-icon.svg" alt="Open-Minded Icon">
-                <p class="open-minded-text">Show that you are open-minded. Are you enthusiastic about learning new
-                    technologies and continually improving your skills?</p>
-            </div>
-
-            <div class="puzzle">
-                <img class="puzzle-icon" src="img/puzzle-icon.svg" alt="Puzzle Icon">
-                <p class="puzzle-text">A brief description of your problem-solving approach. Do you learn from each
-                    challenge as you search for the most efficient or elegant solution? You can include some keywords
-                    like: analytical thinking, creativity, persistence and collaboration.</p>
-            </div>
-        </div>
-        <div class="about-me-decorative-container">
-            <img class="about-me-decorative" src="img/max-about-me.jpeg" alt="Decorative Image">
-            <span class="img-line-right"></span>
-        </div>
-
-    </section>
-
-    <section class="skills" id="skills">
-        <div class="skills-glow" aria-hidden="true"></div>
-        <div class="skills-grid">
-            <div class="skills-icons">
-                <article class="skill-card">
-                    <img src="img/html-icon.png" alt="HTML icon" class="skill-icon">
-                    <p>HTML</p>
-                </article>
-                <article class="skill-card">
-                    <img src="img/css-icon.png" alt="CSS icon" class="skill-icon">
-                    <p>CSS</p>
-                </article>
-                <article class="skill-card">
-                    <img src="img/js-icon.png" alt="JavaScript icon" class="skill-icon">
-                    <p>JavaScript</p>
-                </article>
-                <article class="skill-card">
-                    <img src="img/typescript-icon.svg" alt="TypeScript icon" class="skill-icon">
-                    <p>TypeScript</p>
-                </article>
-                <article class="skill-card">
-                    <img src="img/angular-icon.svg" alt="Angular icon" class="skill-icon">
-                    <p>Angular</p>
-                </article>
-                <article class="skill-card">
-                    <img src="img/supabase-icon.svg" alt="Supabase icon" class="skill-icon">
-                    <p>Supabase</p>
-                </article>
-                <article class="skill-card">
-                    <img src="img/git-icon.svg" alt="Git icon" class="skill-icon">
-                    <p>Git</p>
-                </article>
-                <article class="skill-card">
-                    <img src="img/rest-api-icon.svg" alt="REST API icon" class="skill-icon">
-                    <p>REST-API</p>
-                </article>
-                <article class="skill-card">
-                    <img src="img/scrum-icon.svg" alt="Scrum icon" class="skill-icon">
-                    <p>Scrum</p>
-                </article>
-                <article class="skill-card">
-                    <img src="img/material-design-icon.svg" alt="Material Design icon" class="skill-icon">
-                    <p>Material<br>Design</p>
-                </article>
-                <article class="skill-card skill-card-learning">
-                    <img src="img/learning-icon.svg" alt="Continually learning icon" class="skill-icon">
-                    <p>Continually<br>learning</p>
-                </article>
-            </div>
-
-            <div class="skills-content">
-                <div class="skills-headline-wrap">
-                    <h2 class="skills-title">My skills</h2>
-                    <span class="skills-title-line" aria-hidden="true"></span>
-                </div>
-                <p class="skills-description">Show that you have used a variety of front-end technologies in your
-                    projects.</p>
-                <h3 class="skills-question">Looking for <span>another skill</span>?</h3>
-                <p class="skills-subtext">Reveal enthusiasm for learning new technologies and frameworks.</p>
-                <button type="button" class="skills-contact-btn">Get in touch</button>
-            </div>
-        </div>
-    </section>
-
-    <section class="portfolio" id="portfolio">
-        <div class="portfolio-header">
-            <span class="portfolio-title-line"></span>
-            <h2 class="portfolio-section-title">Portfolio</h2>
-            <span class="portfolio-title-line"></span>
-        </div>
-        <p class="portfolio-subtitle">Explore a selection of my work here - Interact with projects to see my skills in
-            action.</p>
-
-        <div class="portfolio-card">
-            <div class="portfolio-mockup">
-                <div class="laptop-frame">
-                    <div class="laptop-screen">
-                        <img src="/img/join.png" alt="Join Project Screenshot" class="mockup-img">
-                        <img src="/icon/Notebook.png" alt="Notebook Project Screenshot" class="mockup-img">
+            <div class="introduction">
+                <h2 class="vertical-headline">I am</h2>
+                <div class="job-name">
+                    <div class="horizontal-headline">
+                        <h3 class="Name">Max Mejder</h3>
+                        <h4 class="job-title">FRONTEND DEVELOPER</h4>
                     </div>
-                    <div class="laptop-base">
-                        <div class="laptop-notch"></div>
-                    </div>
+                    <button type="button" class="lets-talk-button">Let's talk!</button>
                 </div>
             </div>
-            <div class="portfolio-card-content">
-                <h3 class="portfolio-project-title">Join</h3>
-                <p class="portfolio-tech-stack">Angular | TypeScript | HTML | CSS | Firebase</p>
-                <p class="portfolio-description">Task manager inspired by the Kanban System. Let you and your team
-                    organize tasks using drag and drop functionality, assign tasks to different users and categories.
+        </section>
+        <div class="icon_plus_scroll_container">
+            <div class="socials">
+                <span class="border-left"></span>
+                <a class="social-link social-link-light" rel="noopener noreferrer"
+                    href="https://www.linkedin.com/in/max-mejder-91591b1a1" target="_blank" aria-label="LinkedIn">
+                    <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+                        <path
+                            d="M4.98 3.5A2.5 2.5 0 1 0 5 8.5a2.5 2.5 0 0 0-.02-5ZM3 9h4v12H3V9Zm7 0h3.8v1.7h.05c.53-1 1.82-2.05 3.75-2.05C21.6 8.65 24 11.06 24 15.6V21h-4v-4.8c0-2.3-.04-5.25-3.2-5.25-3.2 0-3.69 2.5-3.69 5.1V21H9V9h1Z" />
+                    </svg>
+                </a>
+                <a class="social-link social-link-light" rel="noopener noreferrer" href="https://github.com/rmmejder-DA"
+                    target="_blank" aria-label="GitHub">
+                    <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+                        <path
+                            d="M12 .297a12 12 0 0 0-3.794 23.385c.6.111.82-.258.82-.577v-2.234c-3.338.726-4.043-1.61-4.043-1.61-.546-1.387-1.333-1.757-1.333-1.757-1.09-.745.083-.73.083-.73 1.205.084 1.84 1.237 1.84 1.237 1.07 1.834 2.807 1.304 3.492.997.108-.775.418-1.305.762-1.605-2.665-.304-5.467-1.334-5.467-5.93 0-1.31.468-2.381 1.236-3.221-.124-.303-.535-1.523.117-3.176 0 0 1.008-.322 3.3 1.23a11.49 11.49 0 0 1 6.005 0c2.29-1.552 3.296-1.23 3.296-1.23.655 1.653.244 2.873.12 3.176.77.84 1.235 1.911 1.235 3.221 0 4.608-2.807 5.623-5.48 5.921.43.372.814 1.103.814 2.222v3.293c0 .322.216.694.825.576A12.003 12.003 0 0 0 12 .297" />
+                    </svg>
+                </a>
+                <a class="social-link social-link-light" href="mailto:rmmejder@gmail.com" aria-label="E-Mail">
+                    <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+                        <path
+                            d="M2 5.5A2.5 2.5 0 0 1 4.5 3h15A2.5 2.5 0 0 1 22 5.5v13a2.5 2.5 0 0 1-2.5 2.5h-15A2.5 2.5 0 0 1 2 18.5v-13Zm2.6-.5 7.4 5.6L19.4 5h-14.8Zm15.4 2.5-6.8 5.2a2 2 0 0 1-2.4 0L4 7.5v11c0 .3.2.5.5.5h15c.3 0 .5-.2.5-.5v-11Z" />
+                    </svg>
+                </a>
+                <a class="mail-to" href="mailto:rmmejder@gmail.com" aria-label="E-Mail">rmmejder@gmail.com</a>
+            </div>
+            <span class="scrollDown-vertical">Scroll down<p class="arrow">&#x279C;</p>
+            </span>
+        </div>
+        <section class="about-me" id="about_me">
+            <div class="about-me-background">
+                <h2 class="section-title">About me</h2>
+                <p class="about-me-text">Write some information about yourself that is IT related.
+                    Why are you passionate about coding? What is your source of inspiration for improving your
+                    programming
+                    skills?
                 </p>
-                <div class="portfolio-buttons">
-                    <a href="#" class="portfolio-btn portfolio-btn-live" target="_blank" rel="noopener noreferrer">Live
-                        test</a>
-                    <a href="#" class="portfolio-btn portfolio-btn-github" target="_blank"
-                        rel="noopener noreferrer">Github</a>
+                <div class="located">
+                    <img class="location-icon" src="img/location-icon.svg" alt="Location Icon">
+                    <p class="location-text">Where are you located? Are you open to different ways of working, such as
+                        working remotely or even relocating?</p>
+                </div>
+
+                <div class="open-minded">
+                    <img class="open-minded-icon" src="img/open-minded-icon.svg" alt="Open-Minded Icon">
+                    <p class="open-minded-text">Show that you are open-minded. Are you enthusiastic about learning new
+                        technologies and continually improving your skills?</p>
+                </div>
+
+                <div class="puzzle">
+                    <img class="puzzle-icon" src="img/puzzle-icon.svg" alt="Puzzle Icon">
+                    <p class="puzzle-text">A brief description of your problem-solving approach. Do you learn from each
+                        challenge as you search for the most efficient or elegant solution? You can include some
+                        keywords
+                        like: analytical thinking, creativity, persistence and collaboration.</p>
                 </div>
             </div>
-        </div>
-    </section>
+            <div class="about-me-decorative-container">
+                <img class="about-me-decorative" src="img/max-about-me.jpeg" alt="Decorative Image">
+                <span class="img-line-right"></span>
+            </div>
 
-    <section class="contact" id="contact">
+        </section>
 
-    </section>
+        <section class="skills" id="skills">
+            <div class="skills-glow" aria-hidden="true"></div>
+            <div class="skills-grid">
+                <div class="skills-icons">
+                    <article class="skill-card">
+                        <img src="img/html-icon.png" alt="HTML icon" class="skill-icon">
+                        <p>HTML</p>
+                    </article>
+                    <article class="skill-card">
+                        <img src="img/css-icon.png" alt="CSS icon" class="skill-icon">
+                        <p>CSS</p>
+                    </article>
+                    <article class="skill-card">
+                        <img src="img/js-icon.png" alt="JavaScript icon" class="skill-icon">
+                        <p>JavaScript</p>
+                    </article>
+                    <article class="skill-card">
+                        <img src="img/typescript-icon.svg" alt="TypeScript icon" class="skill-icon">
+                        <p>TypeScript</p>
+                    </article>
+                    <article class="skill-card">
+                        <img src="img/angular-icon.svg" alt="Angular icon" class="skill-icon">
+                        <p>Angular</p>
+                    </article>
+                    <article class="skill-card">
+                        <img src="img/supabase-icon.svg" alt="Supabase icon" class="skill-icon">
+                        <p>Supabase</p>
+                    </article>
+                    <article class="skill-card">
+                        <img src="img/git-icon.svg" alt="Git icon" class="skill-icon">
+                        <p>Git</p>
+                    </article>
+                    <article class="skill-card">
+                        <img src="img/rest-api-icon.svg" alt="REST API icon" class="skill-icon">
+                        <p>REST-API</p>
+                    </article>
+                    <article class="skill-card">
+                        <img src="img/scrum-icon.svg" alt="Scrum icon" class="skill-icon">
+                        <p>Scrum</p>
+                    </article>
+                    <article class="skill-card">
+                        <img src="img/material-design-icon.svg" alt="Material Design icon" class="skill-icon">
+                        <p>Material<br>Design</p>
+                    </article>
+                    <article class="skill-card skill-card-learning">
+                        <img src="img/learning-icon.svg" alt="Continually learning icon" class="skill-icon">
+                        <p>Continually<br>learning</p>
+                    </article>
+                </div>
 
-    <footer class="footer">
-        <div class="legal-notice-left">
-            <h1>Max</h1>
-            <p>Legal Notice</p>
-        </div>
-        <p>© 2026 Max Mejder</p>
-        <div class="legal-notice-right">
-            <a class="social-link social-link-light footer-icon" href="https://www.linkedin.com/in/max-mejder-91591b1a1"
-                target="_blank" rel="noopener noreferrer" aria-label="LinkedIn">
-                <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false">
-                    <path
-                        d="M4.98 3.5A2.5 2.5 0 1 0 5 8.5a2.5 2.5 0 0 0-.02-5ZM3 9h4v12H3V9Zm7 0h3.8v1.7h.05c.53-1 1.82-2.05 3.75-2.05C21.6 8.65 24 11.06 24 15.6V21h-4v-4.8c0-2.3-.04-5.25-3.2-5.25-3.2 0-3.69 2.5-3.69 5.1V21H9V9h1Z" />
-                </svg>
-            </a>
-            <a class="social-link social-link-light footer-icon" href="https://github.com/rmmejder-DA" target="_blank"
-                rel="noopener noreferrer" aria-label="GitHub">
-                <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false">
-                    <path
-                        d="M12 .297a12 12 0 0 0-3.794 23.385c.6.111.82-.258.82-.577v-2.234c-3.338.726-4.043-1.61-4.043-1.61-.546-1.387-1.333-1.757-1.333-1.757-1.09-.745.083-.73.083-.73 1.205.084 1.84 1.237 1.84 1.237 1.07 1.834 2.807 1.304 3.492.997.108-.775.418-1.305.762-1.605-2.665-.304-5.467-1.334-5.467-5.93 0-1.31.468-2.381 1.236-3.221-.124-.303-.535-1.523.117-3.176 0 0 1.008-.322 3.3 1.23a11.49 11.49 0 0 1 6.005 0c2.29-1.552 3.296-1.23 3.296-1.23.655 1.653.244 2.873.12 3.176.77.84 1.235 1.911 1.235 3.221 0 4.608-2.807 5.623-5.48 5.921.43.372.814 1.103.814 2.222v3.293c0 .322.216.694.825.576A12.003 12.003 0 0 0 12 .297" />
-                </svg>
-            </a>
-            <a class="social-link social-link-light footer-icon" href="mailto:rmmejder@gmail.com" aria-label="E-Mail">
-                <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false">
-                    <path
-                        d="M2 5.5A2.5 2.5 0 0 1 4.5 3h15A2.5 2.5 0 0 1 22 5.5v13a2.5 2.5 0 0 1-2.5 2.5h-15A2.5 2.5 0 0 1 2 18.5v-13Zm2.6-.5 7.4 5.6L19.4 5h-14.8Zm15.4 2.5-6.8 5.2a2 2 0 0 1-2.4 0L4 7.5v11c0 .3.2.5.5.5h15c.3 0 .5-.2.5-.5v-11Z" />
-                </svg>
-            </a>
+                <div class="skills-content">
+                    <div class="skills-headline-wrap">
+                        <h2 class="skills-title">My skills</h2>
+                        <span class="skills-title-line" aria-hidden="true"></span>
+                    </div>
+                    <p class="skills-description">Show that you have used a variety of front-end technologies in your
+                        projects.</p>
+                    <h3 class="skills-question">Looking for <span>another skill</span>?</h3>
+                    <p class="skills-subtext">Reveal enthusiasm for learning new technologies and frameworks.</p>
+                    <button type="button" class="skills-contact-btn">Get in touch</button>
+                </div>
+            </div>
+        </section>
+
+        <section class="portfolio" id="portfolio">
+            <div class="portfolio-header">
+                <span class="portfolio-title-line"></span>
+                <h2 class="portfolio-section-title">Portfolio</h2>
+                <span class="portfolio-title-line"></span>
+            </div>
+            <p class="portfolio-subtitle">Explore a selection of my work here - Interact with projects to see my skills
+                in
+                action.</p>
+
+            <div class="portfolio-card-join">
+                <div class="portfolio-mockup">
+                    <div class="laptop-frame">
+                        <div class="laptop-screen">
+                            <img src="/img/join.png" alt="Join Project Screenshot" class="mockup-img">
+                        </div>
+                    </div>
+                </div>
+                <div class="portfolio-card-content">
+                    <h3 class="portfolio-project-title">Join</h3>
+                    <p class="portfolio-tech-stack">Angular | TypeScript | HTML | CSS | Firebase</p>
+                    <p class="portfolio-description">Task manager inspired by the Kanban System. Let you and your team
+                        organize tasks using drag and drop functionality, assign tasks to different users and
+                        categories.
+                    </p>
+                    <div class="portfolio-buttons">
+                        <a href="#" class="portfolio-btn portfolio-btn-live" target="_blank"
+                            rel="noopener noreferrer">Live
+                            test</a>
+                        <a href="#" class="portfolio-btn portfolio-btn-github" target="_blank"
+                            rel="noopener noreferrer">Github</a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="portfolio-card-bestellapp">
+                <div class="portfolio-mockup">
+                    <div class="laptop-frame">
+                        <div class="laptop-screen">
+                            <img src="/img/bestellapp.png" alt="BestellApp Project Screenshot" class="mockup-img">
+                        </div>
+                    </div>
+                </div>
+
+                <div class="portfolio-card-content">
+                    <h3 class="portfolio-project-title">BestellApp</h3>
+                    <p class="portfolio-tech-stack">Angular | TypeScript | HTML | CSS | Firebase</p>
+                    <p class="portfolio-description">A food ordering app that allows users to browse a menu, add items
+                        to
+                        their cart, and place orders. The app features a user-friendly interface, real-time order
+                        tracking,
+                        and secure payment processing.</p>
+                    <div class="portfolio-buttons">
+                        <a href="#" class="portfolio-btn portfolio-btn-live" target="_blank"
+                            rel="noopener noreferrer">Live
+                            test</a>
+                        <a href="#" class="portfolio-btn portfolio-btn-github" target="_blank"
+                            rel="noopener noreferrer">Github</a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="portfolio-card-fotogramm">
+                
+            </div>
+            <div class="portfolio-card-kochwelt">
+
+            </div>
+            <div class="portfolio-card-pokedex">
+
+            </div>
+            <div class="portfolio-card-el_pollo_loco">
+
+            </div>
+        </section>
+
+        <section class="contact" id="contact">
+
+        </section>
+    </main>
+    <footer>
+        <div class="footer">
+            <div class="legal-notice-left">
+                <h1>Max</h1>
+                <p>Legal Notice</p>
+            </div>
+            <p>© 2026 Max Mejder</p>
+            <div class="legal-notice-right">
+                <a class="social-link social-link-light footer-icon"
+                    href="https://www.linkedin.com/in/max-mejder-91591b1a1" target="_blank" rel="noopener noreferrer"
+                    aria-label="LinkedIn">
+                    <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+                        <path
+                            d="M4.98 3.5A2.5 2.5 0 1 0 5 8.5a2.5 2.5 0 0 0-.02-5ZM3 9h4v12H3V9Zm7 0h3.8v1.7h.05c.53-1 1.82-2.05 3.75-2.05C21.6 8.65 24 11.06 24 15.6V21h-4v-4.8c0-2.3-.04-5.25-3.2-5.25-3.2 0-3.69 2.5-3.69 5.1V21H9V9h1Z" />
+                    </svg>
+                </a>
+                <a class="social-link social-link-light footer-icon" href="https://github.com/rmmejder-DA"
+                    target="_blank" rel="noopener noreferrer" aria-label="GitHub">
+                    <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+                        <path
+                            d="M12 .297a12 12 0 0 0-3.794 23.385c.6.111.82-.258.82-.577v-2.234c-3.338.726-4.043-1.61-4.043-1.61-.546-1.387-1.333-1.757-1.333-1.757-1.09-.745.083-.73.083-.73 1.205.084 1.84 1.237 1.84 1.237 1.07 1.834 2.807 1.304 3.492.997.108-.775.418-1.305.762-1.605-2.665-.304-5.467-1.334-5.467-5.93 0-1.31.468-2.381 1.236-3.221-.124-.303-.535-1.523.117-3.176 0 0 1.008-.322 3.3 1.23a11.49 11.49 0 0 1 6.005 0c2.29-1.552 3.296-1.23 3.296-1.23.655 1.653.244 2.873.12 3.176.77.84 1.235 1.911 1.235 3.221 0 4.608-2.807 5.623-5.48 5.921.43.372.814 1.103.814 2.222v3.293c0 .322.216.694.825.576A12.003 12.003 0 0 0 12 .297" />
+                    </svg>
+                </a>
+                <a class="social-link social-link-light footer-icon" href="mailto:rmmejder@gmail.com"
+                    aria-label="E-Mail">
+                    <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+                        <path
+                            d="M2 5.5A2.5 2.5 0 0 1 4.5 3h15A2.5 2.5 0 0 1 22 5.5v13a2.5 2.5 0 0 1-2.5 2.5h-15A2.5 2.5 0 0 1 2 18.5v-13Zm2.6-.5 7.4 5.6L19.4 5h-14.8Zm15.4 2.5-6.8 5.2a2 2 0 0 1-2.4 0L4 7.5v11c0 .3.2.5.5.5h15c.3 0 .5-.2.5-.5v-11Z" />
+                    </svg>
+                </a>
+            </div>
         </div>
     </footer>
 
