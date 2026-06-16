@@ -748,7 +748,6 @@ h1 {
     margin: 0 auto;
     position: relative;
     bottom: 264px;
-    padding: 64px 56px 80px;
 }
 
 .portfolio-header {
@@ -780,6 +779,7 @@ h1 {
     color: #c8cfe0;
     margin-bottom: 72px;
 }
+
 .portfolio-card-bestellapp,
 .portfolio-card-join,
 .portfolio-card-fotogramm,
@@ -938,6 +938,44 @@ h1 {
     background-color: rgba(112, 230, 28, 0.12);
     transform: translateY(-2px);
     box-shadow: 0 8px 20px rgba(112, 230, 28, 0.2);
+}
+
+form {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    max-width: 400px;
+}
+
+.contact-form-container {
+    display: flex;
+    justify-content: center;
+    gap: 40px;
+    padding: 64px 56px 72px;
+}
+
+.contact-title-line {
+    width: 96px;
+    height: 4px;
+    background-color: #9747ff;
+}
+
+.contact_me {
+    font-size: 82px;
+    font-weight: 700;
+    line-height: 1;
+}
+
+.contact-header {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 20px;
+}
+
+.if_problem {
+    width: 24%;
+    height: auto;
 }
 
 @media (max-width: 960px) {
