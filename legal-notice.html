@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="de">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Legal Notice | Max Mejder</title>
+    <link rel="stylesheet" href="legal.css">
+</head>
+
+<body>
+    <main class="legal-page">
+        <header class="legal-header">
+            <h1>Legal Notice</h1>
+        </header>
+
+        <div class="legal-tabs" role="tablist" aria-label="Rechtliche Inhalte">
+            <button type="button" class="legal-tab is-active" data-target="impressum" role="tab" aria-selected="true">Impressum</button>
+            <button type="button" class="legal-tab" data-target="datenschutz" role="tab" aria-selected="false">Datenschutz</button>
+        </div>
+
+        <section id="impressum" class="legal-pane is-active" role="tabpanel">
+            <section class="legal-section">
+                <h2>Verantwortlich fuer den Inhalt</h2>
+                <p>Max Mejder<br>
+                    [Strasse und Hausnummer ergaenzen]<br>
+                    [PLZ und Ort ergaenzen]<br>
+                    Deutschland</p>
+            </section>
+
+            <section class="legal-section">
+                <h2>Kontakt</h2>
+                <p>E-Mail: <a href="mailto:rmmejder@gmail.com">rmmejder@gmail.com</a></p>
+            </section>
+
+            <section class="legal-section">
+                <h2>Haftung fuer Inhalte</h2>
+                <p>Die Inhalte dieser Website wurden mit groesster Sorgfalt erstellt. Fuer die Richtigkeit,
+                    Vollstaendigkeit und Aktualitaet der Inhalte kann jedoch keine Gewaehr uebernommen werden.</p>
+            </section>
+
+            <section class="legal-section">
+                <h2>Haftung fuer Links</h2>
+                <p>Diese Website enthaelt Links zu externen Websites Dritter, auf deren Inhalte kein Einfluss besteht.
+                    Deshalb kann fuer diese fremden Inhalte keine Gewaehr uebernommen werden. Fuer die Inhalte der
+                    verlinkten Seiten ist stets der jeweilige Anbieter oder Betreiber verantwortlich.</p>
+            </section>
+
+            <section class="legal-section">
+                <h2>Urheberrecht</h2>
+                <p>Die durch den Seitenbetreiber erstellten Inhalte und Werke auf diesen Seiten unterliegen dem
+                    deutschen Urheberrecht. Vervielfaeltigung, Bearbeitung, Verbreitung und jede Art der Verwertung
+                    ausserhalb der Grenzen des Urheberrechts beduerfen der schriftlichen Zustimmung des jeweiligen
+                    Autors bzw. Erstellers.</p>
+            </section>
+        </section>
+
+        <section id="datenschutz" class="legal-pane" role="tabpanel" hidden>
+            <section class="legal-section">
+                <h2>1. Verantwortlicher</h2>
+                <p>Max Mejder<br>
+                    [Strasse und Hausnummer ergaenzen]<br>
+                    [PLZ und Ort ergaenzen]<br>
+                    Deutschland<br>
+                    E-Mail: <a href="mailto:rmmejder@gmail.com">rmmejder@gmail.com</a></p>
+            </section>
+
+            <section class="legal-section">
+                <h2>2. Hosting und Server-Logfiles</h2>
+                <p>Beim Aufruf dieser Website koennen durch den Hosting-Anbieter automatisch Informationen in
+                    Server-Logfiles erhoben werden (z. B. IP-Adresse, Datum und Uhrzeit, aufgerufene Seite,
+                    Browser-Informationen). Die Verarbeitung erfolgt zur technischen Bereitstellung und Sicherheit der
+                    Website.</p>
+            </section>
+
+            <section class="legal-section">
+                <h2>3. Kontaktaufnahme</h2>
+                <p>Wenn du per E-Mail oder ueber das Kontaktformular Kontakt aufnimmst, werden die von dir
+                    uebermittelten Daten (z. B. Name, E-Mail-Adresse, Nachricht) ausschliesslich zur Bearbeitung
+                    deiner Anfrage verarbeitet.</p>
+                <p>Rechtsgrundlage ist Artikel 6 Absatz 1 Buchstabe b DSGVO (vorvertragliche Kommunikation) bzw.
+                    Artikel 6 Absatz 1 Buchstabe f DSGVO (berechtigtes Interesse an der Bearbeitung von Anfragen).</p>
+            </section>
+
+            <section class="legal-section">
+                <h2>4. Speicherdauer</h2>
+                <p>Personenbezogene Daten werden nur so lange gespeichert, wie es fuer die Bearbeitung der Anfrage
+                    erforderlich ist oder gesetzliche Aufbewahrungspflichten bestehen.</p>
+            </section>
+
+            <section class="legal-section">
+                <h2>5. Externe Links</h2>
+                <p>Diese Website enthaelt Links zu externen Plattformen (z. B. LinkedIn, GitHub). Beim Anklicken
+                    dieser Links gelten die Datenschutzbestimmungen der jeweiligen Anbieter.</p>
+            </section>
+
+            <section class="legal-section">
+                <h2>6. Rechte betroffener Personen</h2>
+                <p>Du hast das Recht auf Auskunft, Berichtigung, Loeschung, Einschraenkung der Verarbeitung,
+                    Datenuertragbarkeit sowie Widerspruch gegen die Verarbeitung deiner Daten im Rahmen der geltenden
+                    gesetzlichen Bestimmungen.</p>
+                <p>Ausserdem besteht ein Beschwerderecht bei einer Datenschutzaufsichtsbehoerde.</p>
+            </section>
+
+            <section class="legal-section">
+                <h2>7. Stand</h2>
+                <p>Stand dieser Datenschutzerklaerung: Juni 2026.</p>
+            </section>
+        </section>
+
+        <p class="legal-back-link"><a href="index.html">Zurueck zur Startseite</a></p>
+    </main>
+
+    <script>
+        (function () {
+            const tabs = document.querySelectorAll('.legal-tab');
+            const panes = document.querySelectorAll('.legal-pane');
+
+            function activate(targetId) {
+                tabs.forEach((tab) => {
+                    const isActive = tab.dataset.target === targetId;
+                    tab.classList.toggle('is-active', isActive);
+                    tab.setAttribute('aria-selected', isActive ? 'true' : 'false');
+                });
+
+                panes.forEach((pane) => {
+                    const isActive = pane.id === targetId;
+                    pane.classList.toggle('is-active', isActive);
+                    pane.hidden = !isActive;
+                });
+            }
+
+            tabs.forEach((tab) => {
+                tab.addEventListener('click', () => {
+                    const target = tab.dataset.target;
+                    activate(target);
+                    history.replaceState(null, '', '#' + target);
+                });
+            });
+
+            const hash = window.location.hash.replace('#', '');
+            if (hash === 'impressum' || hash === 'datenschutz') {
+                activate(hash);
+            } else {
+                activate('impressum');
+            }
+        })();
+    </script>
+</body>
+
+</html>

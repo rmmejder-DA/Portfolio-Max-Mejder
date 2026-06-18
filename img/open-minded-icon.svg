@@ -1,7 +1,9 @@
 <svg width="48" height="48" viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
-  <path d="M18 30C15.2 27.8 13.5 24.4 13.5 20.6C13.5 14.2 18.7 9 25.1 9C31.5 9 36.7 14.2 36.7 20.6C36.7 24.4 35 27.8 32.2 30" stroke="#70E61C" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
-  <path d="M21 34.5H29" stroke="#70E61C" stroke-width="2.5" stroke-linecap="round"/>
-  <path d="M20.5 39H29.5" stroke="#70E61C" stroke-width="2.5" stroke-linecap="round"/>
-  <path d="M24.7 17C22 17 19.8 19.2 19.8 21.9C19.8 24 21.2 25.9 23.2 26.6" stroke="#70E61C" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
-  <path d="M23.5 21.3C24 19.8 25.5 18.8 27.1 18.8C29.2 18.8 31 20.5 31 22.7" stroke="#70E61C" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
+  <g transform="matrix(1.305 0 0 1.2 -8.8 -4.8)">
+    <path d="M18 30C15.2 27.8 13.5 24.4 13.5 20.6C13.5 14.2 18.7 9 25.1 9C31.5 9 36.7 14.2 36.7 20.6C36.7 24.4 35 27.8 32.2 30" stroke="#70E61C" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
+    <path d="M21 34.5H29" stroke="#70E61C" stroke-width="2.5" stroke-linecap="round"/>
+    <path d="M20.5 39H29.5" stroke="#70E61C" stroke-width="2.5" stroke-linecap="round"/>
+    <path d="M24.7 17C22 17 19.8 19.2 19.8 21.9C19.8 24 21.2 25.9 23.2 26.6" stroke="#70E61C" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
+    <path d="M23.5 21.3C24 19.8 25.5 18.8 27.1 18.8C29.2 18.8 31 20.5 31 22.7" stroke="#70E61C" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
+  </g>
 </svg>
