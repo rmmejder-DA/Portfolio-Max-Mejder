@@ -1,0 +1,21 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64">
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#141d2f" />
+      <stop offset="100%" stop-color="#231d48" />
+    </linearGradient>
+    <linearGradient id="shine" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#ffffff" stop-opacity="0.98" />
+      <stop offset="100%" stop-color="#dbe2f1" stop-opacity="0.9" />
+    </linearGradient>
+    <linearGradient id="accent" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#9747ff" />
+      <stop offset="100%" stop-color="#70e61c" />
+    </linearGradient>
+  </defs>
+  <rect x="4" y="4" width="56" height="56" rx="16" fill="url(#bg)" />
+  <rect x="4" y="4" width="56" height="56" rx="16" fill="none" stroke="#9747ff" stroke-opacity="0.38" />
+  <circle cx="50" cy="15" r="4.2" fill="#9747ff" />
+  <path d="M11 50C18.5 44.5 25.8 41.8 33 41.8c8.2 0 14.8 2.8 20 8.2" fill="none" stroke="#70e61c" stroke-width="4" stroke-linecap="round" stroke-opacity="0.96" />
+  <path d="M15 44V20h6.4l7.4 11.4L36.2 20h5.3l7.7 11.4L56.6 20H63v24h-6.3V30.8L50 40.6h-2.5l-6-8.8V44h-6.3V30.8l-6.7 9.8H26l-6.7-9.8V44H15Z" fill="url(#shine)" transform="translate(-1.55 0) scale(0.86 1)" />
+</svg>

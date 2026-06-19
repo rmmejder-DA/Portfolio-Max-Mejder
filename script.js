@@ -217,23 +217,7 @@ document.getElementById('getInTouchtoContact').addEventListener('click', scrollT
 
 const REVIEW_STORAGE_KEY = 'portfolioReviews';
 const DEFAULT_REVIEW_PHOTO = 'data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iNDgiIGhlaWdodD0iNDgiIHZpZXdCb3g9IjAgMCA0OCA0OCIgc3Ryb2tlPSIjNzBFNjFDIiBzdHJva2Utd2lkdGg9IjIuNSIgc3Ryb2tlLWxpbmVjYXA9InJvdW5kIiBzdHJva2UtbGluZWpvaW49InJvdW5kIj48ZyB0cmFuc2Zvcm09InRyYW5zbGF0ZSg0LCAwKSI+PHBhdGggZD0iTTE4LjUgNi41QzIwLjk4NTMgNi41IDIzIDguNTE0NzIgMjMgMTFWMTNIMzFDMzIuNjU2OSAxMyA0NCAxNC4zNDMxIDQ0IDE2VjI0SDE2VjE1QzE2IDguNTE0NzIgMTguMDE0NyA2LjUgMTguNSA2LjVaIiBzdHJva2UtbGluZWNhcD0icm91bmQiIHN0cm9rZS13aWR0aD0iMi41IiBzdHJva2UtbGluZWpvaW49InJvdW5kIi8+PC9nPjwvc3ZnPg==';
-const defaultReviews = [
-    {
-        name: 'V. Schuster - Team Partner',
-        text: '"Max is a highly skilled and dedicated frontend developer. He consistently delivers high-quality work and is always willing to go the extra mile to ensure project success. Max\'s attention to detail and problem-solving abilities make him an invaluable asset to any team."',
-        photo: DEFAULT_REVIEW_PHOTO
-    },
-    {
-        name: 'L. Becker - Product Designer',
-        text: '"Working with Max was smooth and productive. He translates design ideas into clean, responsive interfaces and communicates clearly throughout the process."',
-        photo: DEFAULT_REVIEW_PHOTO
-    },
-    {
-        name: 'A. Weber - Client',
-        text: '"Max delivered quickly, solved unexpected issues with confidence, and built features that improved the user experience immediately."',
-        photo: DEFAULT_REVIEW_PHOTO
-    }
-];
+const defaultReviews = [];
 
 let reviews = [];
 let currentReviewIndex = 0;
