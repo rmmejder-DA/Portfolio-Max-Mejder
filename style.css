@@ -67,19 +67,15 @@ footer p {
     min-width: 320px;
     max-width: 1440px;
     margin: 0 auto;
-    height: 240px;
+    height: 200px;
 }
 
-body>footer.footer {
-    position: fixed;
-    left: 0;
-    right: 0;
-    bottom: 0;
+body>footer {
     width: 100%;
     max-width: none;
     padding: 16px 58px;
     background-color: #141d2f;
-    border-top: 1px solid rgba(151, 71, 255, 0.35);
+    border-top: 3px solid #70e61c;
     z-index: 1000;
 }
 
@@ -88,7 +84,7 @@ body>footer.footer {
         padding-bottom: 132px;
     }
 
-    body>footer.footer {
+    body>footer {
         padding: 12px 22px;
         gap: 12px;
     }
@@ -276,7 +272,6 @@ h1 {
 .translate-buttons button:hover {
     background-color: #9747ff;
     color: #141d2f;
-    border: none !important;
 }
 
 .profile-img {
@@ -439,12 +434,6 @@ h1 {
         margin-top: 12px;
         width: 50%;
         height: 50px;
-    }
-    .about {
-    padding: 268px 100px 16px 24px!important;
-    }
-    .introduction {
-        right: 120px;
     }
 }
 
@@ -867,6 +856,7 @@ h1 {
 @media (max-width: 860px) {
     .skills {
         padding: 52px 22px 62px;
+        justify-content: center;
     }
 
     .skills-icons {
@@ -880,6 +870,16 @@ h1 {
 
     .skills-title-line {
         width: 70px;
+    }
+
+    .profile-img {
+        width: 100%;
+    }
+
+    .introduction {
+        right: 0;
+        /* padding: 0 22px; */
+        width: 110%;
     }
 }
 
@@ -1236,14 +1236,14 @@ h1 {
 }
 
 .review-comment-open {
-    display: inline-flex;
+    display: flex;
     align-items: center;
     justify-content: center;
-    margin: 0 auto 40px;
     padding: 14px 22px;
+    margin: 0 auto;
     border: none;
-    border-radius: 999px;
-    font-size: 17px;
+    border-radius: 20px;
+    font-size: 16px;
     font-weight: 700;
     color: #141d2f;
     background: linear-gradient(135deg, #70e61c, #88f229);
@@ -1263,6 +1263,11 @@ h1 {
     border: none;
     border-radius: 20px;
     background: transparent;
+    margin: 0;
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
 }
 
 .review-comment-dialog::backdrop {
@@ -1277,7 +1282,7 @@ h1 {
     margin: 0;
     padding: 22px;
     border: 2px solid rgba(151, 71, 255, 0.45);
-    border-radius: 16px;
+    border-radius: 20px;
     background: rgba(20, 29, 47, 0.96);
     position: relative;
 }
@@ -1376,7 +1381,7 @@ h1 {
     }
 
     .reviewOfperson-card {
-        width: 100%;
+        width: 80%;
         max-width: 900px;
     }
 
@@ -1390,16 +1395,69 @@ h1 {
 }
 
 @media (max-width: 768px) {
+    body>footer {
+        padding: 12px 22px !important;
+    }
+
+    .contact {
+        padding: 10px !important;
+    }
+
+    .contact-form-container {
+        padding: 0;
+        align-items: center;
+        gap: 20px;
+    }
+
+    .footer {
+        padding: 32px 22px;
+        height: 140px;
+        min-height: 140px;
+    }
+
+    .portfolio-buttons {
+        justify-content: center;
+    }
+
+    .portfolio-card-content {
+        text-align: center;
+    }
+
+    .portfolio-card-content p {
+        margin-left: auto;
+        margin-right: auto;
+    }
+
+    .skills-headline-wrap {
+        justify-content: flex-end;
+    }
+
+    .skills-description-wrap {
+        margin-right: 0;
+        align-items: center;
+        text-align: center;
+    }
+
+    .skills-icons {
+        order: 2;
+    }
+
+    .skills-content {
+        order: 1;
+        text-align: center;
+    }
+
     .reviewOfperson-card {
         padding: 36px 24px 26px;
         border-radius: 0 24px 24px 24px;
         min-height: 284px;
+        min-width: 320px;
+        width: 75%;
     }
 
     .review-quote-mark {
-        top: -34px;
-        left: -7px;
-        font-size: 72px;
+        top: -16px;
+        left: -10px;
     }
 
     .commentar_text {
@@ -1428,6 +1486,21 @@ h1 {
     .review-arrow {
         font-size: 34px;
     }
+
+    .about {
+        padding: 236px 70px 16px 10px;
+    }
+}
+
+
+.about-me {
+    padding: 0 0px 16px 30px;
+
+}
+
+.about-me-text {
+    font-size: 16px;
+    margin-right: unset;
 }
 
 form {
@@ -1736,7 +1809,13 @@ form {
 }
 
 @media (max-width: 960px) {
-    .portfolio-card-join {
+
+    .portfolio-card-join,
+    .portfolio-card-fotogramm,
+    .portfolio-card-kochwelt,
+    .portfolio-card-pokedex,
+    .portfolio-card-el_pollo_loco,
+    .portfolio-card-bestellapp {
         grid-template-columns: 1fr;
         gap: 40px;
     }
