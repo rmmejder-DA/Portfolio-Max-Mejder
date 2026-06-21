@@ -1,0 +1,64 @@
+@media (max-width: 1340px) {
+    .Name {
+        font-size: 64px;
+        height: unset;
+    }
+
+    .job-title {
+        font-size: 34px;
+    }
+
+    .vertical-headline {
+        font-size: 60px;
+    }
+
+    .horizontal-headline {
+        gap: 0px;
+    }
+    .scrollDown-vertical {
+        font-size: 18px;
+        padding-right: 10px;
+    }
+    .about-me-decorative {
+        width: 300px;
+        height: 300px;
+    }
+    .img-line-right {
+        width: 200px;
+    }
+    .section-title {
+        font-size: 60px;
+    }
+}
+@media (max-width: 1180px) {
+    /* .floating-skill-icons {
+        top:50%;
+    } */
+
+}
+@media (max-width: 1084px) {
+    .Name {
+        font-size: 48px;
+        line-height: 76px;
+    }
+
+    .job-title {
+        font-size: 24px;
+        line-height: 38px;
+    }
+
+    .vertical-headline {
+        font-size: 44px;
+        padding-top: 20px;
+    }
+
+    .horizontal-headline {
+        gap: 0px;
+    }
+    .section-title {
+        font-size: 44px;
+    }
+        .img-line-right {
+        width: 80px;
+    }
+}

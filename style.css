@@ -9,6 +9,7 @@ html {
     display: flex;
     flex-direction: column;
     scroll-behavior: smooth;
+    overflow-x: clip;
 }
 
 header {
@@ -26,6 +27,10 @@ header {
 footer {
     background-color: #141d2f;
     border-top: 1px solid rgba(151, 71, 255, 0.35);
+}
+
+footer p {
+    font-size: 24px;
 }
 
 .main-content {
@@ -62,6 +67,7 @@ footer {
     min-width: 320px;
     max-width: 1440px;
     margin: 0 auto;
+    height: 240px;
 }
 
 body>footer.footer {
@@ -285,8 +291,9 @@ h1 {
     position: relative;
     display: flex;
     align-items: start;
-    width: 255%;
-    right: 45px;
+    justify-content: end;
+    width: 100%;
+    right: 0;
     z-index: 1;
 }
 
@@ -326,40 +333,44 @@ h1 {
     isolation: isolate;
     z-index: 0;
     border-radius: 50%;
+    width: 100%;
 }
 
 .profile-background::before,
 .profile-background::after {
     content: '';
     position: absolute;
-    border-radius: 50%;
-    filter: blur(60px);
+    filter: blur(72px);
     z-index: 0;
     pointer-events: none;
 }
 
 .profile-background::before {
-    width: 220px;
-    height: 220px;
+    width: 260px;
+    height: 180px;
     background: #70e61c;
-    opacity: 1.2;
-    top: 20%;
-    left: 15%;
+    opacity: 0.9;
+    top: 18%;
+    left: 10%;
+    border-radius: 62% 38% 54% 46% / 44% 58% 42% 56%;
+    transform: rotate(-14deg);
 }
 
 .profile-background::after {
-    width: 200px;
-    height: 200px;
+    width: 230px;
+    height: 160px;
     background: #9747ff;
-    opacity: 1.2;
-    bottom: 20%;
-    right: 30%;
+    opacity: 0.85;
+    bottom: 18%;
+    right: 22%;
+    border-radius: 44% 56% 38% 62% / 56% 42% 58% 44%;
+    transform: rotate(22deg);
 }
 
 .floating-skill-icons {
     position: absolute;
     left: 86%;
-    top: 30%;
+    top: 50%;
     width: 0;
     height: 0;
     pointer-events: none;
@@ -415,13 +426,25 @@ h1 {
 
 @media (max-width: 900px) {
     .floating-skill-icons {
-        left: 58%;
-        top: 76%;
+        left: 75%;
+        top: 60%;
     }
 
     .floating-icon {
-        width: 30px;
-        height: 30px;
+        width: 42px;
+        height: 42px;
+    }
+
+    .lets-talk-button {
+        margin-top: 12px;
+        width: 50%;
+        height: 50px;
+    }
+    .about {
+    padding: 268px 100px 16px 24px!important;
+    }
+    .introduction {
+        right: 120px;
     }
 }
 
@@ -486,6 +509,7 @@ h1 {
     border: 4px solid #70e61c;
     box-shadow: 0 8px 16px rgba(0, 0, 0, 0.25);
     background-color: #ffffff;
+    z-index: 1000;
 }
 
 .about-me {
@@ -502,6 +526,7 @@ h1 {
     width: 268px;
     height: 4px;
     background-color: #70e61c;
+    z-index: 1;
 }
 
 .about-me-text {
@@ -555,12 +580,12 @@ h1 {
     position: absolute;
     right: 50px;
     top: -50px;
-    width: 200px;
-    height: 200px;
+    width: 56%;
+    height: 117%;
     border-radius: 35%;
     background-color: #000cf8;
-    filter: blur(60px);
-    z-index: 1000;
+    filter: blur(75px);
+    z-index: 0;
 }
 
 .about-me-decorative-container::after {
@@ -599,6 +624,20 @@ h1 {
     padding-bottom: 64px;
 }
 
+.skills-grid::before {
+    content: '';
+    position: absolute;
+    bottom: -300px;
+    left: -344px;
+    width: 56%;
+    height: 117%;
+    transform: scale(0.5) rotate(93deg);
+    border-radius: 60% 47% 115% 0%;
+    background-color: #70e61c;
+    filter: blur(75px);
+    z-index: -1;
+}
+
 .skills-icons {
     display: grid;
     grid-template-columns: repeat(4, minmax(90px, 1fr));
@@ -632,6 +671,10 @@ h1 {
 .skill-icon:hover {
     transform: translateY(-8px);
     transition: transform 0.2s ease;
+}
+
+.github-icon {
+    filter: invert(1) brightness(1.5);
 }
 
 .skill-card-learning p {
@@ -874,24 +917,26 @@ h1 {
 
 .portfolio {
     max-width: 1440px;
-    margin: 0 auto;
     position: relative;
 }
 
 .portfolio-header {
     display: flex;
     align-items: center;
-    justify-content: center;
+    justify-content: flex-end;
     gap: 28px;
     margin-bottom: 20px;
 }
 
 .portfolio-title-line {
     display: inline-block;
-    flex: 1;
-    max-width: 120px;
+    width: 120px;
     height: 3px;
     background-color: #9747ff;
+}
+
+.extra-size {
+    width: 35%;
 }
 
 .portfolio-section-title {
@@ -916,7 +961,7 @@ h1 {
 .portfolio-card-el_pollo_loco {
     display: grid;
     grid-template-columns: 1fr 1fr;
-    gap: 64px;
+    gap: 240px;
     align-items: center;
     margin-bottom: 80px;
 }
@@ -1190,14 +1235,71 @@ h1 {
     color: #88f229;
 }
 
+.review-comment-open {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0 auto 40px;
+    padding: 14px 22px;
+    border: none;
+    border-radius: 999px;
+    font-size: 17px;
+    font-weight: 700;
+    color: #141d2f;
+    background: linear-gradient(135deg, #70e61c, #88f229);
+    cursor: pointer;
+    transition: transform 0.2s ease, filter 0.2s ease;
+}
+
+.review-comment-open:hover,
+.review-comment-open:focus-visible {
+    transform: translateY(-2px);
+    filter: brightness(1.04);
+}
+
+.review-comment-dialog {
+    width: min(760px, calc(100vw - 32px));
+    padding: 0;
+    border: none;
+    border-radius: 20px;
+    background: transparent;
+}
+
+.review-comment-dialog::backdrop {
+    background: rgba(9, 14, 24, 0.78);
+    -webkit-backdrop-filter: blur(5px);
+    backdrop-filter: blur(5px);
+}
+
 .review-comment-box {
     width: 100%;
-    max-width: 760px;
-    margin: 0 auto 40px;
+    max-width: none;
+    margin: 0;
     padding: 22px;
     border: 2px solid rgba(151, 71, 255, 0.45);
     border-radius: 16px;
-    background: rgba(20, 29, 47, 0.55);
+    background: rgba(20, 29, 47, 0.96);
+    position: relative;
+}
+
+.review-comment-close {
+    position: absolute;
+    top: 12px;
+    right: 12px;
+    width: 38px;
+    height: 38px;
+    border: none;
+    border-radius: 50%;
+    color: #ffffff;
+    background: rgba(151, 71, 255, 0.24);
+    font-size: 26px;
+    line-height: 1;
+    cursor: pointer;
+}
+
+.review-comment-close:hover,
+.review-comment-close:focus-visible {
+    background: rgba(151, 71, 255, 0.4);
 }
 
 .review-comment-title {
@@ -1342,8 +1444,46 @@ form {
     padding: 64px 56px 12px;
 }
 
+.scroll-top-button {
+    align-self: end;
+    width: 54px;
+    height: 54px;
+    border: 2px solid #ffffff;
+    border-radius: 50%;
+    background: rgba(20, 29, 47, 0.92);
+    color: #ffffff;
+    font-size: 30px;
+    line-height: 1;
+    cursor: pointer;
+    background-image: linear-gradient(120deg, rgba(112, 230, 28, 0) 0%, rgba(112, 230, 28, 0.18) 50%, rgba(112, 230, 28, 0) 100%);
+    background-size: 220% 100%;
+    background-position: 0% 50%;
+    transition: transform 0.2s ease, background-color 0.2s ease, color 0.2s ease, border-color 0.2s ease;
+}
+
+.scroll-top-button:hover,
+.scroll-top-button:focus-visible {
+    transform: translateY(-3px);
+    border-color: #70e61c;
+    background-color: rgba(20, 29, 47, 0.98);
+    background-position: 100% 50%;
+    animation: scrollTopGlow 1.2s linear infinite;
+    color: #70e61c;
+    outline: none;
+}
+
+@keyframes scrollTopGlow {
+    from {
+        background-position: 0% 50%;
+    }
+
+    to {
+        background-position: 100% 50%;
+    }
+}
+
 .contact-title-line {
-    width: 50%;
+    width: 40%;
     height: 4px;
     background-color: #9747ff;
 }
@@ -1355,9 +1495,9 @@ form {
 }
 
 .got_a_problem {
-    font-size: 24px;
+    font-size: 32px;
     color: #ffffff;
-    max-width: 400px;
+    margin-bottom: 24px;
 }
 
 .contact-header {
@@ -1372,19 +1512,44 @@ form {
     justify-content: center;
     flex-direction: column;
     gap: 40px;
-    padding: 64px 56px 0;
+    padding: 64px;
+    position: relative;
+    overflow: hidden;
+    isolation: isolate;
+}
+
+.contact::before {
+    content: '';
+    position: absolute;
+    bottom: -295px;
+    left: -663px;
+    width: 80%;
+    height: 80%;
+    border-radius: 63% 10% 52% 49% / 42% 53% 28% 80%;
+    background: #9646fe;
+    filter: blur(60px);
+    opacity: 1.55;
+    transform: rotate(87deg);
+    pointer-events: none;
+    z-index: 0;
+}
+
+.contact>* {
+    position: relative;
+    z-index: 1;
 }
 
 .if_problem {
-    width: 24%;
+    width: 38%;
     height: auto;
 }
 
 .contact_form {
-    width: min(560px, 100%);
+    width: 100%;
     display: flex;
     flex-direction: column;
     gap: 18px;
+    min-width: 560px;
 }
 
 .contact_input,
@@ -1402,6 +1567,21 @@ form {
 .contact_input {
     height: 50px;
     padding: 0 24px;
+}
+
+.contact_input:required:valid:not(:placeholder-shown) {
+    border-color: #70e61c;
+    box-shadow: 0 0 0 3px rgba(112, 230, 28, 0.16);
+    padding-right: 56px;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='22' height='22' viewBox='0 0 22 22'%3E%3Ccircle cx='11' cy='11' r='11' fill='%2370e61c'/%3E%3Cpath d='M6 11.2 9.3 14.5 16 7.8' fill='none' stroke='%23141d2f' stroke-width='2.3' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E");
+    background-repeat: no-repeat;
+    background-size: 22px 22px;
+    background-position: right 16px center;
+}
+
+.contact_input:required:invalid:not(:placeholder-shown) {
+    border-color: #ff5f7a;
+    box-shadow: 0 0 0 3px rgba(255, 95, 122, 0.14);
 }
 
 .contact_textarea {
@@ -1481,16 +1661,26 @@ form {
     background: #b2b5b8;
     color: #ffffff;
     font-size: 32px;
+    cursor: not-allowed;
+    opacity: 0.86;
+    transition: transform 0.1s ease, background-color 0.05s ease, box-shadow 0.2s ease, opacity 0.2s ease;
+}
+
+.contact_form.is-valid .contact_submit {
+    background-color: #70e61c;
     cursor: pointer;
-    transition: filter 0.2s ease, transform 0.2s ease;
+    opacity: 1;
 }
 
-.contact_submit:hover {
-    filter: brightness(1.05);
-    transform: translateY(-1px);
+.contact_form.is-valid .contact_submit:hover {
+    background-color: #9747ff;
+    text-align: center;
+    transform: translateY(4px) scale(1.05);
+    box-shadow: 0 10px 24px rgba(0, 0, 0, 0.18);
+    opacity: 0.9;
 }
 
-.contact_submit:active {
+.contact_form.is-valid .contact_submit:active {
     transform: translateY(0);
 }
 

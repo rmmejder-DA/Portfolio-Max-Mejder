@@ -212,8 +212,18 @@ function scrollToContact() {
         contactSection.scrollIntoView({ behavior: 'smooth' });
     }
 }
+
+function scrollToTop() {
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+}
+
 document.getElementById('gotoContact').addEventListener('click', scrollToContact);
 document.getElementById('getInTouchtoContact').addEventListener('click', scrollToContact);
+
+const scrollToTopButton = document.getElementById('scrollToTopButton');
+if (scrollToTopButton) {
+    scrollToTopButton.addEventListener('click', scrollToTop);
+}
 
 const REVIEW_STORAGE_KEY = 'portfolioReviews';
 const DEFAULT_REVIEW_PHOTO = 'data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iNDgiIGhlaWdodD0iNDgiIHZpZXdCb3g9IjAgMCA0OCA0OCIgc3Ryb2tlPSIjNzBFNjFDIiBzdHJva2Utd2lkdGg9IjIuNSIgc3Ryb2tlLWxpbmVjYXA9InJvdW5kIiBzdHJva2UtbGluZWpvaW49InJvdW5kIj48ZyB0cmFuc2Zvcm09InRyYW5zbGF0ZSg0LCAwKSI+PHBhdGggZD0iTTE4LjUgNi41QzIwLjk4NTMgNi41IDIzIDguNTE0NzIgMjMgMTFWMTNIMzFDMzIuNjU2OSAxMyA0NCAxNC4zNDMxIDQ0IDE2VjI0SDE2VjE1QzE2IDguNTE0NzIgMTguMDE0NyA2LjUgMTguNSA2LjVaIiBzdHJva2UtbGluZWNhcD0icm91bmQiIHN0cm9rZS13aWR0aD0iMi41IiBzdHJva2UtbGluZWpvaW49InJvdW5kIi8+PC9nPjwvc3ZnPg==';
@@ -224,33 +234,15 @@ let currentReviewIndex = 0;
 
 function loadReviews() {
     try {
-        const stored = localStorage.getItem(REVIEW_STORAGE_KEY);
-        if (!stored) {
-            reviews = [...defaultReviews];
-            return;
-        }
-
-        const parsed = JSON.parse(stored);
-        if (Array.isArray(parsed) && parsed.length > 0) {
-            reviews = parsed
-                .filter((item) => item && item.name && item.text)
-                .map((item) => ({
-                    name: item.name,
-                    text: item.text,
-                    photo: item.photo || DEFAULT_REVIEW_PHOTO,
-                }));
-        }
-
-        if (!reviews.length) {
-            reviews = [...defaultReviews];
-        }
+        localStorage.removeItem(REVIEW_STORAGE_KEY);
+        reviews = [...defaultReviews];
     } catch (error) {
         reviews = [...defaultReviews];
     }
 }
 
 function saveReviews() {
-    localStorage.setItem(REVIEW_STORAGE_KEY, JSON.stringify(reviews));
+    localStorage.removeItem(REVIEW_STORAGE_KEY);
 }
 
 function convertImageFileToDataUrl(file) {
@@ -338,6 +330,23 @@ function showReview(index) {
     renderActiveDot();
 }
 
+function renderEmptyReviewState() {
+    const reviewText = document.getElementById('commentar-text');
+    const reviewName = document.querySelector('.reviewOfperson_name');
+    const reviewPerson = document.getElementById('reviewPerson');
+
+    if (reviewText) {
+        reviewText.textContent = 'Noch keine Kommentare. Hinterlasse ueber den Button dein Feedback.';
+    }
+    if (reviewName) {
+        reviewName.textContent = 'Dein Kommentar erscheint hier';
+    }
+    if (reviewPerson) {
+        reviewPerson.src = DEFAULT_REVIEW_PHOTO;
+        reviewPerson.alt = 'Platzhalter fuer Kommentare';
+    }
+}
+
 function bindReviewNavigation() {
     const prevArrow = document.querySelector('.review-arrow[aria-label="Previous review"]');
     const nextArrow = document.querySelector('.review-arrow[aria-label="Next review"]');
@@ -355,6 +364,7 @@ function bindReviewForm() {
     const nameInput = document.getElementById('reviewName');
     const messageInput = document.getElementById('reviewMessage');
     const photoInput = document.getElementById('reviewPhoto');
+    const dialog = document.getElementById('reviewCommentDialog');
 
     if (!form || !nameInput || !messageInput || !photoInput) {
         return;
@@ -402,7 +412,33 @@ function bindReviewForm() {
         rebuildReviewDots();
         showReview(reviews.length - 1);
         form.reset();
+
+        if (dialog) {
+            dialog.close();
+        }
     });
+}
+
+function bindReviewCommentDialog() {
+    const dialog = document.getElementById('reviewCommentDialog');
+    const openButton = document.getElementById('openReviewCommentDialog');
+    const closeButton = document.getElementById('closeReviewCommentDialog');
+
+    if (!dialog || !openButton) {
+        return;
+    }
+
+    openButton.addEventListener('click', () => {
+        if (typeof dialog.showModal === 'function') {
+            dialog.showModal();
+        }
+    });
+
+    if (closeButton) {
+        closeButton.addEventListener('click', () => {
+            dialog.close();
+        });
+    }
 }
 
 function initializeReviews() {
@@ -410,10 +446,35 @@ function initializeReviews() {
     rebuildReviewDots();
     bindReviewNavigation();
     bindReviewForm();
-    showReview(0);
+    bindReviewCommentDialog();
+    if (reviews.length) {
+        showReview(0);
+    } else {
+        renderEmptyReviewState();
+    }
+}
+
+function bindContactFormValidation() {
+    const contactForm = document.querySelector('.contact_form');
+    const submitButton = document.querySelector('.contact_submit');
+
+    if (!contactForm || !submitButton) {
+        return;
+    }
+
+    const syncContactFormState = () => {
+        const isValid = contactForm.checkValidity();
+        contactForm.classList.toggle('is-valid', isValid);
+        submitButton.disabled = !isValid;
+    };
+
+    contactForm.addEventListener('input', syncContactFormState);
+    contactForm.addEventListener('change', syncContactFormState);
+    syncContactFormState();
 }
 
 document.addEventListener('DOMContentLoaded', () => {
     applyLanguage('en');
     initializeReviews();
+    bindContactFormValidation();
 });
