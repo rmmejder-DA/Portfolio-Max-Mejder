@@ -119,11 +119,29 @@ function setPlaceholder(selector, value) {
     }
 }
 
+function setNavigationLabels(desktopLabels, mobileLabels) {
+    const desktopLinks = document.querySelectorAll('.nav a');
+    const mobileLinks = document.querySelectorAll('.mobile-nav-links a');
+
+    desktopLabels.forEach((label, index) => {
+        if (desktopLinks[index]) {
+            desktopLinks[index].textContent = label;
+        }
+    });
+
+    mobileLabels.forEach((label, index) => {
+        if (mobileLinks[index]) {
+            mobileLinks[index].textContent = label;
+        }
+    });
+}
+
 function applyLanguage(language) {
     if (language === 'de') {
-        setTextAt('.nav a', 0, 'Ueber mich');
-        setTextAt('.nav a', 1, 'Skills');
-        setTextAt('.nav a', 2, 'Portfolio');
+        setNavigationLabels(
+            ['Ueber mich', 'My skills', 'Portfolio'],
+            ['Ueber mich', 'My skills', 'Portfolio', 'Kontakt']
+        );
 
         setText('.vertical-headline', 'Ich bin');
         setText('.job-title', 'FRONTEND ENTWICKLER');
@@ -158,9 +176,10 @@ function applyLanguage(language) {
         setPlaceholder('.contact_textarea', 'Deine Nachricht');
         setHtml('.contact_checkbox_label', 'Ich habe die <a href="legal-notice.html#datenschutz" class="privacy-link">Datenschutzerklaerung</a> gelesen und stimme der Verarbeitung meiner Daten zu.');
     } else {
-        setTextAt('.nav a', 0, 'About me');
-        setTextAt('.nav a', 1, 'Skills');
-        setTextAt('.nav a', 2, 'Portfolio');
+        setNavigationLabels(
+            ['About me', 'My skills', 'Portfolio'],
+            ['About me', 'My skills', 'Portfolio', 'Contact']
+        );
 
         setText('.vertical-headline', 'I am');
         setText('.job-title', 'FRONTEND DEVELOPER');
@@ -200,9 +219,13 @@ function applyLanguage(language) {
 function setActiveLanguage(clickedButton) {
     const languageButtons = document.querySelectorAll('.translate-buttons button');
     languageButtons.forEach((button) => button.classList.remove('is-active'));
-    clickedButton.classList.add('is-active');
-
     const selectedLanguage = clickedButton.textContent.trim().toLowerCase() === 'de' ? 'de' : 'en';
+    languageButtons.forEach((button) => {
+        const buttonLanguage = button.textContent.trim().toLowerCase();
+        if (buttonLanguage === selectedLanguage) {
+            button.classList.add('is-active');
+        }
+    });
     applyLanguage(selectedLanguage);
 }
 
@@ -223,6 +246,36 @@ document.getElementById('getInTouchtoContact').addEventListener('click', scrollT
 const scrollToTopButton = document.getElementById('scrollToTopButton');
 if (scrollToTopButton) {
     scrollToTopButton.addEventListener('click', scrollToTop);
+}
+
+const mobileNavToggle = document.querySelector('.mobile-nav-toggle');
+const mobileMenu = document.getElementById('mobileMenu');
+const mobileMenuClose = document.querySelector('.mobile-menu-close');
+
+if (mobileNavToggle && mobileMenu) {
+    const closeMobileMenu = () => {
+        mobileMenu.classList.remove('is-open');
+        mobileNavToggle.classList.remove('is-open');
+        mobileNavToggle.setAttribute('aria-expanded', 'false');
+        mobileMenu.setAttribute('aria-hidden', 'true');
+    };
+
+    mobileNavToggle.addEventListener('click', () => {
+        const isOpen = mobileMenu.classList.toggle('is-open');
+        mobileNavToggle.classList.toggle('is-open', isOpen);
+        mobileNavToggle.setAttribute('aria-expanded', String(isOpen));
+        mobileMenu.setAttribute('aria-hidden', String(!isOpen));
+    });
+
+    if (mobileMenuClose) {
+        mobileMenuClose.addEventListener('click', closeMobileMenu);
+    }
+
+    mobileMenu.querySelectorAll('a').forEach((link) => {
+        link.addEventListener('click', () => {
+            closeMobileMenu();
+        });
+    });
 }
 
 const REVIEW_STORAGE_KEY = 'portfolioReviews';

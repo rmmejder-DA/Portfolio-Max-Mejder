@@ -22,6 +22,11 @@
     <header>
         <div class="header">
             <h1>Max</h1>
+            <button type="button" class="mobile-nav-toggle" aria-label="Navigation oeffnen" aria-expanded="false" aria-controls="mobileMenu">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
             <div class="header-right">
                 <div class="nav">
                     <a href="#about_me">About me</a>
@@ -33,6 +38,18 @@
                         onclick="setActiveLanguage(this)">DE</button>
                     <button type="button" class="is-active"
                         onclick="setActiveLanguage(this)">EN</button>
+                </div>
+            </div>
+            <div class="mobile-menu" id="mobileMenu" aria-hidden="true">
+                <div class="mobile-nav-links">
+                    <a href="#about_me">About me</a>
+                    <a href="#skills">My skills</a>
+                    <a href="#portfolio">Portfolio</a>
+                    <a href="#contact_me">Contact</a>
+                </div>
+                <div class="translate-buttons">
+                    <button type="button" onclick="setActiveLanguage(this)">DE</button>
+                    <button type="button" class="is-active" onclick="setActiveLanguage(this)">EN</button>
                 </div>
             </div>
         </div>
