@@ -15,27 +15,75 @@
     .horizontal-headline {
         gap: 0px;
     }
+
     .scrollDown-vertical {
         font-size: 18px;
         padding-right: 10px;
     }
+
     .about-me-decorative {
         width: 300px;
         height: 300px;
     }
+
     .img-line-right {
         width: 200px;
     }
+
     .section-title {
         font-size: 60px;
     }
 }
-@media (max-width: 1180px) {
-    /* .floating-skill-icons {
-        top:50%;
-    } */
 
+@media (max-width: 1200px) {
+    .reviewOfperson-container {
+        grid-template-columns: 1fr;
+        justify-items: center;
+        padding: 0;
+    }
+
+    .reviewOfperson-container::after {
+        right: 50%;
+        top: 78%;
+        transform: translate(50%, -50%);
+    }
+
+    .reviewOfperson-card {
+        width: 80%;
+        max-width: 900px;
+    }
+
+    .reviewOfperson-avatar-wrap {
+        justify-content: center;
+    }
+
+    .review-avatar-line {
+        display: none;
+    }
 }
+
+@media (max-width: 1180px) {
+    .skills-grid {
+        grid-template-columns: 1fr;
+        gap: 44px;
+    }
+
+    .skills-content {
+        text-align: left;
+    }
+
+    .skills-headline-wrap {
+        justify-content: flex-start;
+    }
+
+    .skills-description,
+    .skills-subtext,
+    .skills-question,
+    .skills-contact-btn {
+        margin-left: 0;
+    }
+}
+
 @media (max-width: 1084px) {
     .Name {
         font-size: 48px;
@@ -48,27 +96,579 @@
     }
 
     .vertical-headline {
-        font-size: 44px;
-        padding-top: 20px;
+        font-size: 38px;
+        padding-top: 14px;
     }
 
     .horizontal-headline {
         gap: 0px;
     }
+
     .section-title {
         font-size: 44px;
     }
-        .img-line-right {
+
+    .img-line-right {
         width: 80px;
     }
 }
 
+@media (max-width: 1024px) {
+    .contact-form-container {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    .if_problem {
+        width: 100%;
+        max-width: 640px;
+    }
+
+    .contact_form {
+        width: 100%;
+        max-width: 640px;
+    }
+}
+
 @media (max-width: 960px) {
+
     .portfolio-buttons,
     .portfolio-description,
     .portfolio-card-content {
         text-align: center;
         margin-left: auto;
         margin-right: auto;
+    }
+
+    .portfolio-card-join,
+    .portfolio-card-fotogramm,
+    .portfolio-card-kochwelt,
+    .portfolio-card-pokedex,
+    .portfolio-card-el_pollo_loco,
+    .portfolio-card-bestellapp {
+        grid-template-columns: 1fr;
+        gap: 40px;
+    }
+
+    .notebook-frame {
+        max-width: 480px;
+        margin: 0 auto;
+    }
+
+    .portfolio-project-title {
+        font-size: 38px;
+    }
+}
+
+@media (max-width: 900px) {
+    .about::after {
+        left: -60%;
+        width: 236%;
+        bottom: -74%;
+        height: 126%;
+        transform: rotate(10deg);
+    }
+
+    .mail-to {
+        display: none;
+    }
+
+    .scrollDown-vertical {
+        display: none;
+    }
+
+    .floating-skill-icons {
+        left: 45%;
+        top: 48%;
+    }
+
+    .icon-1 {
+        --dx: -120px;
+        --dy: -180px;
+    }
+
+    .icon-2 {
+        --dx: -60px;
+        --dy: -220px;
+    }
+
+    .icon-3 {
+        --dx: -10px;
+        --dy: -180px;
+    }
+
+    .icon-4 {
+        --dx: 50px;
+        --dy: -240px;
+    }
+
+    .icon-5 {
+        --dx: 120px;
+        --dy: -160px;
+    }
+
+    .icon-6 {
+        --dx: 160px;
+        --dy: -220px;
+    }
+
+    .icon-7 {
+        --dx: 210px;
+        --dy: -170px;
+    }
+
+    .floating-icon {
+        width: 42px;
+        height: 42px;
+    }
+
+    .lets-talk-button {
+        margin-top: 12px;
+        width: 55%;
+        height: 50px;
+    }
+}
+
+@media (max-width: 860px) {
+    .about-me {
+        flex-direction: column;
+        align-items: center;
+        padding: 10px !important;
+        width: 80%;
+        min-width: 0;
+        max-width: none;
+        margin: 0;
+    }
+
+    .about-me-background {
+        width: 100%;
+        margin-bottom: 16px;
+    }
+
+    .skills {
+        padding: 52px 22px 62px;
+        justify-content: center;
+    }
+
+    .skills-icons {
+        grid-template-columns: repeat(3, minmax(86px, 1fr));
+        gap: 28px 20px;
+    }
+
+    .skills-title {
+        font-size: 62px;
+    }
+
+    .skills-title-line {
+        width: 70px;
+    }
+
+    .profile-img {
+        width: 100%;
+    }
+
+    .introduction {
+        display: none;
+    }
+
+    .introduction-underlay {
+        position: relative;
+        display: flex;
+        align-items: start;
+        justify-content: center;
+        width: 85%;
+        right: 0;
+        z-index: 1;
+    }
+
+    .Name {
+        font-size: 45px !important;
+        line-height: 60px !important;
+    }
+
+}
+
+@media (max-width: 768px) {
+    body>footer {
+        padding: 12px 22px !important;
+    }
+
+    .contact {
+        padding: 10px !important;
+    }
+
+    .contact-form-container {
+        padding: 0;
+        align-items: center;
+        gap: 20px;
+    }
+
+    .footer {
+        padding: 32px 22px;
+        height: 140px;
+        min-height: 140px;
+    }
+
+    .portfolio-buttons {
+        justify-content: center;
+    }
+
+    .portfolio-card-content {
+        text-align: center;
+    }
+
+    .portfolio-card-content p {
+        margin-left: auto;
+        margin-right: auto;
+    }
+
+    .skills-headline-wrap {
+        justify-content: flex-end;
+    }
+
+    .skills-description-wrap {
+        margin-right: 0;
+        align-items: center;
+        text-align: center;
+    }
+
+    .skills-icons {
+        order: 2;
+    }
+
+    .skills-content {
+        order: 1;
+        text-align: center;
+    }
+
+    .reviewOfperson-card {
+        padding: 36px 24px 26px;
+        border-radius: 0 24px 24px 24px;
+        min-height: 284px;
+        min-width: 320px;
+        width: 75%;
+    }
+
+    .review-quote-mark {
+        top: -16px;
+        left: -10px;
+    }
+
+    .commentar_text {
+        font-size: 16px;
+        min-height: 124px;
+        max-height: 124px;
+    }
+
+    .reviewOfperson_name {
+        font-size: 14px;
+    }
+
+    .commentar_line {
+        width: 52%;
+    }
+
+    .reviewOfperson_img {
+        width: 170px;
+        height: 170px;
+    }
+
+    .review-slider-controls {
+        gap: 12px;
+    }
+
+    .review-arrow {
+        font-size: 34px;
+    }
+
+    .about {
+        padding: 236px 70px 16px 10px;
+        flex-direction: column;
+    }
+}
+
+@media (max-width: 700px) {
+    body {
+        padding-bottom: 132px;
+    }
+
+    body>footer {
+        padding: 12px 22px;
+        gap: 12px;
+    }
+
+    .header {
+        position: relative;
+    }
+
+    .header-right {
+        display: none !important;
+    }
+
+    .mobile-nav-toggle {
+        display: inline-flex !important;
+        position: relative;
+        z-index: 2501;
+    }
+
+    .header h1 {
+        position: relative;
+        z-index: 2501;
+    }
+
+    .header .mobile-menu {
+        display: flex;
+        position: fixed;
+        top: 0;
+        left: 0;
+        right: 0;
+        width: 100vw;
+        height: 100vh;
+        background-color: rgba(110, 110, 110, 0.2);
+        border-left: 1px solid rgba(255, 255, 255, 0.25);
+        border-radius: 0;
+        padding: 92px 22px 24px;
+        flex-direction: column;
+        gap: 20px;
+        justify-content: center;
+        align-items: center;
+        text-align: center;
+        box-shadow: -10px 0 28px rgba(0, 0, 0, 0.35);
+        z-index: 2400;
+        -webkit-backdrop-filter: blur(4px);
+        backdrop-filter: blur(4px);
+        opacity: 0;
+        visibility: hidden;
+        pointer-events: none;
+        transform: translateX(104%);
+        transition: transform 0.28s ease, opacity 0.18s ease, visibility 0.18s ease;
+    }
+
+    .header .mobile-menu.is-open {
+        opacity: 1;
+        visibility: visible;
+        pointer-events: auto;
+        transform: translateX(0);
+    }
+
+    .mobile-nav-links {
+        display: flex;
+        flex-direction: column;
+        gap: 14px;
+        align-items: center;
+    }
+
+    .mobile-nav-links a {
+        font-size: 24px;
+        line-height: 1.2;
+    }
+
+    .mobile-menu .translate-buttons {
+        display: flex;
+        align-items: center;
+        gap: 10px;
+    }
+
+    .mobile-menu-close {
+        position: absolute;
+        top: 35%;
+        right: 35%;
+        width: 40px;
+        height: 40px;
+        border: 1px solid rgba(255, 255, 255, 0.45);
+        border-radius: 8px;
+        background: rgba(0, 0, 0, 0.2);
+        color: #ffffff;
+        font-size: 24px;
+        line-height: 1;
+        cursor: pointer;
+    }
+
+    .contact-form-container {
+        padding: 10px !important;
+    }
+
+    .introduction {
+        right: 35px !important;
+        /* padding: 0 22px; */
+        /* width: 110%; */
+        position: absolute !important;
+    }
+}
+
+@media (max-width: 640px) {
+    .about-me-decorative-container {
+        display: none;
+    }
+
+    .contact {
+        padding: 48px 22px 60px;
+    }
+
+    .contact_me {
+        font-size: 56px;
+    }
+
+    .contact_input {
+        height: 60px;
+    }
+
+    .contact_textarea {
+        min-height: 160px;
+    }
+
+    .contact_input::placeholder,
+    .contact_textarea::placeholder {
+        font-size: 22px;
+    }
+
+    .contact_checkbox_label {
+        font-size: 15px;
+    }
+
+    .contact_submit {
+        width: 100%;
+        max-width: 280px;
+        height: 62px;
+        font-size: 28px;
+    }
+}
+
+@media (max-width: 600px) {
+    .portfolio {
+        padding: 48px 22px 60px;
+    }
+
+    .portfolio-section-title {
+        font-size: 52px;
+    }
+
+    .portfolio-subtitle {
+        font-size: 15px;
+        margin-bottom: 48px;
+    }
+
+    .portfolio-btn {
+        padding: 0 24px;
+        height: 48px;
+        font-size: 16px;
+    }
+}
+
+@media (max-width: 560px) {
+    .skills-icons {
+        grid-template-columns: repeat(2, minmax(96px, 1fr));
+    }
+
+    .skills-title {
+        font-size: 52px;
+    }
+
+    .vertical-headline {
+        font-size: 28px !important;
+        padding-top: 10px !important;
+    }
+
+    .lets-talk-button {
+        margin-top: 12px;
+        margin-bottom: 12px;
+        width: 55%;
+        height: 48px;
+    }
+
+    .about-me-background {
+        width: 100%;
+        margin-bottom: 16px;
+        
+    }
+
+    .introduction-underlay {
+        width: 50% !important;
+    }
+
+    .Name {
+        font-size: 35px !important;
+        line-height: 45px !important;
+    }
+
+    .job-title {
+        font-size: 18px;
+        line-height: 28px;
+    }
+
+    header {
+        padding: 5px;
+    }
+
+    .header {
+        min-width: 0;
+    }
+
+    .mobile-nav-toggle {
+        width: 32px;
+        height: 32px;
+    }
+
+    .lets-talk-button {
+        width: 70%;
+        margin-bottom: 28px;
+    }
+
+    .about-me {
+        width: 100%;
+        padding: 0;
+    }
+
+    .floating-skill-icons {
+        width: 30%;
+    }
+
+    .floating-icon {
+        width: 32px;
+        height: 32px;
+    }
+
+    .icon-1 {
+        --dx: -48px;
+        --dy: -72px;
+    }
+
+    .icon-2 {
+        --dx: -20px;
+        --dy: -88px;
+    }
+
+    .icon-3 {
+        --dx: -48px;
+        --dy: -102px;
+    }
+
+    .icon-4 {
+        --dx: -16px;
+        --dy: -120px;
+    }
+
+    .icon-5 {
+        --dx: 10px;
+        --dy: -70px;
+    }
+
+    .icon-6 {
+        --dx: -16px;
+        --dy: -150px;
+    }
+
+    .icon-7 {
+        --dx: 20px;
+        --dy: -100px;
+    }
+
+    .profile-img {
+        width: 50%;
+    }
+
+    .about {
+        padding: 127px 45px 15px 0px;
+        flex-direction: column;
     }
 }
