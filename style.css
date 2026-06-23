@@ -1,27 +1,30 @@
+html,
 body {
-    margin: 0;
+    overflow-x: clip;
+}
+
+@supports not (overflow: clip) {
+
+    html,
+    body {
+        overflow-x: hidden;
+    }
+}
+
+body {
     font-family: 'Apercu-LightItalic', sans-serif;
     background-color: #141d2f;
     color: #ffffff;
-    height: 100%;
-    flex: 1;
+    min-height: 100vh;
     display: flex;
     flex-direction: column;
-    scroll-behavior: smooth;
-    width: 100%;
-    margin: 0 auto;
-    overflow-x: hidden;
-    box-sizing: border-box;
+    -webkit-font-smoothing: antialiased;
+    text-rendering: optimizeLegibility;
+    margin: 0;
 }
 
 header {
     background-color: #141d2f;
-    position: fixed;
-    left: 0;
-    right: 0;
-    top: 0;
-    width: 100%;
-    max-width: none;
     padding: 16px 58px;
     z-index: 2000;
 }
@@ -38,6 +41,7 @@ footer p {
 .main-content {
     min-width: 320px;
     max-width: 1440px;
+    width: 100%;
     margin: 0 auto;
     flex: 1;
     display: flex;
@@ -45,7 +49,9 @@ footer p {
     height: auto;
 }
 
-* {
+*,
+*::before,
+*::after {
     box-sizing: border-box;
     margin: 0;
     padding: 0;
@@ -66,7 +72,7 @@ footer p {
     justify-content: space-between;
     align-items: center;
     padding: 16px;
-    min-width: 320px;
+    min-width: 270px;
     max-width: 1440px;
     margin: 0 auto;
     height: 200px;
@@ -613,7 +619,7 @@ h1 {
     z-index: 1;
     display: grid;
     grid-template-columns: 1.4fr 1fr;
-    gap: 200px;
+    gap: 20px;
     align-items: start;
     padding-top: 64px;
     padding-bottom: 64px;
@@ -1012,23 +1018,7 @@ h1 {
     align-items: center;
     gap: 36px;
     margin: 10px 0 8px;
-    padding: 0 36px 0 0;
     overflow: visible;
-}
-
-.reviewOfperson-container::after {
-    content: "";
-    position: absolute;
-    right: -84px;
-    top: 50%;
-    width: 290px;
-    height: 290px;
-    transform: translateY(-50%);
-    border-radius: 50%;
-    background: radial-gradient(circle, rgba(107, 214, 23, 0.85) 0%, rgba(107, 214, 23, 0.36) 36%, rgba(20, 29, 47, 0) 72%);
-    filter: blur(12px);
-    pointer-events: none;
-    z-index: 0;
 }
 
 .reviewOfperson-card {
@@ -1292,11 +1282,6 @@ h1 {
     transform: translateY(-2px);
 }
 
-.about-me {
-    padding: 0 0px 16px 30px;
-
-}
-
 form {
     display: flex;
     flex-direction: column;
@@ -1313,6 +1298,8 @@ form {
 
 .scroll-top-button {
     align-self: end;
+    margin-bottom: 64px;
+    margin-right: 56px;
     width: 54px;
     height: 54px;
     border: 2px solid #ffffff;
@@ -1379,7 +1366,6 @@ form {
     justify-content: center;
     flex-direction: column;
     gap: 40px;
-    padding: 64px;
     position: relative;
     overflow: hidden;
     isolation: isolate;
@@ -1397,7 +1383,7 @@ form {
     filter: blur(60px);
     opacity: 1.55;
     transform: scale(1.2) rotate(215deg);
-    
+
 }
 
 .contact>* {
@@ -1415,12 +1401,11 @@ form {
     display: flex;
     flex-direction: column;
     gap: 18px;
-    min-width: 560px;
+    min-width: 270px;
 }
 
 .contact_input,
 .contact_textarea {
-    width: 100%;
     background: rgba(15, 29, 56, 0.9);
     border: 1px solid #7b61ff;
     border-radius: 10px;

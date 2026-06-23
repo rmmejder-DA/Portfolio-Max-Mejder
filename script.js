@@ -241,6 +241,7 @@ function scrollToTop() {
 }
 
 document.getElementById('gotoContact').addEventListener('click', scrollToContact);
+document.getElementById('gotoContactMobile').addEventListener('click', scrollToContact);
 document.getElementById('getInTouchtoContact').addEventListener('click', scrollToContact);
 
 const scrollToTopButton = document.getElementById('scrollToTopButton');
