@@ -473,7 +473,10 @@
                 </div>
                 <form class="contact_form" action="mailto:rmmejder@gmail.com" method="post" enctype="text/plain">
                     <input type="text" placeholder="Your name" class="contact_input" required>
-                    <input type="email" placeholder="Your email" class="contact_input" required>
+                    <div class="email-input-wrapper">
+                        <input type="email" placeholder="Your email" class="contact_input" required>
+                        <div class="email-error-message">Please enter a valid email address with a proper domain (e.g., user@example.com)</div>
+                    </div>
                     <textarea placeholder="Your message" class="contact_textarea" required></textarea>
                     <div class="contact_policy_row">
                         <input type="checkbox" id="privacy-policy" class="contact_checkbox" required>

@@ -230,9 +230,9 @@ function setActiveLanguage(clickedButton) {
 }
 
 function scrollToContact() {
-    const contactSection = document.getElementById('contact_me');
-    if (contactSection) {
-        contactSection.scrollIntoView({ behavior: 'smooth' });
+    const reviewSection = document.querySelector('.reviewOfperson-container');
+    if (reviewSection) {
+        reviewSection.scrollIntoView({ behavior: 'smooth' });
     }
 }
 
@@ -511,15 +511,49 @@ function initializeReviews() {
 function bindContactFormValidation() {
     const contactForm = document.querySelector('.contact_form');
     const submitButton = document.querySelector('.contact_submit');
+    const emailInput = contactForm.querySelector('input[type="email"]');
+    const errorMessage = document.querySelector('.email-error-message');
 
-    if (!contactForm || !submitButton) {
+    if (!contactForm || !submitButton || !emailInput) {
         return;
     }
 
+    const isValidEmailDomain = (email) => {
+        if (!email || email.length === 0) return false;
+        
+        // Check email format: localpart@domain.tld
+        const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+        if (!emailRegex.test(email)) return false;
+        
+        const [, domain] = email.split('@');
+        if (!domain) return false;
+        
+        // Check domain has at least one dot (for TLD)
+        const parts = domain.split('.');
+        if (parts.length < 2) return false;
+        
+        // Check TLD is valid (letters only, min 2 chars)
+        const tld = parts[parts.length - 1];
+        if (tld.length < 2 || !/^[a-z]+$/i.test(tld)) return false;
+        
+        return true;
+    };
+
     const syncContactFormState = () => {
         const isValid = contactForm.checkValidity();
-        contactForm.classList.toggle('is-valid', isValid);
-        submitButton.disabled = !isValid;
+        const emailValue = emailInput.value;
+        const hasValidDomain = !emailValue || isValidEmailDomain(emailValue);
+        
+        // Set visual state for email input
+        emailInput.classList.toggle('email-invalid', emailValue.length > 0 && !hasValidDomain);
+        
+        // Show/hide error message
+        if (errorMessage) {
+            errorMessage.classList.toggle('show', emailValue.length > 0 && !hasValidDomain);
+        }
+        
+        contactForm.classList.toggle('is-valid', isValid && hasValidDomain);
+        submitButton.disabled = !(isValid && hasValidDomain);
     };
 
     contactForm.addEventListener('input', syncContactFormState);

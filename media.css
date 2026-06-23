@@ -57,6 +57,7 @@
 
     .reviewOfperson-card {
         max-width: 900px;
+        order: 1;
     }
 
     .reviewOfperson-avatar-wrap {
@@ -65,6 +66,10 @@
 
     .review-avatar-line {
         display: none;
+    }
+
+    .about {
+        padding: 200px 10px 17px 10px;
     }
 }
 
@@ -127,7 +132,8 @@
         margin-top: 0;
         padding-right: 10px;
     }
-        .portfolio {
+
+    .portfolio {
         padding: 10px;
     }
 }
@@ -210,6 +216,11 @@
     .portfolio-project-title {
         font-size: 38px;
     }
+
+    .floating-skill-icons {
+        left: 101%;
+        top: 66%;
+    }
 }
 
 @media (max-width: 900px) {
@@ -230,8 +241,8 @@
     }
 
     .floating-skill-icons {
-        left: 45%;
-        top: 48%;
+        left: 66%;
+        top: 39%;
     }
 
     .icon-1 {
@@ -279,6 +290,15 @@
         width: 55%;
         height: 50px;
     }
+
+    .icon_plus_scroll_container {
+        height: 100px;
+    }
+
+    .about-me-decorative {
+        width: 200px;
+        height: 200px;
+    }
 }
 
 @media (max-width: 860px) {
@@ -289,7 +309,7 @@
     }
 
     .skills {
-        padding: 52px 22px 62px;
+        padding: 52px 22px 0;
         justify-content: center;
     }
 
@@ -329,6 +349,9 @@
         line-height: 60px !important;
     }
 
+    .about {
+        padding: 0 0px 15px 0px;
+    }
 }
 
 @media (max-width: 768px) {
@@ -409,12 +432,13 @@
     }
 
     .about {
-        padding: 64px 100px 16px 10px;
+        padding: 75px 100px 13px 10px;
+
         flex-direction: column;
     }
 
     .floating-skill-icons {
-        left: 70%;
+        left: 66%;
         top: 45%;
     }
 }
@@ -627,6 +651,7 @@
 
     .header {
         min-width: 0;
+        padding: 10px;
     }
 
     .mobile-nav-toggle {
@@ -640,8 +665,8 @@
     }
 
     .floating-skill-icons {
-        left: 77%;
-        top: 42%;
+        left: 83%;
+        top: 38%;
     }
 
     .floating-icon {
@@ -700,6 +725,10 @@
         display: none;
     }
 
+    .learning-techs {
+        gap: 0;
+    }
+
     .skills-description,
     .skills-subtext {
         margin-left: 0;
@@ -722,11 +751,22 @@
         padding: 0;
     }
 
+    .skills-title-line {
+        width: 30px;
+    }
+
     .scroll-top-button {
         width: 40px;
         height: 40px;
         margin-right: 10px;
         margin-bottom: 10px;
+    }
+
+    .learning-hover-note {
+        transform: translate(-35%, 0) !important;
+        width: 140px;
+        background-color: rgba(255, 255, 255, 0.9);
+        height: 180px;
     }
 
     .portfolio-section-title {
@@ -789,5 +829,16 @@
         font-size: 23px;
         margin-top: 20px;
         margin-bottom: 10px;
+    }
+
+    .legalH1 {
+        font-size: clamp(24px, 6vw, 48px) !important;
+    }
+
+    .legal-page {
+        padding: 10px;
+        min-width: 270px;
+        width: 60%;
+        margin: 0px 9px auto;
     }
 }
