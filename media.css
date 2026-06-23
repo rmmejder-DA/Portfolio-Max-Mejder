@@ -63,6 +63,33 @@
     .reviewOfperson-avatar-wrap {
         justify-content: center;
     }
+    .reviewOfperson-avatar-wrap::before {
+        content: '';
+        position: absolute;
+        width: 100%;
+        height: 100%;
+        top: -26px;
+        left: -29px;
+        filter: blur(11px);
+        border-radius: 50%;
+        background: linear-gradient(180deg, #70e61c 0%, rgba(112, 230, 28, 0) 100%);
+        z-index: -1;
+        pointer-events: none;
+    }
+
+    .reviewOfperson-avatar-wrap::after {
+        content: '';
+        position: absolute;
+        width: 100%;
+        height: 100%;
+        top: 6px;
+        left: 55px;
+        filter: blur(21px);
+        border-radius: 50%;
+        background: linear-gradient(180deg, #9646fe 0%, rgba(112, 230, 28, 0) 100%);
+        z-index: -1;
+        pointer-events: none;
+    }
 
     .review-avatar-line {
         display: none;
