@@ -257,6 +257,20 @@
     margin-bottom: 80px;
 }
 
+.portfolio-card-fotogramm::before {
+    content: '';
+    position: absolute;
+    bottom: 31%;
+    left: -43%;
+    width: 112%;
+    height: 49%;
+    transform: scale(0.5) rotate(69deg);
+    border-radius: 151% 11% 264% 27%;
+    background-color: #70e61c;
+    filter: blur(75px);
+    z-index: -1;
+}
+
 /* Notebook Mockup */
 .portfolio-mockup {
     display: flex;

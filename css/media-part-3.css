@@ -241,4 +241,17 @@
         width: 60%;
         margin: 0px 9px auto;
     }
+
+    .about-me::before {
+        content: '';
+        position: absolute;
+        right: -16%;
+        top: 66%;
+        width: 46%;
+        height: 67%;
+        border-radius: 35% 65% 80%;
+        background-color: #9646fe;
+        filter: blur(60px);
+        z-index: -1;
+    }
 }

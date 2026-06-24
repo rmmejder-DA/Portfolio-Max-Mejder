@@ -89,23 +89,22 @@ form {
     flex-direction: column;
     gap: 40px;
     position: relative;
-    overflow: hidden;
+    overflow: visible;
     isolation: isolate;
 }
 
 .contact::before {
     content: '';
     position: absolute;
-    bottom: -295px;
-    left: -663px;
-    width: 80%;
-    height: 80%;
-    border-radius: 63% 10% 52% 49% / 42% 53% 28% 80%;
+    bottom: 189px;
+    left: -44px;
+    width: 34%;
+    height: 34%;
+    border-radius: 44% 55% 69% 89% / 54% 88% 74% 130%;
     background: #9646fe;
     filter: blur(60px);
     opacity: 1.55;
-    transform: scale(1.2) rotate(215deg);
-
+    transform: scale(1.2) rotate(246deg);
 }
 
 .contact>* {
