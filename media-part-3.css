@@ -1,0 +1,244 @@
+﻿@media (max-width: 560px) {
+    .skills-grid {
+        display: flex;
+        flex-direction: column;
+        align-items: end;
+        padding: 0;
+        gap: 0;
+        padding: 10px;
+    }
+
+    .skills-content,
+    .skills-description-wrap {
+        display: contents;
+    }
+
+    .skills-title {
+        font-size: 44px;
+    }
+
+    .vertical-headline {
+        font-size: 28px !important;
+        padding-top: 10px !important;
+    }
+
+    .lets-talk-button {
+        margin-top: 12px;
+        margin-bottom: 12px;
+        width: 55%;
+        height: 48px;
+    }
+
+    .about-me-background {
+        width: 100%;
+        margin-bottom: 16px;
+
+    }
+
+    .Name {
+        font-size: 35px !important;
+        line-height: 45px !important;
+    }
+
+    .job-title {
+        font-size: 18px;
+        line-height: 28px;
+    }
+
+    header {
+        padding: 5px;
+    }
+
+    .header {
+        min-width: 0;
+        padding: 10px;
+    }
+
+    .mobile-nav-toggle {
+        width: 32px;
+        height: 32px;
+    }
+
+    .lets-talk-button {
+        width: 70%;
+        margin-bottom: 28px;
+    }
+
+    .floating-skill-icons {
+        left: 83%;
+        top: 38%;
+    }
+
+    .floating-icon {
+        width: 32px;
+        height: 32px;
+    }
+
+    .icon-1 {
+        --dx: -48px;
+        --dy: -72px;
+    }
+
+    .icon-2 {
+        --dx: -20px;
+        --dy: -88px;
+    }
+
+    .icon-3 {
+        --dx: -48px;
+        --dy: -102px;
+    }
+
+    .icon-4 {
+        --dx: -16px;
+        --dy: -120px;
+    }
+
+    .icon-5 {
+        --dx: 10px;
+        --dy: -70px;
+    }
+
+    .icon-6 {
+        --dx: -16px;
+        --dy: -150px;
+    }
+
+    .icon-7 {
+        --dx: 20px;
+        --dy: -100px;
+    }
+
+    .profile-img {
+        width: 90%;
+    }
+
+    .about {
+        padding: 80px 0px 15px 0px;
+    }
+
+    footer p {
+        display: none;
+    }
+
+    .contact::after {
+        display: none;
+    }
+
+    .learning-techs {
+        gap: 0;
+    }
+
+    .skills-description,
+    .skills-subtext {
+        margin-left: 0;
+        text-align: end;
+        font-size: 16px;
+    }
+
+    .skills-description-wrap {
+        font-size: 28px !important;
+        text-align: start !important;
+    }
+
+    .skills-contact-btn {
+        height: 48px;
+        font-size: 16px;
+        margin: 20px auto;
+    }
+
+    .skills {
+        padding: 0;
+    }
+
+    .skills-title-line {
+        width: 30px;
+    }
+
+    .scroll-top-button {
+        width: 40px;
+        height: 40px;
+        margin-right: 10px;
+        margin-bottom: 10px;
+    }
+
+    .learning-hover-note {
+        transform: translate(-35%, 0) !important;
+        width: 140px;
+        background-color: rgba(255, 255, 255, 0.9);
+        height: 180px;
+    }
+
+    .portfolio-section-title {
+        font-size: 36px;
+    }
+
+    .portfolio-header {
+        gap: 6px;
+    }
+
+    .skills-description,
+    .skills-subtext {
+        font-size: 16px;
+        margin-top: 10px;
+        margin-bottom: 10px;
+    }
+
+    .profile-background::before,
+    .profile-background::after {
+        content: '';
+        position: absolute;
+        filter: blur(45px);
+        z-index: 0;
+        pointer-events: none;
+    }
+
+    .main-content {
+        min-width: 270px;
+    }
+
+    .footer {
+        padding: 0px 10px;
+        height: 124px;
+        min-height: 124px;
+    }
+
+    .contact {
+        padding-bottom: 10px;
+        gap: 10px;
+    }
+
+    .contact_me {
+        font-size: 44px;
+        padding-right: 10px;
+    }
+
+    .extra-size {
+        width: 100%;
+    }
+
+    .about-me {
+        padding: 10px;
+    }
+
+    .skills-description-wrap {
+        padding: 0 10px !important;
+    }
+
+    .skills-question {
+        font-size: 23px;
+        margin-top: 20px;
+        margin-bottom: 10px;
+    }
+
+    .legalH1 {
+        font-size: clamp(24px, 6vw, 48px) !important;
+    }
+
+    .legal-page {
+        padding: 10px;
+        min-width: 270px;
+        width: 60%;
+        margin: 0px 9px auto;
+    }
+}

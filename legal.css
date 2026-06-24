@@ -23,6 +23,39 @@ body {
     font-size: 18px;
 }
 
+.legal-translate {
+    margin-top: 18px;
+    display: inline-flex;
+    gap: 10px;
+}
+
+.legal-translate button {
+    min-width: 48px;
+    padding: 8px 14px;
+    border-radius: 999px;
+    border: 1px solid #70e61c;
+    background: transparent;
+    color: #ffffff;
+    font-size: 14px;
+    font-weight: 700;
+    cursor: pointer;
+    transition: background-color 0.2s ease, color 0.2s ease, transform 0.2s ease;
+}
+
+.legal-translate button:hover {
+    transform: translateY(-1px);
+}
+
+.legal-translate button.is-active {
+    background: #70e61c;
+    color: #141d2f;
+}
+
+.legal-translate button:focus-visible {
+    outline: 2px solid #70e61c;
+    outline-offset: 2px;
+}
+
 .legal-tabs {
     margin-top: 28px;
     display: inline-flex;

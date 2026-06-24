@@ -1,0 +1,310 @@
+﻿.review-comment-submit:hover,
+.review-comment-submit:focus-visible {
+    background: #88f229;
+    transform: translateY(-2px);
+}
+
+form {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    max-width: 400px;
+}
+
+.contact-form-container {
+    display: flex;
+    justify-content: space-between;
+    gap: 40px;
+    padding: 64px 56px 12px;
+}
+
+.scroll-top-button {
+    align-self: end;
+    margin-bottom: 64px;
+    margin-right: 56px;
+    width: 54px;
+    height: 54px;
+    border: 2px solid #ffffff;
+    border-radius: 50%;
+    background: rgba(20, 29, 47, 0.92);
+    color: #ffffff;
+    font-size: 30px;
+    line-height: 1;
+    cursor: pointer;
+    background-image: linear-gradient(120deg, rgba(112, 230, 28, 0) 0%, rgba(112, 230, 28, 0.18) 50%, rgba(112, 230, 28, 0) 100%);
+    background-size: 220% 100%;
+    background-position: 0% 50%;
+    transition: transform 0.2s ease, background-color 0.2s ease, color 0.2s ease, border-color 0.2s ease;
+}
+
+.scroll-top-button:hover,
+.scroll-top-button:focus-visible {
+    transform: translateY(-3px);
+    border-color: #70e61c;
+    background-color: rgba(20, 29, 47, 0.98);
+    background-position: 100% 50%;
+    animation: scrollTopGlow 1.2s linear infinite;
+    color: #70e61c;
+    outline: none;
+}
+
+@keyframes scrollTopGlow {
+    from {
+        background-position: 0% 50%;
+    }
+
+    to {
+        background-position: 100% 50%;
+    }
+}
+
+.contact-title-line {
+    width: 40%;
+    height: 4px;
+    background-color: #9747ff;
+}
+
+.contact_me {
+    font-size: 82px;
+    font-weight: 700;
+    line-height: 1;
+}
+
+.got_a_problem {
+    font-size: 32px;
+    color: #ffffff;
+    margin-bottom: 24px;
+}
+
+.contact-header {
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    gap: 30px;
+}
+
+.contact {
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    gap: 40px;
+    position: relative;
+    overflow: hidden;
+    isolation: isolate;
+}
+
+.contact::before {
+    content: '';
+    position: absolute;
+    bottom: -295px;
+    left: -663px;
+    width: 80%;
+    height: 80%;
+    border-radius: 63% 10% 52% 49% / 42% 53% 28% 80%;
+    background: #9646fe;
+    filter: blur(60px);
+    opacity: 1.55;
+    transform: scale(1.2) rotate(215deg);
+
+}
+
+.contact>* {
+    position: relative;
+    z-index: 1;
+}
+
+.if_problem {
+    width: 38%;
+    height: auto;
+}
+
+.contact_form {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    gap: 18px;
+    min-width: 270px;
+}
+
+.contact_input,
+.contact_textarea {
+    background: rgba(15, 29, 56, 0.9);
+    border: 1px solid #7b61ff;
+    border-radius: 10px;
+    color: #f3f6ff;
+    font-size: 16px;
+    width: 100%;
+    font-family: inherit;
+    outline: none;
+    transition: border-color 0.2s ease, box-shadow 0.2s ease;
+}
+
+.contact_input {
+    height: 50px;
+    padding: 0 24px;
+}
+
+.email-input-wrapper {
+    position: relative;
+}
+
+.contact_input:required:valid:not(:placeholder-shown) {
+    border-color: #70e61c;
+    box-shadow: 0 0 0 3px rgba(112, 230, 28, 0.16);
+    padding-right: 56px;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='22' height='22' viewBox='0 0 22 22'%3E%3Ccircle cx='11' cy='11' r='11' fill='%2370e61c'/%3E%3Cpath d='M6 11.2 9.3 14.5 16 7.8' fill='none' stroke='%23141d2f' stroke-width='2.3' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E");
+    background-repeat: no-repeat;
+    background-size: 22px 22px;
+    background-position: right 16px center;
+}
+
+.contact_input:required:invalid:not(:placeholder-shown) {
+    border-color: #ff5f7a;
+    box-shadow: 0 0 0 3px rgba(255, 95, 122, 0.14);
+}
+
+.contact_input.email-invalid {
+    background-color: #000000;
+    border-color: #ff0000;
+    box-shadow: 0 0 0 3px rgba(255, 0, 0, 0.2);
+}
+
+.email-error-message {
+    font-size: 16px;
+    color: #ff5f7a;
+    margin-top: 14px;
+    margin-bottom: 8px;
+    display: none;
+}
+
+.email-error-message.show {
+    display: block;
+}
+
+.contact_textarea {
+    min-height: 190px;
+    resize: vertical;
+    padding: 20px 24px;
+}
+
+.contact_input::placeholder,
+.contact_textarea::placeholder {
+    color: rgba(255, 255, 255, 0.88);
+    font-size: 16px;
+    font-weight: 400;
+}
+
+.contact_input:focus,
+.contact_textarea:focus {
+    border-color: #9a82ff;
+    box-shadow: 0 0 0 3px rgba(122, 97, 255, 0.18);
+}
+
+.contact_policy_row {
+    display: flex;
+    align-items: flex-start;
+    gap: 12px;
+    margin-top: 2px;
+}
+
+.contact_checkbox {
+    margin-top: 3px;
+    width: 16px;
+    height: 16px;
+    flex-shrink: 0;
+    appearance: none;
+    border: 2px solid #6bd617;
+    border-radius: 2px;
+    background: transparent;
+    cursor: pointer;
+    position: relative;
+}
+
+.contact_checkbox:checked::after {
+    content: "";
+    position: absolute;
+    left: 4px;
+    top: 0;
+    width: 4px;
+    height: 9px;
+    border: solid #6bd617;
+    border-width: 0 2px 2px 0;
+    transform: rotate(45deg);
+}
+
+.contact_checkbox_label {
+    color: #f2f5ff;
+    font-size: 18px;
+    line-height: 1.45;
+}
+
+.privacy-link {
+    color: #9d7bff;
+    text-decoration: none;
+}
+
+.privacy-link:hover,
+.privacy-link:focus-visible {
+    text-decoration: underline;
+}
+
+.contact_submit {
+    align-self: center;
+    margin-top: 14px;
+    width: min(320px, 100%);
+    height: 66px;
+    border: none;
+    border-radius: 14px;
+    background: #b2b5b8;
+    color: #ffffff;
+    font-size: 32px;
+    cursor: not-allowed;
+    opacity: 0.86;
+    transition: transform 0.1s ease, background-color 0.05s ease, box-shadow 0.2s ease, opacity 0.2s ease;
+}
+
+.contact_form.is-valid .contact_submit {
+    background-color: #70e61c;
+    cursor: pointer;
+    opacity: 1;
+}
+
+.contact_form.is-valid .contact_submit:hover {
+    background-color: #9747ff;
+    text-align: center;
+    transform: translateY(4px) scale(1.05);
+    box-shadow: 0 10px 24px rgba(0, 0, 0, 0.18);
+    opacity: 0.9;
+}
+
+.contact_form.is-valid .contact_submit:active {
+    transform: translateY(0);
+}
+
+
+.review-comment-file {
+    width: 100%;
+    border: 2px dashed rgba(112, 230, 28, 0.65);
+    border-radius: 10px;
+    background: rgba(11, 18, 29, 0.78);
+    color: #dbe2f1;
+    padding: 10px 12px;
+    font-size: 15px;
+}
+
+.review-comment-file:focus {
+    outline: none;
+    border-color: #70e61c;
+}
+
+.review-comment-hint {
+    margin: -4px 0 2px;
+    font-size: 13px;
+    color: #b8c2da;
+}
+
+.review-comment-file-label {
+    font-size: 14px;
+    font-weight: 700;
+    color: #dbe2f1;
+}

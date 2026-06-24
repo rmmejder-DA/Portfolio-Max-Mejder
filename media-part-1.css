@@ -1,0 +1,330 @@
+﻿@media (max-width: 1340px) {
+    .Name {
+        font-size: 64px;
+        height: unset;
+    }
+
+    .job-title {
+        font-size: 34px;
+    }
+
+    .vertical-headline {
+        font-size: 60px;
+    }
+
+    .horizontal-headline {
+        gap: 0px;
+    }
+
+    .scrollDown-vertical {
+        font-size: 18px;
+        padding-right: 10px;
+    }
+
+    .about-me-decorative {
+        width: 300px;
+        height: 300px;
+    }
+
+    .img-line-right {
+        width: 200px;
+    }
+
+    .section-title {
+        font-size: 60px;
+    }
+}
+
+@media (max-width: 1245px) {
+    .skills-description-wrap {
+        padding: 0 10px !important;
+        margin-right: 0 !important;
+    }
+}
+
+@media (max-width: 1200px) {
+    .reviewOfperson-container {
+        grid-template-columns: 1fr;
+        justify-items: center;
+        padding: 0;
+    }
+
+    .reviewOfperson-container::after {
+        right: 50%;
+        top: 78%;
+        transform: translate(50%, -50%);
+    }
+
+    .reviewOfperson-card {
+        max-width: 900px;
+        order: 1;
+    }
+
+    .reviewOfperson-avatar-wrap {
+        justify-content: center;
+    }
+    .reviewOfperson-avatar-wrap::before {
+        content: '';
+        position: absolute;
+        width: 100%;
+        height: 100%;
+        top: -26px;
+        left: -29px;
+        filter: blur(11px);
+        border-radius: 50%;
+        background: linear-gradient(180deg, #70e61c 0%, rgba(112, 230, 28, 0) 100%);
+        z-index: -1;
+        pointer-events: none;
+    }
+
+    .reviewOfperson-avatar-wrap::after {
+        content: '';
+        position: absolute;
+        width: 100%;
+        height: 100%;
+        top: 6px;
+        left: 55px;
+        filter: blur(21px);
+        border-radius: 50%;
+        background: linear-gradient(180deg, #9646fe 0%, rgba(112, 230, 28, 0) 100%);
+        z-index: -1;
+        pointer-events: none;
+    }
+
+    .review-avatar-line {
+        display: none;
+    }
+
+    .about {
+        padding: 200px 10px 17px 10px;
+    }
+}
+
+@media (max-width: 1180px) {
+    .skills {
+        justify-content: end;
+    }
+
+    .skills-content,
+    .skills-description-wrap {
+        display: contents;
+    }
+
+    .skills-headline-wrap {
+        order: 1;
+    }
+
+    .skills-question {
+        order: 4;
+    }
+
+    .skills-icons {
+        order: 3;
+        grid-template-columns: repeat(2, minmax(140px, 1fr));
+        gap: 10px 70px;
+    }
+
+    .skills-description {
+        order: 2;
+    }
+
+    .skills-subtext {
+        order: 5;
+    }
+
+    .skills-contact-btn {
+        order: 6;
+        width: 60%;
+
+    }
+
+    .skills-grid {
+        grid-template-columns: 1fr;
+        padding-top: 0;
+    }
+
+    .skills-content {
+        text-align: left;
+    }
+
+    .skills-headline-wrap {
+        justify-content: right;
+    }
+
+    .skills-description,
+    .skills-subtext,
+    .skills-question {
+        margin-left: 0;
+        text-align: right;
+        margin-top: 0;
+        padding-right: 10px;
+    }
+
+    .portfolio {
+        padding: 10px;
+    }
+}
+
+@media (max-width: 1084px) {
+    .Name {
+        font-size: 48px;
+        line-height: 76px;
+    }
+
+    .job-title {
+        font-size: 24px;
+        line-height: 38px;
+    }
+
+    .vertical-headline {
+        font-size: 38px;
+        padding-top: 14px;
+    }
+
+    .horizontal-headline {
+        gap: 0px;
+    }
+
+    .section-title {
+        font-size: 44px;
+    }
+
+    .img-line-right {
+        width: 80px;
+    }
+}
+
+@media (max-width: 1024px) {
+    .skills {
+        justify-content: end;
+    }
+
+    .contact-form-container {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    .if_problem {
+        width: 100%;
+        max-width: 640px;
+    }
+
+    .contact_form {
+        width: 100%;
+        max-width: 640px;
+    }
+}
+
+@media (max-width: 960px) {
+
+    .portfolio-buttons,
+    .portfolio-description,
+    .portfolio-card-content {
+        text-align: center;
+        margin-left: auto;
+        margin-right: auto;
+    }
+
+    .portfolio-card-join,
+    .portfolio-card-fotogramm,
+    .portfolio-card-kochwelt,
+    .portfolio-card-pokedex,
+    .portfolio-card-el_pollo_loco,
+    .portfolio-card-bestellapp {
+        grid-template-columns: 1fr;
+        gap: 40px;
+    }
+
+    .notebook-frame {
+        max-width: 480px;
+        margin: 0 auto;
+    }
+
+    .portfolio-project-title {
+        font-size: 38px;
+    }
+
+    .floating-skill-icons {
+        left: 101%;
+        top: 66%;
+    }
+}
+
+@media (max-width: 900px) {
+    .about::after {
+        left: -60%;
+        width: 236%;
+        bottom: -74%;
+        height: 126%;
+        transform: rotate(10deg);
+    }
+
+    .mail-to {
+        display: none;
+    }
+
+    .scrollDown-vertical {
+        display: none;
+    }
+
+    .floating-skill-icons {
+        left: 66%;
+        top: 39%;
+    }
+
+    .icon-1 {
+        --dx: -120px;
+        --dy: -180px;
+    }
+
+    .icon-2 {
+        --dx: -60px;
+        --dy: -220px;
+    }
+
+    .icon-3 {
+        --dx: -10px;
+        --dy: -180px;
+    }
+
+    .icon-4 {
+        --dx: 50px;
+        --dy: -240px;
+    }
+
+    .icon-5 {
+        --dx: 120px;
+        --dy: -160px;
+    }
+
+    .icon-6 {
+        --dx: 160px;
+        --dy: -220px;
+    }
+
+    .icon-7 {
+        --dx: 210px;
+        --dy: -170px;
+    }
+
+    .floating-icon {
+        width: 42px;
+        height: 42px;
+    }
+
+    .lets-talk-button {
+        margin-top: 12px;
+        width: 55%;
+        height: 50px;
+    }
+
+    .icon_plus_scroll_container {
+        height: 100px;
+    }
+
+    .about-me-decorative {
+        width: 200px;
+        height: 200px;
+    }
+}
+

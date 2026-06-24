@@ -1,0 +1,297 @@
+﻿@media (max-width: 860px) {
+
+    .about-me-background {
+        width: 100%;
+        margin-bottom: 16px;
+    }
+
+    .skills {
+        padding: 52px 22px 0;
+        justify-content: center;
+    }
+
+    .skills-icons {
+        grid-template-columns: repeat(3, minmax(86px, 1fr));
+        gap: 28px 20px;
+    }
+
+    .skills-title {
+        font-size: 62px;
+    }
+
+    .skills-title-line {
+        width: 70px;
+    }
+
+    .profile-img {
+        width: 100%;
+    }
+
+    .introduction {
+        display: none;
+    }
+
+    .introduction-underlay {
+        position: relative;
+        display: flex;
+        align-items: start;
+        justify-content: center;
+        width: 85%;
+        right: 0;
+        z-index: 1;
+    }
+
+    .Name {
+        font-size: 45px !important;
+        line-height: 60px !important;
+    }
+
+    .about {
+        padding: 0 0px 15px 0px;
+    }
+}
+
+@media (max-width: 768px) {
+
+    .contact-form-container {
+        padding: 0;
+        align-items: center;
+        gap: 20px;
+    }
+
+    .footer {
+        padding: 32px 22px;
+        height: 140px;
+        min-height: 140px;
+    }
+
+    .portfolio-buttons {
+        justify-content: center;
+    }
+
+    .portfolio-card-content {
+        text-align: center;
+    }
+
+    .portfolio-card-content p {
+        margin-left: auto;
+        margin-right: auto;
+    }
+
+    .skills-headline-wrap {
+        justify-content: flex-end;
+    }
+
+    .skills-description-wrap {
+        margin-right: 0;
+        text-align: right;
+    }
+
+    .skills {
+        justify-content: end;
+    }
+
+    .reviewOfperson-card {
+        padding: 0px 14px 28px;
+        border-radius: 0 24px 24px 24px;
+    }
+
+    .review-quote-mark {
+        top: -16px;
+        left: -10px;
+    }
+
+    .commentar_text {
+        font-size: 16px;
+        min-height: 124px;
+        max-height: 124px;
+    }
+
+    .reviewOfperson_name {
+        font-size: 16px;
+    }
+
+    .commentar_line {
+        width: 52%;
+    }
+
+    .reviewOfperson_img {
+        width: 170px;
+        height: 170px;
+    }
+
+    .review-slider-controls {
+        gap: 12px;
+    }
+
+    .review-arrow {
+        font-size: 34px;
+    }
+
+    .about {
+        padding: 75px 100px 13px 10px;
+
+        flex-direction: column;
+    }
+
+    .floating-skill-icons {
+        left: 66%;
+        top: 45%;
+    }
+}
+
+@media (max-width: 700px) {
+    .header {
+        position: relative;
+    }
+
+    .header-right {
+        display: none !important;
+    }
+
+    .mobile-nav-toggle {
+        display: inline-flex !important;
+        position: relative;
+        z-index: 2501;
+    }
+
+    .header h1 {
+        position: relative;
+        z-index: 2501;
+    }
+
+    .header .mobile-menu {
+        display: flex;
+        position: fixed;
+        top: 0;
+        left: 0;
+        right: 0;
+        width: 100vw;
+        height: 100vh;
+        background-color: rgba(110, 110, 110, 0.2);
+        border-left: 1px solid rgba(255, 255, 255, 0.25);
+        border-radius: 0;
+        padding: 92px 22px 24px;
+        flex-direction: column;
+        gap: 20px;
+        justify-content: center;
+        align-items: center;
+        text-align: center;
+        box-shadow: -10px 0 28px rgba(0, 0, 0, 0.35);
+        z-index: 2400;
+        -webkit-backdrop-filter: blur(4px);
+        backdrop-filter: blur(4px);
+        opacity: 0;
+        visibility: hidden;
+        pointer-events: none;
+        transform: translateX(104%);
+        transition: transform 0.28s ease, opacity 0.18s ease, visibility 0.18s ease;
+    }
+
+    .header .mobile-menu.is-open {
+        opacity: 1;
+        visibility: visible;
+        pointer-events: auto;
+        transform: translateX(0);
+    }
+
+    .mobile-nav-links {
+        display: flex;
+        flex-direction: column;
+        gap: 14px;
+        align-items: center;
+    }
+
+    .mobile-nav-links a {
+        font-size: 24px;
+        line-height: 1.2;
+    }
+
+    .mobile-menu .translate-buttons {
+        display: flex;
+        align-items: center;
+        gap: 10px;
+    }
+
+    .mobile-menu-close {
+        position: absolute;
+        top: 35%;
+        right: 35%;
+        width: 40px;
+        height: 40px;
+        border: 1px solid rgba(255, 255, 255, 0.45);
+        border-radius: 8px;
+        background: rgba(0, 0, 0, 0.2);
+        color: #ffffff;
+        font-size: 24px;
+        line-height: 1;
+        cursor: pointer;
+    }
+
+    .contact-form-container {
+        padding: 10px !important;
+    }
+
+    .introduction {
+        right: 35px !important;
+        /* padding: 0 22px; */
+        /* width: 110%; */
+        position: absolute !important;
+    }
+}
+
+@media (max-width: 640px) {
+    .about-me-decorative-container {
+        display: none;
+    }
+
+    .contact_me {
+        font-size: 56px;
+    }
+
+    .contact_input {
+        height: 60px;
+    }
+
+    .contact_textarea {
+        min-height: 160px;
+    }
+
+    .contact_input::placeholder,
+    .contact_textarea::placeholder {
+        font-size: 22px;
+    }
+
+    .contact_checkbox_label {
+        font-size: 15px;
+    }
+
+    .contact_submit {
+        width: 100%;
+        max-width: 280px;
+        height: 62px;
+        font-size: 28px;
+    }
+}
+
+@media (max-width: 600px) {
+    .portfolio {
+        padding: 48px 22px 60px;
+    }
+
+    .portfolio-section-title {
+        font-size: 52px;
+    }
+
+    .portfolio-subtitle {
+        font-size: 15px;
+        margin-bottom: 48px;
+    }
+
+    .portfolio-btn {
+        padding: 0 24px;
+        height: 48px;
+        font-size: 16px;
+    }
+}
+
