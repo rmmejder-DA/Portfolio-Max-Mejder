@@ -60,7 +60,13 @@
     }
 
     .lets-talk-button {
-        width: 70%;
+        width: fit-content;
+        max-width: 100%;
+        min-width: 170px;
+        padding: 0 20px;
+        font-size: 20px;
+        line-height: 1.2;
+        white-space: nowrap;
         margin-bottom: 28px;
     }
 
