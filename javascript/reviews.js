@@ -1,11 +1,32 @@
 const REVIEW_STORAGE_KEY = 'portfolioReviews';
 const DEFAULT_REVIEW_PHOTO = 'data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iNDgiIGhlaWdodD0iNDgiIHZpZXdCb3g9IjAgMCA0OCA0OCIgc3Ryb2tlPSIjNzBFNjFDIiBzdHJva2Utd2lkdGg9IjIuNSIgc3Ryb2tlLWxpbmVjYXA9InJvdW5kIiBzdHJva2UtbGluZWpvaW49InJvdW5kIj48ZyB0cmFuc2Zvcm09InRyYW5zbGF0ZSg0LCAwKSI+PHBhdGggZD0iTTE4LjUgNi41QzIwLjk4NTMgNi41IDIzIDguNTE0NzIgMjMgMTFWMTNIMzFDMzIuNjU2OSAxMyA0NCAxNC4zNDMxIDQ0IDE2VjI0SDE2VjE1QzE2IDguNTE0NzIgMTguMDE0NyA2LjUgMTguNSA2LjVaIiBzdHJva2UtbGluZWNhcD0icm91bmQiIHN0cm9rZS13aWR0aD0iMi41IiBzdHJva2UtbGluZWpvaW49InJvdW5kIi8+PC9nPjwvc3ZnPg==';
+const REVIEWS_API_URL = 'reviews_api.php';
 
 let reviews = [];
 let currentReviewIndex = 0;
 
 function hasReviews() {
     return reviews.length > 0;
+}
+
+function getSafeReviewList(value) {
+    const list = Array.isArray(value) ? value : [];
+    return list.filter((review) => {
+        return review
+            && typeof review.name === 'string'
+            && typeof review.text === 'string'
+            && typeof review.photo === 'string';
+    });
+}
+
+function shouldUseReviewApi() {
+    const host = window.location.hostname;
+    const port = window.location.port;
+    const isLocalHost = host === '127.0.0.1' || host === 'localhost';
+    const isStaticDevPort = port === '5500' || port === '5501' || port === '5502';
+    if (window.location.protocol === 'file:') return false;
+    if (isLocalHost && isStaticDevPort) return false;
+    return true;
 }
 
 function renderEmptyReviewState(language = getSelectedLanguage()) {
@@ -19,17 +40,27 @@ function renderEmptyReviewState(language = getSelectedLanguage()) {
     person.alt = copy.emptyReviewAlt;
 }
 
-function loadReviews() {
+async function fetchServerReviews() {
+    if (!shouldUseReviewApi()) return null;
+    try {
+        const response = await fetch(REVIEWS_API_URL, { headers: { 'Accept': 'application/json' } });
+        if (!response.ok) return null;
+        const data = await response.json().catch(() => ({}));
+        return getSafeReviewList(data.reviews);
+    } catch (error) {
+        return null;
+    }
+}
+
+async function loadReviews() {
     try {
         const stored = localStorage.getItem(REVIEW_STORAGE_KEY);
         const parsed = stored ? JSON.parse(stored) : [];
-        reviews = Array.isArray(parsed) ? parsed.filter((review) => {
-            return review
-                && typeof review.name === 'string'
-                && typeof review.text === 'string'
-                && typeof review.photo === 'string';
-        }) : [];
+        reviews = getSafeReviewList(parsed);
+        const serverReviews = await fetchServerReviews();
+        if (serverReviews) reviews = serverReviews;
         normalizeReviews();
+        saveReviews();
     } catch (error) {
         reviews = [];
     }
@@ -37,6 +68,19 @@ function loadReviews() {
 
 function saveReviews() {
     try { localStorage.setItem(REVIEW_STORAGE_KEY, JSON.stringify(reviews)); } catch (error) { /* ignore */ }
+}
+
+async function pushReviewToServer(review) {
+    if (!shouldUseReviewApi()) return;
+    try {
+        await fetch(REVIEWS_API_URL, {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
+            body: JSON.stringify(review)
+        });
+    } catch (error) {
+        /* ignore */
+    }
 }
 
 function readAsDataUrl(file) {
@@ -187,9 +231,11 @@ async function onReviewSubmit(event, data) {
     const text = data.messageInput.value.trim();
     if (!syncReviewFormState(data) || !isReviewInputValid(name, text)) return;
     const photo = await getPhotoData(data.photoInput);
-    reviews.push({ name, text: `"${text}"`, photo });
+    const newReview = { name, text: `"${text}"`, photo };
+    reviews.push(newReview);
     normalizeReviews();
     saveReviews();
+    await pushReviewToServer(newReview);
     rebuildReviewDots();
     showReview(reviews.length - 1);
     data.form.reset();
@@ -216,12 +262,12 @@ function bindReviewCommentDialog() {
     if (close) close.addEventListener('click', () => dialog.close());
 }
 
-function initializeReviews() {
-    loadReviews();
-    rebuildReviewDots();
+async function initializeReviews() {
     bindReviewNavigation();
     bindReviewForm();
     bindReviewCommentDialog();
+    await loadReviews();
+    rebuildReviewDots();
     if (reviews.length) showReview(0);
     if (!reviews.length) renderEmptyReviewState(getSelectedLanguage());
 }
