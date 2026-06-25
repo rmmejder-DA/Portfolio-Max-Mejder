@@ -1,13 +1,13 @@
 const STORAGE_KEY = 'portfolioLegalLanguage';
 
 const DE_IMPRESSUM = {
-    headings: ['Verantwortlich fuer den Inhalt', 'Kontakt', 'Haftung fuer Inhalte', 'Haftung fuer Links', 'Urheberrecht'],
+    headings: ['Verantwortlich für den Inhalt', 'Kontakt', 'Haftung für Inhalte', 'Haftung für Links', 'Urheberrecht'],
     paragraphs: [
         'Max Mejder\nAlmendorfer Straße 15\n36100 Petersberg\nDeutschland',
         'E-Mail: rmmejder@gmail.com',
-        'Die Inhalte dieser Website wurden mit groesster Sorgfalt erstellt. Fuer die Richtigkeit, Vollstaendigkeit und Aktualitaet der Inhalte kann jedoch keine Gewaehr uebernommen werden.',
-        'Diese Website enthaelt Links zu externen Websites Dritter, auf deren Inhalte kein Einfluss besteht. Deshalb kann fuer diese fremden Inhalte keine Gewaehr uebernommen werden. Fuer die Inhalte der verlinkten Seiten ist stets der jeweilige Anbieter oder Betreiber verantwortlich.',
-        'Die durch den Seitenbetreiber erstellten Inhalte und Werke auf diesen Seiten unterliegen dem deutschen Urheberrecht. Vervielfaeltigung, Bearbeitung, Verbreitung und jede Art der Verwertung ausserhalb der Grenzen des Urheberrechts beduerfen der schriftlichen Zustimmung des jeweiligen Autors bzw. Erstellers.',
+        'Die Inhalte dieser Website wurden mit größter Sorgfalt erstellt. Für die Richtigkeit, Vollständigkeit und Aktualität der Inhalte kann jedoch keine Gewähr übernommen werden.',
+        'Diese Website enthält Links zu externen Websites Dritter, auf deren Inhalte kein Einfluss besteht. Deshalb kann für diese fremden Inhalte keine Gewähr übernommen werden. Für die Inhalte der verlinkten Seiten ist stets der jeweilige Anbieter oder Betreiber verantwortlich.',
+        'Die durch den Seitenbetreiber erstellten Inhalte und Werke auf diesen Seiten unterliegen dem deutschen Urheberrecht. Vervielfältigung, Bearbeitung, Verbreitung und jede Art der Verwertung außerhalb der Grenzen des Urheberrechts bedürfen der schriftlichen Zustimmung des jeweiligen Autors bzw. Erstellers.',
     ],
 };
 
@@ -26,14 +26,14 @@ const DE_PRIVACY = {
     headings: ['1. Verantwortlicher', '2. Hosting und Server-Logfiles', '3. Kontaktaufnahme', '4. Speicherdauer', '5. Externe Links', '6. Rechte betroffener Personen', '7. Stand'],
     paragraphs: [
         'Max Mejder\nAlmendorfer Straße 15\n36100 Petersberg\nDeutschland\nE-Mail: rmmejder@gmail.com',
-        'Beim Aufruf dieser Website koennen durch den Hosting-Anbieter automatisch Informationen in Server-Logfiles erhoben werden (z. B. IP-Adresse, Datum und Uhrzeit, aufgerufene Seite, Browser-Informationen). Die Verarbeitung erfolgt zur technischen Bereitstellung und Sicherheit der Website.',
-        'Wenn du per E-Mail oder ueber das Kontaktformular Kontakt aufnimmst, werden die von dir uebermittelten Daten (z. B. Name, E-Mail-Adresse, Nachricht) ausschliesslich zur Bearbeitung deiner Anfrage verarbeitet.',
+        'Beim Aufruf dieser Website können durch den Hosting-Anbieter automatisch Informationen in Server-Logfiles erhoben werden (z. B. IP-Adresse, Datum und Uhrzeit, aufgerufene Seite, Browser-Informationen). Die Verarbeitung erfolgt zur technischen Bereitstellung und Sicherheit der Website.',
+        'Wenn du per E-Mail oder über das Kontaktformular Kontakt aufnimmst, werden die von dir übermittelten Daten (z. B. Name, E-Mail-Adresse, Nachricht) ausschließlich zur Bearbeitung deiner Anfrage verarbeitet.',
         'Rechtsgrundlage ist Artikel 6 Absatz 1 Buchstabe b DSGVO (vorvertragliche Kommunikation) bzw. Artikel 6 Absatz 1 Buchstabe f DSGVO (berechtigtes Interesse an der Bearbeitung von Anfragen).',
-        'Personenbezogene Daten werden nur so lange gespeichert, wie es fuer die Bearbeitung der Anfrage erforderlich ist oder gesetzliche Aufbewahrungspflichten bestehen.',
-        'Diese Website enthaelt Links zu externen Plattformen (z. B. LinkedIn, GitHub). Beim Anklicken dieser Links gelten die Datenschutzbestimmungen der jeweiligen Anbieter.',
-        'Du hast das Recht auf Auskunft, Berichtigung, Loeschung, Einschraenkung der Verarbeitung, Datenuertragbarkeit sowie Widerspruch gegen die Verarbeitung deiner Daten im Rahmen der geltenden gesetzlichen Bestimmungen.',
-        'Ausserdem besteht ein Beschwerderecht bei einer Datenschutzaufsichtsbehoerde.',
-        'Stand dieser Datenschutzerklaerung: Juni 2026.',
+        'Personenbezogene Daten werden nur so lange gespeichert, wie es für die Bearbeitung der Anfrage erforderlich ist oder gesetzliche Aufbewahrungspflichten bestehen.',
+        'Diese Website enthält Links zu externen Plattformen (z. B. LinkedIn, GitHub). Beim Anklicken dieser Links gelten die Datenschutzbestimmungen der jeweiligen Anbieter.',
+        'Du hast das Recht auf Auskunft, Berichtigung, Löschung, Einschränkung der Verarbeitung, Datenübertragbarkeit sowie Widerspruch gegen die Verarbeitung deiner Daten im Rahmen der geltenden gesetzlichen Bestimmungen.',
+        'Außerdem besteht ein Beschwerderecht bei einer Datenschutzaufsichtsbehörde.',
+        'Stand dieser Datenschutzerklärung: Juni 2026.',
     ],
 };
 
@@ -54,9 +54,9 @@ const EN_PRIVACY = {
 
 const I18N = {
     de: {
-        'legal-notice': { title: 'Rechtliches | Max Mejder', heading: 'Rechtliche Hinweise', tabLabel: 'Rechtliche Inhalte', tabImpressum: 'Impressum', tabDatenschutz: 'Datenschutz', backLink: 'Zurueck zur Startseite', impressum: DE_IMPRESSUM, privacy: DE_PRIVACY },
-        datenschutz: { title: 'Datenschutz | Max Mejder', heading: 'Datenschutzerklaerung', intro: 'Informationen zum Umgang mit personenbezogenen Daten auf dieser Website.', backLink: 'Zurueck zur Startseite', section: DE_PRIVACY },
-        impressum: { title: 'Impressum | Max Mejder', heading: 'Impressum', intro: 'Angaben gemaess Paragraph 5 TMG', backLink: 'Zurueck zur Startseite', section: DE_IMPRESSUM },
+        'legal-notice': { title: 'Rechtliches | Max Mejder', heading: 'Rechtliche Hinweise', tabLabel: 'Rechtliche Inhalte', tabImpressum: 'Impressum', tabDatenschutz: 'Datenschutz', backLink: 'Zurück zur Startseite', impressum: DE_IMPRESSUM, privacy: DE_PRIVACY },
+        datenschutz: { title: 'Datenschutz | Max Mejder', heading: 'Datenschutzerklärung', intro: 'Informationen zum Umgang mit personenbezogenen Daten auf dieser Website.', backLink: 'Zurück zur Startseite', section: DE_PRIVACY },
+        impressum: { title: 'Impressum | Max Mejder', heading: 'Impressum', intro: 'Angaben gemäß Paragraph 5 TMG', backLink: 'Zurück zur Startseite', section: DE_IMPRESSUM },
     },
     en: {
         'legal-notice': { title: 'Legal Notice | Max Mejder', heading: 'Legal Notice', tabLabel: 'Legal content', tabImpressum: 'Imprint', tabDatenschutz: 'Privacy Policy', backLink: 'Back to homepage', impressum: EN_IMPRESSUM, privacy: EN_PRIVACY },

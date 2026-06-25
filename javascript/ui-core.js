@@ -137,11 +137,17 @@ function initializeScrollReveal() {
     nodes.forEach((node) => observer.observe(node));
 }
 
+function setPageScrollLock(isLocked) {
+    document.documentElement.classList.toggle('menu-open', isLocked);
+    document.body.classList.toggle('menu-open', isLocked);
+}
+
 function closeMobileMenu(toggle, menu) {
     menu.classList.remove('is-open');
     toggle.classList.remove('is-open');
     toggle.setAttribute('aria-expanded', 'false');
     menu.setAttribute('aria-hidden', 'true');
+    setPageScrollLock(false);
 }
 
 function toggleMobileMenu(toggle, menu) {
@@ -149,6 +155,7 @@ function toggleMobileMenu(toggle, menu) {
     toggle.classList.toggle('is-open', open);
     toggle.setAttribute('aria-expanded', String(open));
     menu.setAttribute('aria-hidden', String(!open));
+    setPageScrollLock(open);
 }
 
 function bindMobileMenu() {

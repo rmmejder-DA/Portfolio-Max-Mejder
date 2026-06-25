@@ -249,6 +249,16 @@
     margin-bottom: 24px;
 }
 
+.about .vertical-headline,
+.about .Name,
+.about-me .section-title,
+.about-me-text,
+.location-text,
+.open-minded-text,
+.puzzle-text {
+    text-shadow: 0 1px 2px rgba(0, 0, 0, 0.9), 0 4px 14px rgba(0, 0, 0, 0.55);
+}
+
 .about-me-decorative-container {
     display: flex;
     align-items: center;

@@ -23,6 +23,11 @@ body {
     margin: 0;
 }
 
+html.menu-open,
+body.menu-open {
+    overflow: hidden;
+}
+
 header {
     background-color: #141d2f;
     padding: 16px 58px;
