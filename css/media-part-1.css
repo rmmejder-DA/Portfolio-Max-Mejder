@@ -64,6 +64,7 @@
     .reviewOfperson-avatar-wrap {
         justify-content: center;
     }
+
     .reviewOfperson-avatar-wrap::before {
         content: '';
         position: absolute;
@@ -329,3 +330,12 @@
     }
 }
 
+@media (min-width: 960px) {
+
+    .portfolio-card-join,
+    .portfolio-card-fotogramm,
+    .portfolio-card-pokedex {
+        flex-direction: row-reverse;
+        display: flex;
+    }
+}
