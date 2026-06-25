@@ -327,3 +327,33 @@ form {
     font-weight: 700;
     color: #dbe2f1;
 }
+
+.scroll-reveal {
+    opacity: 0;
+    transform: translate3d(0, 0, 0);
+    transition: opacity 0.65s ease, transform 0.65s cubic-bezier(0.22, 1, 0.36, 1);
+    will-change: opacity, transform;
+}
+
+.scroll-reveal.scroll-reveal-left {
+    transform: translate3d(-72px, 0, 0);
+}
+
+.scroll-reveal.scroll-reveal-right {
+    transform: translate3d(72px, 0, 0);
+}
+
+.scroll-reveal.is-visible {
+    opacity: 1;
+    transform: translate3d(0, 0, 0);
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .scroll-reveal,
+    .scroll-reveal.scroll-reveal-left,
+    .scroll-reveal.scroll-reveal-right {
+        opacity: 1;
+        transform: none;
+        transition: none;
+    }
+}
