@@ -23,12 +23,21 @@ body {
     margin: 0;
 }
 
+:root {
+    --h2-size: 82px;
+}
+
 html.menu-open,
 body.menu-open {
     overflow: hidden;
 }
 
 header {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    width: 100%;
     background-color: #141d2f;
     padding: 16px 58px;
     z-index: 2000;
@@ -52,6 +61,7 @@ footer p {
     display: flex;
     flex-direction: column;
     height: auto;
+    padding-top: 92px;
 }
 
 *,
@@ -71,7 +81,6 @@ footer p {
     max-width: 1440px;
     margin: 0 auto;
 }
-
 .footer {
     display: flex;
     justify-content: space-between;
@@ -154,7 +163,6 @@ footer p {
     border-bottom: 2px solid transparent;
     padding-bottom: 2px;
     transition: color 0.2s ease, border-color 0.2s ease;
-    cursor: default;
 }
 
 .legal-links a:hover {
@@ -259,17 +267,16 @@ footer p {
     text-shadow: 0 0 4px #ffffff;
 }
 
-h1 {
-    font-size: 42px;
-    color: #6bd617;
-}
-
-.header h1,
-.footer h1 {
+.header-name,
+.footer-name {
     background: linear-gradient(to right, white 68%, #70e61c 25%);
     -webkit-background-clip: text;
     background-clip: text;
     -webkit-text-fill-color: transparent;
+    font-weight: bold;
+    text-decoration: none!important;
+    font-size: 36px!important;
+    pointer-events: none;
 }
 
 .nav {

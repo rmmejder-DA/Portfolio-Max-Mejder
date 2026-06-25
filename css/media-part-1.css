@@ -1,4 +1,8 @@
 ﻿@media (max-width: 1340px) {
+    :root {
+        --h2-size: 60px;
+    }
+
     .Name {
         font-size: 64px;
         height: unset;
@@ -9,7 +13,7 @@
     }
 
     .vertical-headline {
-        font-size: 60px;
+        font-size: var(--h2-size);
     }
 
     .horizontal-headline {
@@ -31,7 +35,7 @@
     }
 
     .section-title {
-        font-size: 60px;
+        font-size: var(--h2-size);
     }
 }
 
@@ -168,6 +172,10 @@
 }
 
 @media (max-width: 1084px) {
+    :root {
+        --h2-size: 44px;
+    }
+
     .Name {
         font-size: 48px;
         line-height: 76px;
@@ -179,7 +187,7 @@
     }
 
     .vertical-headline {
-        font-size: 38px;
+        font-size: var(--h2-size);
         padding-top: 14px;
     }
 
@@ -188,7 +196,7 @@
     }
 
     .section-title {
-        font-size: 44px;
+        font-size: var(--h2-size);
     }
 
     .img-line-right {

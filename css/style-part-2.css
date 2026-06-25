@@ -152,6 +152,7 @@
     width: 100%;
     max-width: 1440px;
     margin: 0 auto;
+    padding: 0 58px 0 0;
 }
 
 .job-name {
@@ -164,7 +165,7 @@
 .vertical-headline {
     writing-mode: sideways-lr;
     text-align: center;
-    font-size: 74px;
+    font-size: 70px;
     font-weight: 300;
 }
 
@@ -179,7 +180,7 @@
     font-size: 42px;
     font-weight: 300;
     color: #9747ff;
-    line-height: 64px;
+    line-height: 50px;
 }
 
 .about-me-decorative {
@@ -199,7 +200,7 @@
     justify-content: space-between;
     max-width: 1440px;
     margin: 0 auto;
-    padding: 0 0px 16px 58px;
+    padding: 0 0 0 58px;
 }
 
 .img-line-right {
@@ -244,7 +245,7 @@
 }
 
 .section-title {
-    font-size: 82px;
+    font-size: var(--h2-size);
     font-weight: 700;
     margin-bottom: 24px;
 }
@@ -302,6 +303,7 @@
     max-width: 1440px;
     width: 100%;
     align-items: center;
+    padding: 0 0 0 58px;
 }
 
 .skills-grid {

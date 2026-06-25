@@ -1,4 +1,8 @@
 ﻿@media (max-width: 560px) {
+    :root {
+        --h2-size: 36px;
+    }
+
     .skills-grid {
         display: flex;
         flex-direction: column;
@@ -14,11 +18,11 @@
     }
 
     .skills-title {
-        font-size: 44px;
+        font-size: var(--h2-size);
     }
 
     .vertical-headline {
-        font-size: 28px !important;
+        font-size: var(--h2-size) !important;
         padding-top: 10px !important;
     }
 
@@ -120,7 +124,7 @@
     }
 
     .about {
-        padding: 80px 0px 15px 0px;
+        padding: 80px 10px 15px 10px;
     }
 
     .contact::after {
@@ -150,7 +154,7 @@
     }
 
     .skills {
-        padding: 0;
+        padding: 0 10px;
     }
 
     .skills-title-line {
@@ -172,7 +176,7 @@
     }
 
     .portfolio-section-title {
-        font-size: 36px;
+        font-size: var(--h2-size);
     }
 
     .portfolio-header {
@@ -198,6 +202,7 @@
 
     .main-content {
         min-width: 270px;
+        padding-top: 60px;
     }
 
     .footer {
@@ -207,12 +212,12 @@
     }
 
     .contact {
-        padding-bottom: 10px;
+        padding: 0 10px 10px 10px;
         gap: 10px;
     }
 
     .contact_me {
-        font-size: 44px;
+        font-size: var(--h2-size);
         padding-right: 10px;
     }
 
@@ -221,7 +226,7 @@
     }
 
     .about-me {
-        padding: 10px;
+        padding: 0 10px 10px 10px;
     }
 
     .skills-description-wrap {

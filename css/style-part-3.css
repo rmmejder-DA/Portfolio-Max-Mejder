@@ -150,7 +150,7 @@
 }
 
 .skills-title {
-    font-size: 82px;
+    font-size: var(--h2-size);
     line-height: 0.95;
     font-weight: 700;
     margin: 0;
@@ -231,7 +231,7 @@
 }
 
 .portfolio-section-title {
-    font-size: 82px;
+    font-size: var(--h2-size);
     font-weight: 700;
     line-height: 1;
     white-space: nowrap;
@@ -252,7 +252,7 @@
 .portfolio-card-el_pollo_loco {
     display: grid;
     grid-template-columns: 1fr 1fr;
-    gap: 240px;
+    gap: 100px;
     align-items: center;
     margin-bottom: 80px;
     justify-content: space-around;

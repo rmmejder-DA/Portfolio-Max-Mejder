@@ -16,7 +16,7 @@
     }
 
     .skills-title {
-        font-size: 62px;
+        font-size: var(--h2-size);
     }
 
     .skills-title-line {
@@ -47,7 +47,7 @@
     }
 
     .about {
-        padding: 0 0px 15px 0px;
+        padding: 0 22px 15px 22px;
     }
 }
 
@@ -250,7 +250,7 @@
     }
 
     .contact_me {
-        font-size: 56px;
+        font-size: var(--h2-size);
     }
 
     .contact_input {
@@ -280,11 +280,11 @@
 
 @media (max-width: 600px) {
     .portfolio {
-        padding: 48px 22px 60px;
+        padding: 48px 22px 60px 22px;
     }
 
     .portfolio-section-title {
-        font-size: 52px;
+        font-size: var(--h2-size);
     }
 
     .portfolio-subtitle {
