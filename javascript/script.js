@@ -140,12 +140,23 @@ function bindMobileMenu() {
 }
 
 function loadReviews() {
-    try { localStorage.removeItem(REVIEW_STORAGE_KEY); } catch (error) { /* ignore */ }
-    reviews = [];
+    try {
+        const stored = localStorage.getItem(REVIEW_STORAGE_KEY);
+        const parsed = stored ? JSON.parse(stored) : [];
+        reviews = Array.isArray(parsed) ? parsed.filter((review) => {
+            return review
+                && typeof review.name === 'string'
+                && typeof review.text === 'string'
+                && typeof review.photo === 'string';
+        }) : [];
+        normalizeReviews();
+    } catch (error) {
+        reviews = [];
+    }
 }
 
 function saveReviews() {
-    try { localStorage.removeItem(REVIEW_STORAGE_KEY); } catch (error) { /* ignore */ }
+    try { localStorage.setItem(REVIEW_STORAGE_KEY, JSON.stringify(reviews)); } catch (error) { /* ignore */ }
 }
 
 function readAsDataUrl(file) {
@@ -236,12 +247,41 @@ function getReviewFormData() {
         nameInput: q('#reviewName'),
         messageInput: q('#reviewMessage'),
         photoInput: q('#reviewPhoto'),
+        errorMessage: q('#reviewCommentError'),
+        submitButton: q('.review-comment-submit'),
         dialog: q('#reviewCommentDialog'),
     };
 }
 
 function isReviewInputValid(name, text) {
     return name.length >= 2 && text.length >= 8;
+}
+
+function getReviewValidationMessage(name, text) {
+    if (!name.length && !text.length) return 'Enter your name and a comment with at least 8 characters.';
+    if (name.length < 2) return 'Your name must contain at least 2 characters.';
+    if (text.length < 8) return 'Your comment must contain at least 8 characters.';
+    return '';
+}
+
+function setReviewFieldState(field, isInvalid) {
+    if (!field) return;
+    field.classList.toggle('is-invalid', isInvalid);
+}
+
+function syncReviewFormState(data) {
+    if (!data.nameInput || !data.messageInput || !data.submitButton) return true;
+    const name = data.nameInput.value.trim();
+    const text = data.messageInput.value.trim();
+    const validationMessage = getReviewValidationMessage(name, text);
+    const showInvalidName = name.length > 0 && name.length < 2;
+    const showInvalidText = text.length > 0 && text.length < 8;
+    setReviewFieldState(data.nameInput, showInvalidName);
+    setReviewFieldState(data.messageInput, showInvalidText);
+    if (data.errorMessage) data.errorMessage.textContent = validationMessage;
+    const valid = isReviewInputValid(name, text);
+    data.submitButton.disabled = !valid;
+    return valid;
 }
 
 function getPhotoFile(photoInput) {
@@ -265,7 +305,7 @@ async function onReviewSubmit(event, data) {
     event.preventDefault();
     const name = data.nameInput.value.trim();
     const text = data.messageInput.value.trim();
-    if (!isReviewInputValid(name, text)) return;
+    if (!syncReviewFormState(data) || !isReviewInputValid(name, text)) return;
     const photo = await getPhotoData(data.photoInput);
     reviews.push({ name, text: `"${text}"`, photo });
     normalizeReviews();
@@ -273,13 +313,18 @@ async function onReviewSubmit(event, data) {
     rebuildReviewDots();
     showReview(reviews.length - 1);
     data.form.reset();
+    syncReviewFormState(data);
     if (data.dialog) data.dialog.close();
 }
 
 function bindReviewForm() {
     const data = getReviewFormData();
-    if (!data.form || !data.nameInput || !data.messageInput || !data.photoInput) return;
+    if (!data.form || !data.nameInput || !data.messageInput || !data.photoInput || !data.submitButton) return;
+    const sync = () => syncReviewFormState(data);
+    data.form.addEventListener('input', sync);
+    data.form.addEventListener('change', sync);
     data.form.addEventListener('submit', (event) => onReviewSubmit(event, data));
+    sync();
 }
 
 function bindReviewCommentDialog() {

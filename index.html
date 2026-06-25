@@ -273,7 +273,7 @@
                         categories.
                     </p>
                     <div class="portfolio-buttons">
-                        <a href="#" class="portfolio-btn portfolio-btn-live" target="_blank"
+                        <a href="https://join.max-mejder.de" class="portfolio-btn portfolio-btn-live" target="_blank"
                             rel="noopener noreferrer">Live
                             test</a>
                         <a href="https://github.com/DustinGuettnerDev/Join" class="portfolio-btn portfolio-btn-github"
@@ -301,7 +301,7 @@
                         tracking,
                         and secure payment processing.</p>
                     <div class="portfolio-buttons">
-                        <a href="#" class="portfolio-btn portfolio-btn-live" target="_blank"
+                        <a href="https://bestellapp.max-mejder.de" class="portfolio-btn portfolio-btn-live" target="_blank"
                             rel="noopener noreferrer">Live
                             test</a>
                         <a href="https://github.com/rmmejder-DA/BestellApp" class="portfolio-btn portfolio-btn-github"
@@ -327,7 +327,7 @@
                         photos. The app features a user-friendly interface, real-time photo updates, and secure
                         authentication.</p>
                     <div class="portfolio-buttons">
-                        <a href="#" class="portfolio-btn portfolio-btn-live" target="_blank"
+                        <a href="https://fotogramm.max-mejder.de" class="portfolio-btn portfolio-btn-live" target="_blank"
                             rel="noopener noreferrer">Live
                             test</a>
                         <a href="https://github.com/rmmejder-DA/Fotogram" class="portfolio-btn portfolio-btn-github"
@@ -352,7 +352,7 @@
                         their cart, and place orders. The app features a user-friendly interface, real-time order
                         tracking, and secure payment processing.</p>
                     <div class="portfolio-buttons">
-                        <a href="#" class="portfolio-btn portfolio-btn-live" target="_blank"
+                        <a href="http://kochwelt.max-mejder.de" class="portfolio-btn portfolio-btn-live" target="_blank"
                             rel="noopener noreferrer">Live
                             test</a>
                         <a href="https://github.com/rmmejder-DA/03---Gruppenarbeit---Kochwelt"
@@ -378,7 +378,7 @@
                         their cart, and place orders. The app features a user-friendly interface, real-time order
                         tracking, and secure payment processing.</p>
                     <div class="portfolio-buttons">
-                        <a href="#" class="portfolio-btn portfolio-btn-live" target="_blank"
+                        <a href="https://pokedex.max-mejder.de" class="portfolio-btn portfolio-btn-live" target="_blank"
                             rel="noopener noreferrer">Live
                             test</a>
                         <a href="https://github.com/rmmejder-DA/Pokedex" class="portfolio-btn portfolio-btn-github"
@@ -405,7 +405,7 @@
                         tracking,
                         and secure payment processing.</p>
                     <div class="portfolio-buttons">
-                        <a href="#" class="portfolio-btn portfolio-btn-live" target="_blank"
+                        <a href="https://el-pollo-loco.max-mejder.de" class="portfolio-btn portfolio-btn-live" target="_blank"
                             rel="noopener noreferrer">Live
                             test</a>
                         <a href="https://github.com/rmmejder-DA/El-Pollo-Loco"
@@ -446,10 +446,11 @@
                             maxlength="60" required>
                         <textarea id="reviewMessage" class="review-comment-textarea" placeholder="Your comment"
                             maxlength="500" required></textarea>
+                        <p id="reviewCommentError" class="review-comment-error" aria-live="polite"></p>
                         <label for="reviewPhoto" class="review-comment-file-label">Upload photo</label>
                         <input id="reviewPhoto" type="file" class="review-comment-file" accept="image/*">
                         <p class="review-comment-hint">Optional: upload a photo for your comment.</p>
-                        <button type="submit" class="review-comment-submit">Add Comment</button>
+                        <button type="submit" class="review-comment-submit" disabled>Add Comment</button>
                     </form>
                 </div>
             </dialog>
@@ -471,13 +472,15 @@
                     <p>Need a Frontend Developer? <b>Contact me!</b></p>
 
                 </div>
-                <form class="contact_form" action="mailto:rmmejder@gmail.com" method="post" enctype="text/plain">
-                    <input type="text" placeholder="Your name" class="contact_input" required>
+                <form class="contact_form" action="https://formsubmit.co/info@max-mejder.de" method="post">
+                    <input type="text" name="name" placeholder="Your name" class="contact_input" required>
                     <div class="email-input-wrapper">
-                        <input type="email" placeholder="Your email" class="contact_input" required>
+                        <input type="email" name="email" placeholder="Your email" class="contact_input" required>
                         <div class="email-error-message">Please enter a valid email address with a proper domain (e.g., user@example.com)</div>
                     </div>
-                    <textarea placeholder="Your message" class="contact_textarea" required></textarea>
+                    <input type="hidden" name="_captcha" value="false">
+                    <input type="hidden" name="_template" value="table">
+                    <textarea name="message" placeholder="Your message" class="contact_textarea" required></textarea>
                     <div class="contact_policy_row">
                         <input type="checkbox" id="privacy-policy" class="contact_checkbox" required>
                         <label for="privacy-policy" class="contact_checkbox_label">I've read the <a

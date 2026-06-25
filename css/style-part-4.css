@@ -175,6 +175,7 @@
     width: 7px;
     height: 7px;
     padding: 0;
+    margin-top: 7px;
     border: none;
     border-radius: 50%;
     background: #9747ff;
@@ -304,6 +305,18 @@
     border-color: #70e61c;
 }
 
+.review-comment-input.is-invalid,
+.review-comment-textarea.is-invalid {
+    border-color: #ff6b6b;
+}
+
+.review-comment-error {
+    min-height: 20px;
+    margin: -4px 0 0;
+    font-size: 14px;
+    color: #ff6b6b;
+}
+
 .review-comment-submit {
     width: fit-content;
     border: none;
@@ -315,4 +328,10 @@
     background: #70e61c;
     cursor: pointer;
     transition: transform 0.2s ease, background-color 0.2s ease;
+}
+
+.review-comment-submit:disabled {
+    cursor: not-allowed;
+    background: #7d8a9f;
+    transform: none;
 }

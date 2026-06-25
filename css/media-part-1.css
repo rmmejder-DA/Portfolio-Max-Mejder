@@ -57,6 +57,7 @@
 
     .reviewOfperson-card {
         max-width: 900px;
+        min-width: 270px;
         order: 1;
     }
 

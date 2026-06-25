@@ -1,5 +1,4 @@
-﻿
-.skills-icons {
+﻿.skills-icons {
     display: grid;
     grid-template-columns: repeat(4, minmax(90px, 1fr));
     gap: 42px 34px;
@@ -209,6 +208,7 @@
 .portfolio {
     max-width: 1440px;
     position: relative;
+    margin-bottom: 20px;
 }
 
 .portfolio-header {
@@ -331,4 +331,3 @@
     color: #70e61c;
     margin: 0;
 }
-
