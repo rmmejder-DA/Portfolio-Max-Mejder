@@ -30,9 +30,25 @@ function logout() {
 }
 
 function load() {
-    const stored = localStorage.getItem(PENDING_KEY) || '[]';
-    pending = JSON.parse(stored);
-    render();
+    // Try to load from API first (for server deployment)
+    fetch('reviews_api.php?action=pending')
+        .then(r => r.json())
+        .then(data => {
+            if (data.success && data.reviews) {
+                pending = data.reviews;
+            } else {
+                // Fallback to localStorage
+                const stored = localStorage.getItem(PENDING_KEY) || '[]';
+                pending = JSON.parse(stored);
+            }
+            render();
+        })
+        .catch(() => {
+            // Fallback to localStorage if API fails
+            const stored = localStorage.getItem(PENDING_KEY) || '[]';
+            pending = JSON.parse(stored);
+            render();
+        });
 }
 
 function render() {
@@ -46,7 +62,7 @@ function render() {
         const r = pending[i];
         const div = document.createElement('div');
         div.className = 'review-item';
-        div.innerHTML = `<input type="checkbox" class="review-checkbox" data-index="${i}"><div class="review-content"><div class="review-header"><img src="${r.photo || AVATAR}"><div class="review-meta"><div class="review-name">${r.name}</div><div class="review-time">${r.timestamp || 'Gerade eben'}</div></div></div><div class="review-text">${r.text}</div></div>`;
+        div.innerHTML = `<input type="checkbox" class="review-checkbox" data-index="${i}"><div class="review-content"><div class="review-header"><img class="review-photo" src="${r.photo || AVATAR}"><div class="review-meta"><div class="review-name">${r.name}</div><div class="review-time">${r.timestamp || 'Gerade eben'}</div></div></div><div class="review-text">${r.text}</div></div>`;
         list.appendChild(div);
     }
     bindChecks();
@@ -78,8 +94,35 @@ function updateBtns() {
 
 function approve() {
     if (!selected.size) return;
-    const approved = JSON.parse(localStorage.getItem(APPROVED_KEY) || '[]');
     const idx = Array.from(selected).sort((a, b) => b - a);
+    const indices = Array.from(idx);
+    
+    // Try API first
+    fetch('reviews_api.php?action=approve', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ indices })
+    })
+        .then(r => r.json())
+        .then(data => {
+            if (data.success) {
+                selected.clear();
+                load();
+            } else {
+                console.error('API error:', data.error);
+                // Fallback to localStorage
+                approveLocalStorage();
+            }
+        })
+        .catch(() => {
+            // Fallback to localStorage if API fails
+            approveLocalStorage();
+        });
+}
+
+function approveLocalStorage() {
+    const idx = Array.from(selected).sort((a, b) => b - a);
+    const approved = JSON.parse(localStorage.getItem(APPROVED_KEY) || '[]');
     idx.forEach(i => {
         if (pending[i]) {
             const r = {...pending[i]};
@@ -96,6 +139,33 @@ function approve() {
 
 function deleteReviews() {
     if (!selected.size || !confirm('Kommentare wirklich löschen?')) return;
+    const idx = Array.from(selected).sort((a, b) => b - a);
+    const indices = Array.from(idx);
+    
+    // Try API first
+    fetch('reviews_api.php?action=delete', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ indices })
+    })
+        .then(r => r.json())
+        .then(data => {
+            if (data.success) {
+                selected.clear();
+                load();
+            } else {
+                console.error('API error:', data.error);
+                // Fallback to localStorage
+                deleteLocalStorage();
+            }
+        })
+        .catch(() => {
+            // Fallback to localStorage if API fails
+            deleteLocalStorage();
+        });
+}
+
+function deleteLocalStorage() {
     const idx = Array.from(selected).sort((a, b) => b - a);
     idx.forEach(i => pending.splice(i, 1));
     localStorage.setItem(PENDING_KEY, JSON.stringify(pending));
