@@ -317,19 +317,19 @@ footer p {
 
 .translate-buttons button:active {
     background-color: #70e61c;
-    color: #141d2f;
+    color: #ffffff;
     border: none !important;
 }
 
 .translate-buttons button.is-active {
     background-color: #70e61c;
-    color: #141d2f;
+    color: #ffffff;
     border: none !important;
 }
 
 .translate-buttons button:hover {
     background-color: #9747ff;
-    color: #141d2f;
+    color: #ffffff;
 }
 
 .profile-img {

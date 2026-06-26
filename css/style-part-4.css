@@ -199,10 +199,10 @@
     padding: 14px 22px;
     margin: 0 auto;
     border: none;
-    border-radius: 20px;
+    border-radius: 10px;
     font-size: 16px;
     font-weight: 700;
-    color: #141d2f;
+    color: #ffffff;
     background: linear-gradient(135deg, #70e61c, #88f229);
     cursor: pointer;
     transition: transform 0.2s ease, filter 0.2s ease;

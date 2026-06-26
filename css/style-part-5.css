@@ -146,6 +146,7 @@ form {
 
 .email-input-wrapper {
     position: relative;
+    height: 90px;
 }
 
 .contact_input:required:valid:not(:placeholder-shown) {
@@ -172,8 +173,7 @@ form {
 .email-error-message {
     font-size: 16px;
     color: #ff5f7a;
-    margin-top: 14px;
-    margin-bottom: 8px;
+    margin-top: 6px;
     display: none;
 }
 
@@ -185,6 +185,8 @@ form {
     min-height: 190px;
     resize: vertical;
     padding: 20px 24px;
+    position: relative;
+    bottom: 3%;
 }
 
 .contact_input::placeholder,
@@ -350,6 +352,7 @@ form {
 }
 
 @media (prefers-reduced-motion: reduce) {
+
     .scroll-reveal,
     .scroll-reveal.scroll-reveal-left,
     .scroll-reveal.scroll-reveal-right {
