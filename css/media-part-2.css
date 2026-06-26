@@ -41,12 +41,18 @@
 
     .Name {
         font-size: 45px !important;
-        line-height: 60px !important;
+        line-height: 63px !important;
     }
 
     .about {
         padding: 70px 0px 15px 0px;
     }
+        .job-title {
+        font-size: 24px;
+        line-height: 44px;
+        font-weight: bold;
+    }
+
 }
 
 @media (max-width: 768px) {

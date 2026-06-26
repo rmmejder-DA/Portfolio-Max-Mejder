@@ -13,7 +13,8 @@
     }
 
     .vertical-headline {
-        font-size: var(--h2-size);
+        font-size: 48px;
+        padding-top: 10px;
     }
 
     .horizontal-headline {
@@ -173,18 +174,18 @@
 
     .Name {
         font-size: 48px;
-        line-height: 76px;
+        line-height: 70px;
     }
 
     .job-title {
-        font-size: 24px;
-        line-height: 33px;
+        font-size: 25px;
+        line-height: 27px;
         font-weight: bold;
     }
 
     .vertical-headline {
-        font-size: 39px;
-        padding-top: 14px;
+        font-size: 40px;
+        padding-top: 16px;
     }
 
     .horizontal-headline {
