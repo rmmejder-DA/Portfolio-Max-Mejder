@@ -16,3 +16,14 @@ Thumbs.db
 # Environment
 .env
 .env.local
+venv/
+env/
+.venv/
+
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+*.egg-info/
+dist/
+build/
