@@ -9,7 +9,7 @@
     <script src="javascript/ui-core.js" defer></script>
     <script src="javascript/i18n.js" defer></script>
     <script src="javascript/legal.js" defer></script>
-    
+
     <link rel="shortcut icon" href="icon/favicon-mm.ico">
     <link rel="icon" type="image/png" sizes="64x64" href="icon/favicon-mm.png">
     <link rel="icon" type="image/svg+xml" href="icon/favicon-mm.svg">
@@ -59,7 +59,13 @@
     </header>
 
     <main class="legal-page">
-
+        <div class="legal-page-header">
+            <h1>Legal Notice</h1>
+            <div class="translate-buttons legal-translate" aria-label="Language switch">
+                <button type="button" class="is-active" data-lang="de">DE</button>
+                <button type="button" data-lang="en">EN</button>
+            </div>
+        </div>
 
         <div class="legal-tabs" role="tablist" aria-label="Rechtliche Inhalte">
             <button type="button" class="legal-tab is-active" data-target="impressum" role="tab"
@@ -72,8 +78,8 @@
             <section class="legal-section">
                 <h2>Verantwortlich für den Inhalt</h2>
                 <p>Max Mejder<br>
-                    [Straße und Hausnummer ergänzen]<br>
-                    [PLZ und Ort ergänzen]<br>
+                    Almendorfer Straße 15<br>
+                    36100 Petersberg<br>
                     Deutschland</p>
             </section>
 
@@ -108,10 +114,10 @@
             <section class="legal-section">
                 <h2>1. Verantwortlicher</h2>
                 <p>Max Mejder<br>
-                    [Straße und Hausnummer ergänzen]<br>
-                    [PLZ und Ort ergänzen]<br>
-                    Deutschland<br>
-                    E-Mail: <a href="mailto:rmmejder@gmail.com">rmmejder@gmail.com</a></p>
+                    Almendorfer Straße 15<br>
+                    36100 Petersberg<br>
+                    Deutschland</p>
+                E-Mail: <a href="mailto:rmmejder@gmail.com">rmmejder@gmail.com</a></p>
             </section>
 
             <section class="legal-section">
@@ -161,10 +167,11 @@
     <footer>
         <div class="footer">
             <div class="legal-notice-left">
-                <a class="footer-name">Max</a>
+                <a class="footer-name" href="index.html">Max</a>
                 <nav class="legal-links" aria-label="Legal links">
                     <a href="legal-notice.html">Legal Notice</a>
-                    <a class="admin-link" href="admin-reviews.html" style="font-size: 16px; opacity: 0.6; cursor: pointer;">Admin</a>
+                    <a class="admin-link" href="admin-reviews.html"
+                        style="font-size: 16px; opacity: 0.6; cursor: pointer;">Admin</a>
                 </nav>
             </div>
             <p>© 2026 Max Mejder</p>
