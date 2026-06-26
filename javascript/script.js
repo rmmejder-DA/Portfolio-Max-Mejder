@@ -7,7 +7,7 @@ function initApp() {
     bindMobileMenu();
     initializeScrollReveal();
     initializeReviews();
-    bindContactFormValidation();
+    initContactForm();
 }
 
 document.addEventListener('DOMContentLoaded', initApp);

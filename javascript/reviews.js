@@ -287,28 +287,28 @@ function clearAllReviews() {
     console.log('All reviews and photos deleted from localStorage');
 }
 
+function ensureReviewStatusDialog() {
+    let dialog = q('#reviewStatusDialog');
+    if (dialog) return dialog;
+    dialog = document.createElement('div');
+    dialog.id = 'reviewStatusDialog';
+    dialog.className = 'review-status-dialog';
+    dialog.innerHTML = '<p class="review-status-message" aria-live="polite"></p>';
+    document.body.appendChild(dialog);
+    return dialog;
+}
+
 function showReviewNotification() {
     const language = getSelectedLanguage();
     const copy = getCopy(language);
     if (!copy) return;
-
-    const notification = document.createElement('div');
-    notification.className = 'review-notification';
-    notification.setAttribute('role', 'status');
-    notification.setAttribute('aria-live', 'polite');
-    notification.textContent = copy.reviewSubmittedNotification;
-    document.body.appendChild(notification);
-
-    requestAnimationFrame(() => {
-        notification.classList.add('show');
-    });
-
-    setTimeout(() => {
-        notification.classList.remove('show');
-        setTimeout(() => {
-            notification.remove();
-        }, 300);
-    }, 5000);
+    const dialog = ensureReviewStatusDialog();
+    const message = q('#reviewStatusDialog .review-status-message');
+    message.textContent = copy.reviewSubmittedNotification;
+    dialog.classList.remove('show');
+    void dialog.offsetWidth;
+    dialog.classList.add('show');
+    setTimeout(() => dialog.classList.remove('show'), 3000);
 }
 
 async function initializeReviews() {

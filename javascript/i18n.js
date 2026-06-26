@@ -45,6 +45,20 @@ function applyContact(copy) {
     setPlaceholder('.contact_input[type="email"]', copy.placeholderEmail);
     setPlaceholder('.contact_textarea', copy.placeholderMessage);
     setHtml('.contact_checkbox_label', copy.contactPolicyHtml);
+    if (copy.contactSubmitButtonText) {
+        const submitBtn = q('.contact_submit');
+        if (submitBtn) submitBtn.value = copy.contactSubmitButtonText;
+    }
+}
+
+function applyCustomButtons(copy) {
+    if (copy.getInTouchButtonText) setText('.skills-contact-btn', copy.getInTouchButtonText);
+    if (copy.letsTalkButtonText) {
+        setText('#gotoContact', copy.letsTalkButtonText);
+        setText('#gotoContactMobile', copy.letsTalkButtonText);
+    }
+    if (copy.reviewCommentButtonText) setText('.review-comment-open', copy.reviewCommentButtonText);
+    if (copy.reviewCommentDialogTitle) setText('#reviewCommentDialogTitle', copy.reviewCommentDialogTitle);
 }
 
 function applyLanguage(language) {
@@ -55,6 +69,7 @@ function applyLanguage(language) {
     applySkills(copy);
     applyPortfolio(copy);
     applyContact(copy);
+    applyCustomButtons(copy);
     if (!hasReviews()) renderEmptyReviewState(language);
 }
 

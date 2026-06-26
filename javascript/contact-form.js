@@ -47,25 +47,27 @@ function ensureContactStatusNode(form) {
     return q('#contactStatusMessage');
 }
 
-function setContactStatus(form, text, type) {
-    const node = ensureContactStatusNode(form);
-    const dialog = q('#contactStatusDialog');
+function clearContactStatusTimer() {
     if (contactStatusHideTimer) {
         clearTimeout(contactStatusHideTimer);
         contactStatusHideTimer = null;
     }
+}
+
+function setContactStatus(form, text, type) {
+    const node = ensureContactStatusNode(form);
+    const dialog = q('#contactStatusDialog');
+    clearContactStatusTimer();
     node.textContent = text;
     node.classList.remove('is-success', 'is-error', 'is-info');
     dialog.classList.remove('show');
     void dialog.offsetWidth;
     if (type) node.classList.add(type);
     dialog.classList.add('show');
-    if (type === 'is-success') {
-        contactStatusHideTimer = window.setTimeout(() => {
-            dialog.classList.remove('show');
-            contactStatusHideTimer = null;
-        }, 3000);
-    }
+    contactStatusHideTimer = window.setTimeout(() => {
+        dialog.classList.remove('show');
+        contactStatusHideTimer = null;
+    }, 3000);
 }
 
 function shouldUseDirectFormSubmitFallback() {
@@ -160,18 +162,10 @@ async function sendContactForm(form) {
     if (submit.disabled) return;
     const messages = getContactMessages();
     setContactStatus(form, messages.sending, 'is-info');
-    submit.disabled = true;
     await runContactSubmit(form, elements, messages);
 }
 
-function bindContactFormValidation() {
-    const form = q('.contact_form');
-    const submit = q('.contact_submit');
-    const email = form ? form.querySelector('input[type="email"]') : null;
-    const textarea = form ? form.querySelector('.contact_textarea') : null;
-    const charCount = q('#charCount');
-    const error = q('.email-error-message');
-    if (!form || !submit || !email) return;
+function bindContactFormEvents(form, email, error, textarea, charCount, submit) {
     const sync = () => syncContactFormState(form, submit, email, error);
     form.addEventListener('input', sync);
     form.addEventListener('change', sync);
@@ -185,4 +179,26 @@ function bindContactFormValidation() {
         await sendContactForm(form);
     });
     sync();
+}
+
+function initContactForm() {
+    const form = q('.contact_form');
+    const submit = q('.contact_submit');
+    const email = form ? form.querySelector('input[type="email"]') : null;
+    const textarea = form ? form.querySelector('.contact_textarea') : null;
+    const charCount = q('#charCount');
+    const error = q('.email-error-message');
+    if (!form || !submit || !email) return;
+    bindContactFormEvents(form, email, error, textarea, charCount, submit);
+}
+
+function bindContactFormValidation() {
+    const form = q('.contact_form');
+    if (!form) return;
+    form.addEventListener('input', () => {
+        const submit = q('.contact_submit');
+        const email = form.querySelector('input[type="email"]');
+        const error = q('.email-error-message');
+        syncContactFormState(form, submit, email, error);
+    });
 }

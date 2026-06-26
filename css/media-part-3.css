@@ -35,7 +35,7 @@
     .about-me-background {
         width: 100%;
         margin-bottom: 16px;
-
+        margin-top: 16px;
     }
 
     .Name {
@@ -280,14 +280,6 @@
 
     .review-comment-file {
         font-size: 12px;
-    }
-
-    .review-notification {
-        bottom: 20px;
-        right: 20px;
-        max-width: 280px;
-        font-size: 14px;
-        padding: 14px 20px;
     }
 
     .admin-link {

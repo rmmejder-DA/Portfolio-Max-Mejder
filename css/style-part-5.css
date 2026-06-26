@@ -285,19 +285,21 @@ form {
 
 .contact-status-dialog {
     position: fixed;
-    top: 0;
+    top: 50%;
     left: 50%;
-    transform: translateX(-50%) translateY(-150px);
+    transform: translateX(-50%) translateY(-50%) scale(0.8);
+    opacity: 0;
     z-index: 10000;
     pointer-events: none;
-    transition: transform 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
+    transition: all 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
     max-width: 500px;
     width: 90%;
     padding: 20px;
 }
 
 .contact-status-dialog.show {
-    transform: translateX(-50%) translateY(20px);
+    transform: translateX(-50%) translateY(-50%) scale(1);
+    opacity: 1;
     pointer-events: auto;
 }
 
@@ -393,29 +395,47 @@ form {
     }
 }
 
-/* Review Notification */
-.review-notification {
+/* Review Status Dialog */
+.review-status-dialog {
     position: fixed;
-    bottom: 30px;
-    right: 30px;
-    background: linear-gradient(135deg, #70e61c 0%, #5ac915 100%);
-    color: #141d2f;
-    padding: 16px 24px;
-    border-radius: 8px;
-    font-weight: 600;
-    font-size: 16px;
-    box-shadow: 0 8px 24px rgba(112, 230, 28, 0.3);
+    top: 50%;
+    left: 50%;
+    transform: translateX(-50%) translateY(-50%) scale(0.8);
     opacity: 0;
-    transform: translateX(400px) translateY(400px) scale(0.8);
-    transition: all 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
-    z-index: 9999;
-    max-width: 320px;
-    word-wrap: break-word;
+    z-index: 10000;
+    pointer-events: none;
+    transition: all 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
+    max-width: 500px;
+    width: 90%;
+    padding: 20px;
 }
 
-.review-notification.show {
+.review-status-dialog.show {
+    transform: translateX(-50%) translateY(-50%) scale(1);
     opacity: 1;
-    transform: translateX(0) translateY(0) scale(1);
+    pointer-events: auto;
+}
+
+.review-status-message {
+    min-height: 50px;
+    padding: 16px 24px;
+    text-align: center;
+    font-size: 16px;
+    border-radius: 8px;
+    background: rgba(20, 29, 47, 0.95);
+    border: 1px solid rgba(112, 230, 28, 0.5);
+    backdrop-filter: blur(10px);
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+    color: #70e61c;
+    font-weight: 600;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+/* Review Notification - kept for backwards compatibility but hidden */
+.review-notification {
+    display: none;
 }
 
 .contact_textarea_counter {
