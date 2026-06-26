@@ -7,9 +7,8 @@
         display: flex;
         flex-direction: column;
         align-items: end;
-        padding: 0;
+        padding: 0 !important;
         gap: 0;
-        padding: 10px;
     }
 
     .skills-content,
@@ -50,7 +49,7 @@
     }
 
     header {
-        padding: 5px;
+        padding: 0;
     }
 
     .header {
@@ -124,11 +123,15 @@
     }
 
     .about {
-        padding: 80px 10px 15px 10px;
+        padding: 85px 10px 15px 10px;
     }
 
     .contact::after {
         display: none;
+    }
+
+    .contact {
+        gap: 0;
     }
 
     .learning-techs {
@@ -154,7 +157,7 @@
     }
 
     .skills {
-        padding: 0 10px;
+        padding: 0;
     }
 
     .skills-title-line {
@@ -211,9 +214,20 @@
         align-items: center;
     }
 
-    .contact {
-        padding: 0 10px 10px 10px;
-        gap: 10px;
+    footer p {
+        font-size: 16px;
+    }
+
+    .legal-notice-left {
+        display: flex;
+        align-items: center;
+        flex-direction: column;
+    }
+
+    .contact_submit {
+        font-size: 20px;
+        max-width: 200px;
+        height: 50px;
     }
 
     .contact_me {
@@ -262,5 +276,21 @@
         background-color: #9646fe;
         filter: blur(60px);
         z-index: -1;
+    }
+
+    .review-comment-file {
+        font-size: 12px;
+    }
+
+    .review-notification {
+        bottom: 20px;
+        right: 20px;
+        max-width: 280px;
+        font-size: 14px;
+        padding: 14px 20px;
+    }
+
+    .admin-link {
+        display: none;
     }
 }

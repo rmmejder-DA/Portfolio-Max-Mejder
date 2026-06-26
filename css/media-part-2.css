@@ -5,14 +5,11 @@
         margin-bottom: 16px;
     }
 
-    .skills {
-        padding: 52px 22px 0;
-        justify-content: center;
-    }
-
     .skills-icons {
         grid-template-columns: repeat(3, minmax(86px, 1fr));
-        gap: 28px 20px;
+        padding: 10px;
+        width: 100%;
+        min-width: 270px;
     }
 
     .skills-title {
@@ -47,14 +44,14 @@
     }
 
     .about {
-        padding: 0 22px 15px 22px;
+        padding: 70px 0px 15px 0px;
     }
 }
 
 @media (max-width: 768px) {
 
     .contact-form-container {
-        padding: 0;
+        padding: 10px !important;
         align-items: center;
         gap: 20px;
     }
@@ -129,8 +126,7 @@
     }
 
     .about {
-        padding: 75px 100px 13px 10px;
-
+        padding: 125px 120px 15px 0px;
         flex-direction: column;
     }
 
@@ -232,14 +228,8 @@
         cursor: pointer;
     }
 
-    .contact-form-container {
-        padding: 10px !important;
-    }
-
     .introduction {
         right: 35px !important;
-        /* padding: 0 22px; */
-        /* width: 110%; */
         position: absolute !important;
     }
 }
@@ -279,10 +269,6 @@
 }
 
 @media (max-width: 600px) {
-    .portfolio {
-        padding: 48px 22px 60px 22px;
-    }
-
     .portfolio-section-title {
         font-size: var(--h2-size);
     }
@@ -298,4 +284,3 @@
         font-size: 16px;
     }
 }
-

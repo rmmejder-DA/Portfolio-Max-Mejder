@@ -22,7 +22,6 @@
 
     .scrollDown-vertical {
         font-size: 18px;
-        padding-right: 10px;
     }
 
     .about-me-decorative {
@@ -42,7 +41,6 @@
 @media (max-width: 1245px) {
     .skills-description-wrap {
         padding: 0 10px !important;
-        margin-right: 0 !important;
     }
 }
 
@@ -63,6 +61,7 @@
         max-width: 900px;
         min-width: 270px;
         order: 1;
+        width: 80%;
     }
 
     .reviewOfperson-avatar-wrap {
@@ -102,7 +101,7 @@
     }
 
     .about {
-        padding: 200px 10px 17px 10px;
+        padding: 200px 58px 17px 58px;
     }
 }
 
@@ -126,8 +125,8 @@
 
     .skills-icons {
         order: 3;
-        grid-template-columns: repeat(2, minmax(140px, 1fr));
-        gap: 10px 70px;
+        grid-template-columns: repeat(6, minmax(140px, 1fr));
+        gap: 10px 0px;
     }
 
     .skills-description {
@@ -140,13 +139,13 @@
 
     .skills-contact-btn {
         order: 6;
-        width: 60%;
-
+        width: 20%;
     }
 
     .skills-grid {
         grid-template-columns: 1fr;
         padding-top: 0;
+        width: 100%;
     }
 
     .skills-content {
@@ -161,13 +160,9 @@
     .skills-subtext,
     .skills-question {
         margin-left: 0;
-        text-align: right;
+        text-align: justify;
         margin-top: 0;
         padding-right: 10px;
-    }
-
-    .portfolio {
-        padding: 10px;
     }
 }
 
@@ -233,16 +228,16 @@
         text-align: center;
         margin-left: auto;
         margin-right: auto;
+        padding: 0;
+        align-items: center;
     }
 
     .portfolio-card-join,
-    .portfolio-card-fotogramm,
-    .portfolio-card-kochwelt,
     .portfolio-card-pokedex,
-    .portfolio-card-el_pollo_loco,
-    .portfolio-card-bestellapp {
+    .portfolio-card-el_pollo_loco {
         grid-template-columns: 1fr;
         gap: 40px;
+        padding: 10px;
     }
 
     .notebook-frame {
@@ -340,8 +335,6 @@
 
 @media (min-width: 960px) {
 
-    .portfolio-card-join,
-    .portfolio-card-fotogramm,
     .portfolio-card-pokedex {
         flex-direction: row-reverse;
         display: flex;

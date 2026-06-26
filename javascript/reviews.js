@@ -1,4 +1,5 @@
 const REVIEW_STORAGE_KEY = 'portfolioReviews';
+const PENDING_REVIEW_STORAGE_KEY = 'portfolioPendingReviews';
 const DEFAULT_REVIEW_PHOTO = 'data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iNDgiIGhlaWdodD0iNDgiIHZpZXdCb3g9IjAgMCA0OCA0OCIgc3Ryb2tlPSIjNzBFNjFDIiBzdHJva2Utd2lkdGg9IjIuNSIgc3Ryb2tlLWxpbmVjYXA9InJvdW5kIiBzdHJva2UtbGluZWpvaW49InJvdW5kIj48ZyB0cmFuc2Zvcm09InRyYW5zbGF0ZSg0LCAwKSI+PHBhdGggZD0iTTE4LjUgNi41QzIwLjk4NTMgNi41IDIzIDguNTE0NzIgMjMgMTFWMTNIMzFDMzIuNjU2OSAxMyA0NCAxNC4zNDMxIDQ0IDE2VjI0SDE2VjE1QzE2IDguNTE0NzIgMTguMDE0NyA2LjUgMTguNSA2LjVaIiBzdHJva2UtbGluZWNhcD0icm91bmQiIHN0cm9rZS13aWR0aD0iMi41IiBzdHJva2UtbGluZWpvaW49InJvdW5kIi8+PC9nPjwvc3ZnPg==';
 const REVIEWS_API_URL = 'reviews_api.php';
 
@@ -43,7 +44,7 @@ function renderEmptyReviewState(language = getSelectedLanguage()) {
 async function fetchServerReviews() {
     if (!shouldUseReviewApi()) return null;
     try {
-        const response = await fetch(REVIEWS_API_URL, { headers: { 'Accept': 'application/json' } });
+        const response = await fetch(REVIEWS_API_URL + '?action=approved', { headers: { 'Accept': 'application/json' } });
         if (!response.ok) return null;
         const data = await response.json().catch(() => ({}));
         return getSafeReviewList(data.reviews);
@@ -54,15 +55,20 @@ async function fetchServerReviews() {
 
 async function loadReviews() {
     try {
-        const stored = localStorage.getItem(REVIEW_STORAGE_KEY);
-        const parsed = stored ? JSON.parse(stored) : [];
-        reviews = getSafeReviewList(parsed);
+        // Try API first
         const serverReviews = await fetchServerReviews();
-        if (serverReviews) reviews = serverReviews;
+        if (serverReviews) {
+            reviews = serverReviews;
+        } else {
+            // Fallback to localStorage
+            const stored = localStorage.getItem(REVIEW_STORAGE_KEY);
+            reviews = stored ? JSON.parse(stored) : [];
+        }
         normalizeReviews();
-        saveReviews();
     } catch (error) {
-        reviews = [];
+        // Fallback to localStorage
+        const stored = localStorage.getItem(REVIEW_STORAGE_KEY);
+        reviews = stored ? JSON.parse(stored) : [];
     }
 }
 
@@ -71,15 +77,28 @@ function saveReviews() {
 }
 
 async function pushReviewToServer(review) {
-    if (!shouldUseReviewApi()) return;
+    if (!shouldUseReviewApi()) {
+        // Fallback: save to pending reviews in localStorage
+        const pending = JSON.parse(localStorage.getItem(PENDING_REVIEW_STORAGE_KEY) || '[]');
+        review.timestamp = new Date().toLocaleString();
+        pending.push(review);
+        localStorage.setItem(PENDING_REVIEW_STORAGE_KEY, JSON.stringify(pending));
+        console.log('Review saved to localStorage (pending moderation)');
+        return;
+    }
     try {
-        await fetch(REVIEWS_API_URL, {
+        await fetch(REVIEWS_API_URL + '?action=submit', {
             method: 'POST',
             headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
             body: JSON.stringify(review)
         });
     } catch (error) {
-        /* ignore */
+        // Fallback to localStorage if server fails
+        const pending = JSON.parse(localStorage.getItem(PENDING_REVIEW_STORAGE_KEY) || '[]');
+        review.timestamp = new Date().toLocaleString();
+        pending.push(review);
+        localStorage.setItem(PENDING_REVIEW_STORAGE_KEY, JSON.stringify(pending));
+        console.log('Review saved to localStorage (server failed)');
     }
 }
 
@@ -232,15 +251,12 @@ async function onReviewSubmit(event, data) {
     if (!syncReviewFormState(data) || !isReviewInputValid(name, text)) return;
     const photo = await getPhotoData(data.photoInput);
     const newReview = { name, text: `"${text}"`, photo };
-    reviews.push(newReview);
-    normalizeReviews();
-    saveReviews();
+    // Send to server for moderation, don't save locally
     await pushReviewToServer(newReview);
-    rebuildReviewDots();
-    showReview(reviews.length - 1);
     data.form.reset();
     syncReviewFormState(data);
     if (data.dialog) data.dialog.close();
+    showReviewNotification();
 }
 
 function bindReviewForm() {
@@ -260,6 +276,39 @@ function bindReviewCommentDialog() {
     if (!dialog || !open) return;
     open.addEventListener('click', () => dialog.showModal && dialog.showModal());
     if (close) close.addEventListener('click', () => dialog.close());
+}
+
+function clearAllReviews() {
+    reviews = [];
+    localStorage.removeItem(REVIEW_STORAGE_KEY);
+    currentReviewIndex = 0;
+    rebuildReviewDots();
+    renderEmptyReviewState(getSelectedLanguage());
+    console.log('All reviews and photos deleted from localStorage');
+}
+
+function showReviewNotification() {
+    const language = getSelectedLanguage();
+    const copy = getCopy(language);
+    if (!copy) return;
+
+    const notification = document.createElement('div');
+    notification.className = 'review-notification';
+    notification.setAttribute('role', 'status');
+    notification.setAttribute('aria-live', 'polite');
+    notification.textContent = copy.reviewSubmittedNotification;
+    document.body.appendChild(notification);
+
+    requestAnimationFrame(() => {
+        notification.classList.add('show');
+    });
+
+    setTimeout(() => {
+        notification.classList.remove('show');
+        setTimeout(() => {
+            notification.remove();
+        }, 300);
+    }, 5000);
 }
 
 async function initializeReviews() {

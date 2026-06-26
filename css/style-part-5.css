@@ -358,3 +358,28 @@ form {
         transition: none;
     }
 }
+
+/* Review Notification */
+.review-notification {
+    position: fixed;
+    bottom: 30px;
+    right: 30px;
+    background: linear-gradient(135deg, #70e61c 0%, #5ac915 100%);
+    color: #141d2f;
+    padding: 16px 24px;
+    border-radius: 8px;
+    font-weight: 600;
+    font-size: 16px;
+    box-shadow: 0 8px 24px rgba(112, 230, 28, 0.3);
+    opacity: 0;
+    transform: translateX(400px) translateY(400px) scale(0.8);
+    transition: all 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
+    z-index: 9999;
+    max-width: 320px;
+    word-wrap: break-word;
+}
+
+.review-notification.show {
+    opacity: 1;
+    transform: translateX(0) translateY(0) scale(1);
+}

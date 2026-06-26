@@ -11,6 +11,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'OPTIONS') {
 }
 
 $dataFile = __DIR__ . '/reviews_data.json';
+$pendingFile = __DIR__ . '/reviews_pending.json';
 
 function readReviews($path)
 {
@@ -33,36 +34,116 @@ function isValidReview($review)
 
 switch ($_SERVER['REQUEST_METHOD']) {
     case 'GET':
-        $reviews = readReviews($dataFile);
-        echo json_encode(['success' => true, 'reviews' => array_values($reviews)]);
+        $action = $_GET['action'] ?? 'approved';
+        
+        if ($action === 'pending') {
+            $pending = readReviews($pendingFile);
+            echo json_encode(['success' => true, 'reviews' => array_values($pending)]);
+        } else if ($action === 'approved') {
+            $reviews = readReviews($dataFile);
+            echo json_encode(['success' => true, 'reviews' => array_values($reviews)]);
+        } else {
+            http_response_code(400);
+            echo json_encode(['success' => false, 'error' => 'Invalid action']);
+        }
         break;
 
     case 'POST':
-        $json = file_get_contents('php://input');
-        $review = json_decode($json, true);
-        if (json_last_error() !== JSON_ERROR_NONE || !isValidReview($review)) {
+        $action = $_GET['action'] ?? 'submit';
+        
+        if ($action === 'submit') {
+            $json = file_get_contents('php://input');
+            $review = json_decode($json, true);
+            if (json_last_error() !== JSON_ERROR_NONE || !isValidReview($review)) {
+                http_response_code(400);
+                echo json_encode(['success' => false, 'error' => 'Invalid review', 'json_error' => json_last_error_msg()]);
+                exit;
+            }
+
+            $review['name'] = trim($review['name']);
+            $review['text'] = trim($review['text']);
+            $review['timestamp'] = date('Y-m-d H:i:s');
+
+            $pending = readReviews($pendingFile);
+            $pending[] = $review;
+
+            $saved = @file_put_contents($pendingFile, json_encode($pending, JSON_UNESCAPED_UNICODE | JSON_PRETTY_PRINT), LOCK_EX);
+            if ($saved === false) {
+                http_response_code(500);
+                echo json_encode(['success' => false, 'error' => 'Failed to save review. Check file permissions.']);
+                exit;
+            }
+
+            echo json_encode(['success' => true, 'message' => 'Review submitted for moderation']);
+        } 
+        else if ($action === 'approve') {
+            $json = file_get_contents('php://input');
+            $data = json_decode($json, true);
+            
+            if (!isset($data['indices']) || !is_array($data['indices'])) {
+                http_response_code(400);
+                echo json_encode(['success' => false, 'error' => 'Invalid indices']);
+                exit;
+            }
+
+            $pending = readReviews($pendingFile);
+            $approved = readReviews($dataFile);
+            
+            $indicesToApprove = array_filter($data['indices'], 'is_int');
+            $indicesToApprove = array_unique($indicesToApprove);
+            rsort($indicesToApprove);
+
+            foreach ($indicesToApprove as $index) {
+                if (isset($pending[$index])) {
+                    $review = $pending[$index];
+                    unset($review['timestamp']);
+                    $approved[] = $review;
+                    unset($pending[$index]);
+                }
+            }
+
+            $pending = array_values($pending);
+
+            if (count($approved) > 40) {
+                $approved = array_slice($approved, -40);
+            }
+
+            file_put_contents($dataFile, json_encode($approved, JSON_UNESCAPED_UNICODE | JSON_PRETTY_PRINT), LOCK_EX);
+            file_put_contents($pendingFile, json_encode($pending, JSON_UNESCAPED_UNICODE | JSON_PRETTY_PRINT), LOCK_EX);
+
+            echo json_encode(['success' => true, 'message' => 'Reviews approved']);
+        }
+        else if ($action === 'delete') {
+            $json = file_get_contents('php://input');
+            $data = json_decode($json, true);
+            
+            if (!isset($data['indices']) || !is_array($data['indices'])) {
+                http_response_code(400);
+                echo json_encode(['success' => false, 'error' => 'Invalid indices']);
+                exit;
+            }
+
+            $pending = readReviews($pendingFile);
+            
+            $indicesToDelete = array_filter($data['indices'], 'is_int');
+            $indicesToDelete = array_unique($indicesToDelete);
+            rsort($indicesToDelete);
+
+            foreach ($indicesToDelete as $index) {
+                if (isset($pending[$index])) {
+                    unset($pending[$index]);
+                }
+            }
+
+            $pending = array_values($pending);
+            file_put_contents($pendingFile, json_encode($pending, JSON_UNESCAPED_UNICODE | JSON_PRETTY_PRINT), LOCK_EX);
+
+            echo json_encode(['success' => true, 'message' => 'Reviews deleted']);
+        }
+        else {
             http_response_code(400);
-            echo json_encode(['success' => false, 'error' => 'Invalid review']);
-            exit;
+            echo json_encode(['success' => false, 'error' => 'Invalid action']);
         }
-
-        $review['name'] = trim($review['name']);
-        $review['text'] = trim($review['text']);
-
-        $reviews = readReviews($dataFile);
-        $reviews[] = $review;
-        if (count($reviews) > 40) {
-            $reviews = array_slice($reviews, -40);
-        }
-
-        $saved = file_put_contents($dataFile, json_encode($reviews, JSON_UNESCAPED_UNICODE | JSON_PRETTY_PRINT), LOCK_EX);
-        if ($saved === false) {
-            http_response_code(500);
-            echo json_encode(['success' => false, 'error' => 'Persist failed']);
-            exit;
-        }
-
-        echo json_encode(['success' => true]);
         break;
 
     default:

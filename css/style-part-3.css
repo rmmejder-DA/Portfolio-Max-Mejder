@@ -1,14 +1,14 @@
 ﻿.skills-icons {
     display: grid;
     grid-template-columns: repeat(4, minmax(90px, 1fr));
-    gap: 42px 34px;
+    gap: 42px 0px;
     max-width: 760px;
 }
 
 .skill-card {
     display: flex;
     flex-direction: column;
-    align-items: center;
+    align-items: flex-start;
     text-align: center;
     gap: 10px;
 }
@@ -172,7 +172,7 @@
 
 .skills-question {
     margin: 34px 0 0;
-    font-size: 32px;
+    font-size: 28px;
     font-weight: 700;
     text-align: left;
 }
@@ -244,10 +244,7 @@
     margin-bottom: 72px;
 }
 
-.portfolio-card-bestellapp,
 .portfolio-card-join,
-.portfolio-card-fotogramm,
-.portfolio-card-kochwelt,
 .portfolio-card-pokedex,
 .portfolio-card-el_pollo_loco {
     display: grid;
@@ -256,20 +253,7 @@
     align-items: center;
     margin-bottom: 80px;
     justify-content: space-around;
-}
-
-.portfolio-card-fotogramm::before {
-    content: '';
-    position: absolute;
-    bottom: 31%;
-    left: -43%;
-    width: 112%;
-    height: 49%;
-    transform: scale(0.5) rotate(69deg);
-    border-radius: 151% 11% 264% 27%;
-    background-color: #70e61c;
-    filter: blur(75px);
-    z-index: -1;
+    padding: 0 58px;
 }
 
 /* Notebook Mockup */
@@ -314,8 +298,10 @@
 /* Card Content */
 .portfolio-card-content {
     display: flex;
+    align-items: flex-end;
     flex-direction: column;
     gap: 16px;
+    padding-right: 58px;
 }
 
 .portfolio-project-title {

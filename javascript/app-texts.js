@@ -33,6 +33,7 @@ window.APP_COPY = {
         emptyReviewText: 'Noch keine Kommentare. Hinterlasse über den Button dein Feedback.',
         emptyReviewName: 'Dein Kommentar erscheint hier',
         emptyReviewAlt: 'Platzhalter für Kommentare',
+        reviewSubmittedNotification: 'Kommentar wird bald veröffentlicht',
     },
     en: {
         navigationDesktop: ['About me', 'My skills', 'Portfolio'],
@@ -68,5 +69,6 @@ window.APP_COPY = {
         emptyReviewText: 'No comments yet. Leave your feedback using the button below.',
         emptyReviewName: 'Your comment will appear here',
         emptyReviewAlt: 'Placeholder for comments',
+        reviewSubmittedNotification: 'Your comment will be published soon',
     }
 };

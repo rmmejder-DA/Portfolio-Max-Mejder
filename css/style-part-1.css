@@ -81,15 +81,29 @@ footer p {
     max-width: 1440px;
     margin: 0 auto;
 }
+
 .footer {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding: 16px;
+    padding: 16px 58px;
     min-width: 270px;
     max-width: 1440px;
     margin: 0 auto;
     height: 200px;
+}
+
+.admin-link {
+    font-size: 16px;
+    opacity: 0.6;
+    cursor: pointer;
+    text-align: center;
+    color: #ffffff;
+}
+
+.admin-link:hover {
+    opacity: 1;
+    width: 100%;
 }
 
 .socials {
@@ -274,8 +288,8 @@ footer p {
     background-clip: text;
     -webkit-text-fill-color: transparent;
     font-weight: bold;
-    text-decoration: none!important;
-    font-size: 36px!important;
+    text-decoration: none !important;
+    font-size: 36px !important;
     pointer-events: none;
 }
 
@@ -329,4 +343,3 @@ footer p {
     right: 0;
     z-index: 1;
 }
-

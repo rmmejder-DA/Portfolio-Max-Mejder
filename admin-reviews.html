@@ -1,0 +1,349 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin - Review Moderation</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+            background: #f5f5f5;
+            padding: 20px;
+            color: #333;
+        }
+
+        .container {
+            max-width: 1000px;
+            margin: 0 auto;
+            background: white;
+            border-radius: 8px;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+            padding: 30px;
+        }
+
+        h1 {
+            margin-bottom: 10px;
+            color: #222;
+        }
+
+        .subtitle {
+            color: #666;
+            margin-bottom: 30px;
+            font-size: 14px;
+        }
+
+        .controls {
+            display: flex;
+            gap: 10px;
+            margin-bottom: 25px;
+            flex-wrap: wrap;
+            align-items: center;
+        }
+
+        button {
+            padding: 10px 16px;
+            border: none;
+            border-radius: 4px;
+            font-size: 14px;
+            cursor: pointer;
+            font-weight: 600;
+            transition: all 0.2s;
+        }
+
+        .btn-primary {
+            background: #70e61c;
+            color: white;
+        }
+
+        .btn-primary:hover:not(:disabled) {
+            background: #5ac915;
+            transform: translateY(-1px);
+        }
+
+        .btn-primary:disabled {
+            background: #ccc;
+            cursor: not-allowed;
+        }
+
+        .btn-danger {
+            background: #ff4444;
+            color: white;
+        }
+
+        .btn-danger:hover:not(:disabled) {
+            background: #cc0000;
+            transform: translateY(-1px);
+        }
+
+        .btn-danger:disabled {
+            background: #ccc;
+            cursor: not-allowed;
+        }
+
+        .btn-secondary {
+            background: #666;
+            color: white;
+            margin-left: auto;
+        }
+
+        .btn-secondary:hover {
+            background: #444;
+        }
+
+        .select-info {
+            color: #666;
+            font-size: 14px;
+        }
+
+        .reviews-list {
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+        }
+
+        .review-item {
+            display: flex;
+            gap: 15px;
+            padding: 20px;
+            border: 1px solid #ddd;
+            border-radius: 6px;
+            background: #fafafa;
+            transition: all 0.2s;
+        }
+
+        .review-item:hover {
+            border-color: #70e61c;
+            background: #f0fff0;
+        }
+
+        .review-item input[type="checkbox"] {
+            width: 20px;
+            height: 20px;
+            cursor: pointer;
+            margin-top: 2px;
+            flex-shrink: 0;
+        }
+
+        .review-content {
+            flex: 1;
+        }
+
+        .review-header {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            margin-bottom: 10px;
+        }
+
+        .review-photo {
+            width: 48px;
+            height: 48px;
+            border-radius: 50%;
+            object-fit: cover;
+            flex-shrink: 0;
+        }
+
+        .review-meta {
+            flex: 1;
+        }
+
+        .review-name {
+            font-weight: 600;
+            font-size: 16px;
+            color: #222;
+        }
+
+        .review-time {
+            font-size: 12px;
+            color: #999;
+        }
+
+        .review-text {
+            color: #555;
+            line-height: 1.5;
+            word-wrap: break-word;
+        }
+
+        .empty-state {
+            text-align: center;
+            padding: 60px 20px;
+            color: #999;
+        }
+
+        .empty-state-icon {
+            font-size: 48px;
+            margin-bottom: 20px;
+        }
+
+        .empty-state-title {
+            font-size: 20px;
+            font-weight: 600;
+            color: #666;
+            margin-bottom: 10px;
+        }
+
+        .loading {
+            text-align: center;
+            padding: 40px;
+            color: #666;
+        }
+
+        .message {
+            padding: 15px;
+            border-radius: 4px;
+            margin-bottom: 20px;
+            display: none;
+        }
+
+        .message.success {
+            display: block;
+            background: #e8f5e9;
+            color: #2e7d32;
+            border: 1px solid #a5d6a7;
+        }
+
+        .message.error {
+            display: block;
+            background: #ffebee;
+            color: #c62828;
+            border: 1px solid #ef9a9a;
+        }
+
+        /* Login Dialog */
+        .login-overlay {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.7);
+            z-index: 9999;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .login-overlay.active {
+            display: flex;
+        }
+
+        .login-box {
+            background: white;
+            padding: 40px;
+            border-radius: 8px;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
+            max-width: 400px;
+            width: 90%;
+        }
+
+        .login-box h2 {
+            margin-bottom: 10px;
+            color: #222;
+        }
+
+        .login-box p {
+            color: #666;
+            margin-bottom: 30px;
+            font-size: 14px;
+        }
+
+        .login-form {
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+        }
+
+        .login-form input {
+            padding: 12px;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            font-size: 16px;
+            font-family: inherit;
+        }
+
+        .login-form input:focus {
+            outline: none;
+            border-color: #70e61c;
+            box-shadow: 0 0 0 3px rgba(112, 230, 28, 0.1);
+        }
+
+        .login-form button {
+            width: 100%;
+        }
+
+        .admin-user {
+            color: #666;
+            font-size: 13px;
+        }
+
+        @media (max-width: 768px) {
+            .container {
+                padding: 20px;
+            }
+
+            .review-item {
+                flex-direction: column;
+            }
+
+            .controls {
+                flex-direction: column;
+                align-items: stretch;
+            }
+
+            button {
+                width: 100%;
+            }
+
+            .btn-secondary {
+                margin-left: 0;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="login-overlay active" id="loginOverlay">
+        <div class="login-box">
+            <h2>🔐 Admin Login</h2>
+            <p>Enter your password to access the review moderation panel.</p>
+            <form class="login-form" id="loginForm">
+                <input type="password" id="adminPassword" placeholder="Enter password" autocomplete="off" required>
+                <button type="submit" class="btn-primary">Login</button>
+            </form>
+        </div>
+    </div>
+
+    <div class="container" id="adminPanel" style="display: none;">
+        <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 20px;">
+            <div>
+                <h1>📝 Review Moderation</h1>
+                <p class="subtitle">Approve or reject pending reviews before they appear on the portfolio</p>
+            </div>
+            <button id="logoutBtn" class="btn-secondary">Logout</button>
+        </div>
+
+        <div id="message" class="message"></div>
+
+        <div class="controls">
+            <label class="select-info">
+                <input type="checkbox" id="selectAll"> Select All
+            </label>
+            <button id="approveBtn" class="btn-primary" disabled>✓ Approve Selected</button>
+            <button id="deleteBtn" class="btn-danger" disabled>✕ Delete Selected</button>
+            <button id="refreshBtn" class="btn-primary" style="margin-left: auto;">🔄 Refresh</button>
+            <span id="selectedCount" class="select-info"></span>
+        </div>
+
+        <div id="reviewsList" class="reviews-list">
+            <div class="loading">Loading pending reviews...</div>
+        </div>
+    </div>
+
+    <script src="javascript/admin-reviews.js"></script>
+</body>
+</html>
