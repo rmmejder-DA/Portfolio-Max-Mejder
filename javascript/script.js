@@ -1,5 +1,7 @@
 function initApp() {
-    applyLanguage('en');
+    const savedLanguage = localStorage.getItem('portfolioLanguage') || 'en';
+    applyLanguage(savedLanguage);
+    markLanguageButtons(savedLanguage);
     bindSectionNavigation();
     bindScrollButtons();
     bindMobileMenu();

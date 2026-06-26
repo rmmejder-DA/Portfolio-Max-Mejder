@@ -1,4 +1,4 @@
-const STORAGE_KEY = 'portfolioLegalLanguage';
+const STORAGE_KEY = 'portfolioLanguage';
 
 const DE_IMPRESSUM = {
     headings: ['Verantwortlich für den Inhalt', 'Kontakt', 'Haftung für Inhalte', 'Haftung für Links', 'Urheberrecht'],

@@ -67,6 +67,7 @@ function markLanguageButtons(language) {
 
 function setActiveLanguage(clickedButton) {
     const lang = clickedButton.textContent.trim().toLowerCase() === 'de' ? 'de' : 'en';
+    localStorage.setItem('portfolioLanguage', lang);
     markLanguageButtons(lang);
     applyLanguage(lang);
 }

@@ -37,30 +37,35 @@ function getContactMessages() {
 }
 
 function ensureContactStatusNode(form) {
-    let node = q('#contactStatusMessage');
-    if (node) return node;
-    node = document.createElement('p');
-    node.id = 'contactStatusMessage';
-    node.className = 'contact-status-message';
-    node.setAttribute('aria-live', 'polite');
-    form.appendChild(node);
-    return node;
+    let dialog = q('#contactStatusDialog');
+    if (dialog) return q('#contactStatusMessage');
+    dialog = document.createElement('div');
+    dialog.id = 'contactStatusDialog';
+    dialog.className = 'contact-status-dialog';
+    dialog.innerHTML = '<p id="contactStatusMessage" class="contact-status-message" aria-live="polite"></p>';
+    document.body.appendChild(dialog);
+    return q('#contactStatusMessage');
 }
 
 function setContactStatus(form, text, type) {
     const node = ensureContactStatusNode(form);
+    const dialog = q('#contactStatusDialog');
     if (contactStatusHideTimer) {
         clearTimeout(contactStatusHideTimer);
-        contactStatusHideTimer = null;}
+        contactStatusHideTimer = null;
+    }
     node.textContent = text;
     node.classList.remove('is-success', 'is-error', 'is-info');
+    dialog.classList.remove('show');
+    void dialog.offsetWidth;
     if (type) node.classList.add(type);
+    dialog.classList.add('show');
     if (type === 'is-success') {
         contactStatusHideTimer = window.setTimeout(() => {
-            node.textContent = '';
-            node.classList.remove('is-success', 'is-error', 'is-info');
+            dialog.classList.remove('show');
             contactStatusHideTimer = null;
-        }, 1000);}
+        }, 3000);
+    }
 }
 
 function shouldUseDirectFormSubmitFallback() {

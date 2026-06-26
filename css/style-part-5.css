@@ -283,24 +283,55 @@ form {
     transform: translateY(0);
 }
 
+.contact-status-dialog {
+    position: fixed;
+    top: 0;
+    left: 50%;
+    transform: translateX(-50%) translateY(-150px);
+    z-index: 10000;
+    pointer-events: none;
+    transition: transform 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
+    max-width: 500px;
+    width: 90%;
+    padding: 20px;
+}
+
+.contact-status-dialog.show {
+    transform: translateX(-50%) translateY(20px);
+    pointer-events: auto;
+}
+
 .contact-status-message {
-    min-height: 24px;
-    margin-top: 6px;
+    min-height: 50px;
+    padding: 16px 24px;
     text-align: center;
-    font-size: 15px;
+    font-size: 16px;
+    border-radius: 8px;
+    background: rgba(20, 29, 47, 0.95);
+    border: 1px solid rgba(112, 230, 28, 0.3);
+    backdrop-filter: blur(10px);
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
     color: #d7deee;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 
 .contact-status-message.is-info {
     color: #d7deee;
+    border-color: rgba(215, 222, 238, 0.3);
 }
 
 .contact-status-message.is-success {
     color: #70e61c;
+    border-color: rgba(112, 230, 28, 0.5);
+    background: rgba(20, 29, 47, 0.95);
 }
 
 .contact-status-message.is-error {
     color: #ff5f7a;
+    border-color: rgba(255, 95, 122, 0.5);
+    background: rgba(20, 29, 47, 0.95);
 }
 
 
