@@ -12,19 +12,20 @@ main {
     flex: 1;
 }
 
-.legal-header {
+.legal-page-header {
     display: flex;
     align-items: center;
-    justify-content: center;
+    justify-content: space-between;
     gap: 12px;
-    padding-top: 30px;
+    padding: 30px 20px;
+    margin-bottom: 20px;
+    border-bottom: 2px solid rgba(112, 230, 28, 0.3);
 }
-.legal-footer {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    padding: 16px;
-    border-top: 3px solid #70e61c;
+
+.legal-page-header h1 {
+    margin: 0;
+    font-size: clamp(34px, 6vw, 56px);
+    color: #70e61c;
 }
 .legal-page {
     max-width: 900px;
@@ -37,12 +38,6 @@ main {
     margin: 0;
     font-size: clamp(34px, 6vw, 56px);
     color: #70e61c;
-}
-
-.legal-header p {
-    margin: 12px 0 0;
-    color: #ffffff;
-    font-size: 18px;
 }
 
 .legal-translate {
