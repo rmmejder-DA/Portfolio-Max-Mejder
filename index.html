@@ -404,7 +404,8 @@
                     </div>
                     <input type="hidden" name="_captcha" value="false">
                     <input type="hidden" name="_template" value="table">
-                    <textarea name="message" placeholder="Your message" class="contact_textarea" required></textarea>
+                    <textarea name="message" placeholder="Your message" class="contact_textarea" maxlength="1000" required></textarea>
+                    <div class="contact_textarea_counter"><span id="charCount">0</span>/1000</div>
                     <div class="contact_policy_row">
                         <input type="checkbox" id="privacy-policy" class="contact_checkbox" required>
                         <label for="privacy-policy" class="contact_checkbox_label">I've read the <a

@@ -178,11 +178,12 @@
 
     .job-title {
         font-size: 24px;
-        line-height: 38px;
+        line-height: 33px;
+        font-weight: bold;
     }
 
     .vertical-headline {
-        font-size: var(--h2-size);
+        font-size: 39px;
         padding-top: 14px;
     }
 
@@ -206,7 +207,8 @@
 
     .contact-form-container {
         flex-direction: column;
-        align-items: flex-start;
+        align-items: center;
+            padding: 0px 56px 0px;
     }
 
     .if_problem {

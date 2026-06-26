@@ -163,11 +163,18 @@ function bindContactFormValidation() {
     const form = q('.contact_form');
     const submit = q('.contact_submit');
     const email = form ? form.querySelector('input[type="email"]') : null;
+    const textarea = form ? form.querySelector('.contact_textarea') : null;
+    const charCount = q('#charCount');
     const error = q('.email-error-message');
     if (!form || !submit || !email) return;
     const sync = () => syncContactFormState(form, submit, email, error);
     form.addEventListener('input', sync);
     form.addEventListener('change', sync);
+    if (textarea && charCount) {
+        textarea.addEventListener('input', () => {
+            charCount.textContent = textarea.value.length;
+        });
+    }
     form.addEventListener('submit', async (event) => {
         event.preventDefault();
         await sendContactForm(form);

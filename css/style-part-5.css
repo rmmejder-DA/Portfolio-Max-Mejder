@@ -383,3 +383,11 @@ form {
     opacity: 1;
     transform: translateX(0) translateY(0) scale(1);
 }
+
+.contact_textarea_counter {
+    font-size: 14px;
+    color: #70e61c;
+    text-align: right;
+    margin-top: -12px;
+    margin-bottom: 8px;
+}
