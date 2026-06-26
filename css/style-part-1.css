@@ -290,7 +290,13 @@ footer p {
     font-weight: bold;
     text-decoration: none !important;
     font-size: 36px !important;
-    pointer-events: none;
+    cursor: pointer;
+    transition: transform 0.2s ease;
+}
+
+.header-name:hover,
+.footer-name:hover {
+    transform: scale(1.05);
 }
 
 .nav {
