@@ -168,7 +168,7 @@ a:hover {
 
 @media (max-width: 600px) {
     .legal-page {
-        padding-top: 30px;
+        padding-top: 80px!important;
     }
 
     .legal-section {

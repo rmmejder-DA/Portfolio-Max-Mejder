@@ -260,8 +260,8 @@
     .legal-page {
         padding: 10px;
         min-width: 270px;
-        width: 60%;
-        margin: 0px 9px auto;
+        width: 100%;
+        margin: 0 auto;
     }
 
     .about-me::before {
