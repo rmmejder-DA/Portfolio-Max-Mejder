@@ -1,4 +1,4 @@
-﻿.portfolio-description {
+.portfolio-description {
     font-size: 16px;
     line-height: 1.7;
     color: #ffffff;
@@ -192,7 +192,6 @@
     color: #88f229;
 }
 
-.review-comment-open {
     display: flex;
     align-items: center;
     justify-content: center;
@@ -208,13 +207,10 @@
     transition: transform 0.2s ease, filter 0.2s ease;
 }
 
-.review-comment-open:hover,
-.review-comment-open:focus-visible {
     transform: translateY(-2px);
     filter: brightness(1.04);
 }
 
-.review-comment-dialog {
     width: min(760px, calc(100vw - 32px));
     padding: 0;
     border: none;
@@ -227,13 +223,11 @@
     transform: translate(-50%, -50%);
 }
 
-.review-comment-dialog::backdrop {
     background: rgba(9, 14, 24, 0.78);
     -webkit-backdrop-filter: blur(5px);
     backdrop-filter: blur(5px);
 }
 
-.review-comment-box {
     width: 100%;
     max-width: none;
     margin: 0;
@@ -244,7 +238,6 @@
     position: relative;
 }
 
-.review-comment-close {
     position: absolute;
     top: 12px;
     right: 12px;
@@ -259,26 +252,20 @@
     cursor: pointer;
 }
 
-.review-comment-close:hover,
-.review-comment-close:focus-visible {
     background: rgba(151, 71, 255, 0.4);
 }
 
-.review-comment-title {
     margin: 0 0 14px;
     font-size: 22px;
     color: #70e61c;
 }
 
-.review-comment-form {
     display: flex;
     flex-direction: column;
     gap: 12px;
     max-width: none;
 }
 
-.review-comment-input,
-.review-comment-textarea {
     width: 100%;
     border: 2px solid #9747ff;
     border-radius: 10px;
@@ -289,35 +276,26 @@
     font-family: inherit;
 }
 
-.review-comment-textarea {
     min-height: 110px;
     resize: vertical;
 }
 
-.review-comment-input::placeholder,
-.review-comment-textarea::placeholder {
     color: #b8c2da;
 }
 
-.review-comment-input:focus,
-.review-comment-textarea:focus {
     outline: none;
     border-color: #70e61c;
 }
 
-.review-comment-input.is-invalid,
-.review-comment-textarea.is-invalid {
     border-color: #ff6b6b;
 }
 
-.review-comment-error {
     min-height: 20px;
     margin: -4px 0 0;
     font-size: 14px;
     color: #ff6b6b;
 }
 
-.review-comment-submit {
     width: fit-content;
     border: none;
     border-radius: 10px;
@@ -330,8 +308,8 @@
     transition: transform 0.2s ease, background-color 0.2s ease;
 }
 
-.review-comment-submit:disabled {
     cursor: not-allowed;
     background: #7d8a9f;
     transform: none;
 }
+

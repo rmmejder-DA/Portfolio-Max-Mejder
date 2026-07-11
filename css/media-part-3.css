@@ -278,11 +278,10 @@
         z-index: -1;
     }
 
-    .review-comment-file {
-        font-size: 12px;
-    }
-
     .admin-link {
         display: none;
+    }
+    section {
+        scroll-margin-top: 92px;
     }
 }

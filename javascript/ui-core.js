@@ -10,7 +10,7 @@ function setTextAt(selector, index, value) {
 }
 
 function scrollToContact() {
-    const section = q('.reviewOfperson-container');
+    const section = q('#contact_me');
     if (section) section.scrollIntoView({ behavior: 'smooth' });
 }
 
@@ -102,7 +102,6 @@ function initializeScrollReveal() {
         '.portfolio-card-el_pollo_loco',
         '.reviewOfperson-container',
         '.review-slider-controls',
-        '.review-comment-open',
         '.contact-header',
         '.if_problem',
         '.contact_form',

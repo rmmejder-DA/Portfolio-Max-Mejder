@@ -3,7 +3,23 @@ const PENDING_REVIEW_STORAGE_KEY = 'portfolioPendingReviews';
 const DEFAULT_REVIEW_PHOTO = 'data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iNDgiIGhlaWdodD0iNDgiIHZpZXdCb3g9IjAgMCA0OCA0OCIgc3Ryb2tlPSIjNzBFNjFDIiBzdHJva2Utd2lkdGg9IjIuNSIgc3Ryb2tlLWxpbmVjYXA9InJvdW5kIiBzdHJva2UtbGluZWpvaW49InJvdW5kIj48ZyB0cmFuc2Zvcm09InRyYW5zbGF0ZSg0LCAwKSI+PHBhdGggZD0iTTE4LjUgNi41QzIwLjk4NTMgNi41IDIzIDguNTE0NzIgMjMgMTFWMTNIMzFDMzIuNjU2OSAxMyA0NCAxNC4zNDMxIDQ0IDE2VjI0SDE2VjE1QzE2IDguNTE0NzIgMTguMDE0NyA2LjUgMTguNSA2LjVaIiBzdHJva2UtbGluZWNhcD0icm91bmQiIHN0cm9rZS13aWR0aD0iMi41IiBzdHJva2UtbGluZWpvaW49InJvdW5kIi8+PC9nPjwvc3ZnPg==';
 const REVIEWS_API_URL = 'reviews_api.php';
 
-let reviews = [];
+let reviews = [
+    {
+        name: 'Sarah Wagner',
+        text: '"Max hat unsere Website von Grund auf neu entwickelt und das Ergebnis ist fantastisch. Seine Frontend-Skills sind beeindruckend, er arbeitet strukturiert und war immer offen für Feedback. Absolut zu empfehlen!"',
+        photo: DEFAULT_REVIEW_PHOTO
+    },
+    {
+        name: 'Thomas Mueller',
+        text: '"Ein großartiger Entwickler mit echtem Verständnis für UX. Max hat unser Projekt nicht nur technisch perfekt umgesetzt, sondern auch viele wertvolle Verbesserungsvorschläge gemacht. Wir arbeiten gerne wieder mit ihm zusammen."',
+        photo: DEFAULT_REVIEW_PHOTO
+    },
+    {
+        name: 'Lisa Schmidt',
+        text: '"Max ist ein äußerst talentierter Frontend-Entwickler. Er kombiniert technisches Know-how mit Kreativität und hat unserer Anwendung ein modernes, benutzerfreundliches Interface gegeben. Sehr zuverlässig und professionell!"',
+        photo: DEFAULT_REVIEW_PHOTO
+    }
+];
 let currentReviewIndex = 0;
 
 function hasReviews() {
@@ -55,20 +71,12 @@ async function fetchServerReviews() {
 
 async function loadReviews() {
     try {
-        // Try API first
         const serverReviews = await fetchServerReviews();
-        if (serverReviews) {
-            reviews = serverReviews;
-        } else {
-            // Fallback to localStorage
-            const stored = localStorage.getItem(REVIEW_STORAGE_KEY);
-            reviews = stored ? JSON.parse(stored) : [];
-        }
+        if (serverReviews) reviews = serverReviews;
         normalizeReviews();
     } catch (error) {
-        // Fallback to localStorage
         const stored = localStorage.getItem(REVIEW_STORAGE_KEY);
-        reviews = stored ? JSON.parse(stored) : [];
+        if (stored) reviews = JSON.parse(stored);
     }
 }
 
@@ -76,16 +84,15 @@ function saveReviews() {
     try { localStorage.setItem(REVIEW_STORAGE_KEY, JSON.stringify(reviews)); } catch (error) { /* ignore */ }
 }
 
+function savePendingReview(review) {
+    const pending = JSON.parse(localStorage.getItem(PENDING_REVIEW_STORAGE_KEY) || '[]');
+    review.timestamp = new Date().toLocaleString();
+    pending.push(review);
+    localStorage.setItem(PENDING_REVIEW_STORAGE_KEY, JSON.stringify(pending));
+}
+
 async function pushReviewToServer(review) {
-    if (!shouldUseReviewApi()) {
-        // Fallback: save to pending reviews in localStorage
-        const pending = JSON.parse(localStorage.getItem(PENDING_REVIEW_STORAGE_KEY) || '[]');
-        review.timestamp = new Date().toLocaleString();
-        pending.push(review);
-        localStorage.setItem(PENDING_REVIEW_STORAGE_KEY, JSON.stringify(pending));
-        console.log('Review saved to localStorage (pending moderation)');
-        return;
-    }
+    if (!shouldUseReviewApi()) return savePendingReview(review);
     try {
         await fetch(REVIEWS_API_URL + '?action=submit', {
             method: 'POST',
@@ -93,12 +100,7 @@ async function pushReviewToServer(review) {
             body: JSON.stringify(review)
         });
     } catch (error) {
-        // Fallback to localStorage if server fails
-        const pending = JSON.parse(localStorage.getItem(PENDING_REVIEW_STORAGE_KEY) || '[]');
-        review.timestamp = new Date().toLocaleString();
-        pending.push(review);
-        localStorage.setItem(PENDING_REVIEW_STORAGE_KEY, JSON.stringify(pending));
-        console.log('Review saved to localStorage (server failed)');
+        savePendingReview(review);
     }
 }
 
@@ -184,98 +186,8 @@ function bindReviewNavigation() {
     if (next) next.addEventListener('click', () => showReview(currentReviewIndex + 1));
 }
 
-function getReviewFormData() {
-    return {
-        form: q('#reviewForm'),
-        nameInput: q('#reviewName'),
-        messageInput: q('#reviewMessage'),
-        photoInput: q('#reviewPhoto'),
-        errorMessage: q('#reviewCommentError'),
-        submitButton: q('.review-comment-submit'),
-        dialog: q('#reviewCommentDialog'),
-    };
-}
-
-function isReviewInputValid(name, text) {
-    return name.length >= 2 && text.length >= 8;
-}
-
-function getReviewValidationMessage(name, text) {
-    if (!name.length && !text.length) return 'Enter your name and a comment with at least 8 characters.';
-    if (name.length < 2) return 'Your name must contain at least 2 characters.';
-    if (text.length < 8) return 'Your comment must contain at least 8 characters.';
-    return '';
-}
-
-function setReviewFieldState(field, isInvalid) {
-    if (!field) return;
-    field.classList.toggle('is-invalid', isInvalid);
-}
-
-function syncReviewFormState(data) {
-    if (!data.nameInput || !data.messageInput || !data.submitButton) return true;
-    const name = data.nameInput.value.trim();
-    const text = data.messageInput.value.trim();
-    const validationMessage = getReviewValidationMessage(name, text);
-    const showInvalidName = name.length > 0 && name.length < 2;
-    const showInvalidText = text.length > 0 && text.length < 8;
-    setReviewFieldState(data.nameInput, showInvalidName);
-    setReviewFieldState(data.messageInput, showInvalidText);
-    if (data.errorMessage) data.errorMessage.textContent = validationMessage;
-    const valid = isReviewInputValid(name, text);
-    data.submitButton.disabled = !valid;
-    return valid;
-}
-
-function getPhotoFile(photoInput) {
-    if (!photoInput || !photoInput.files || !photoInput.files[0]) return null;
-    return photoInput.files[0];
-}
-
 function normalizeReviews() {
     if (reviews.length > 40) reviews = reviews.slice(reviews.length - 40);
-}
-
-async function getPhotoData(photoInput) {
-    const file = getPhotoFile(photoInput);
-    if (!file) return DEFAULT_REVIEW_PHOTO;
-    if (!file.type.startsWith('image/')) return DEFAULT_REVIEW_PHOTO;
-    try { return await convertImageFileToDataUrl(file) || DEFAULT_REVIEW_PHOTO; }
-    catch (error) { return DEFAULT_REVIEW_PHOTO; }
-}
-
-async function onReviewSubmit(event, data) {
-    event.preventDefault();
-    const name = data.nameInput.value.trim();
-    const text = data.messageInput.value.trim();
-    if (!syncReviewFormState(data) || !isReviewInputValid(name, text)) return;
-    const photo = await getPhotoData(data.photoInput);
-    const newReview = { name, text: `"${text}"`, photo };
-    // Send to server for moderation, don't save locally
-    await pushReviewToServer(newReview);
-    data.form.reset();
-    syncReviewFormState(data);
-    if (data.dialog) data.dialog.close();
-    showReviewNotification();
-}
-
-function bindReviewForm() {
-    const data = getReviewFormData();
-    if (!data.form || !data.nameInput || !data.messageInput || !data.photoInput || !data.submitButton) return;
-    const sync = () => syncReviewFormState(data);
-    data.form.addEventListener('input', sync);
-    data.form.addEventListener('change', sync);
-    data.form.addEventListener('submit', (event) => onReviewSubmit(event, data));
-    sync();
-}
-
-function bindReviewCommentDialog() {
-    const dialog = q('#reviewCommentDialog');
-    const open = q('#openReviewCommentDialog');
-    const close = q('#closeReviewCommentDialog');
-    if (!dialog || !open) return;
-    open.addEventListener('click', () => dialog.showModal && dialog.showModal());
-    if (close) close.addEventListener('click', () => dialog.close());
 }
 
 function clearAllReviews() {
@@ -313,9 +225,8 @@ function showReviewNotification() {
 
 async function initializeReviews() {
     bindReviewNavigation();
-    bindReviewForm();
-    bindReviewCommentDialog();
     await loadReviews();
+    saveReviews();
     rebuildReviewDots();
     if (reviews.length) showReview(0);
     if (!reviews.length) renderEmptyReviewState(getSelectedLanguage());

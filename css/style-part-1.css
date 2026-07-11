@@ -23,6 +23,11 @@ body {
     margin: 0;
 }
 
+section {
+    scroll-margin-top: 108px;
+    margin-top: 92px;
+}
+
 :root {
     --h2-size: 82px;
 }

@@ -57,8 +57,6 @@ function applyCustomButtons(copy) {
         setText('#gotoContact', copy.letsTalkButtonText);
         setText('#gotoContactMobile', copy.letsTalkButtonText);
     }
-    if (copy.reviewCommentButtonText) setText('.review-comment-open', copy.reviewCommentButtonText);
-    if (copy.reviewCommentDialogTitle) setText('#reviewCommentDialogTitle', copy.reviewCommentDialogTitle);
 }
 
 function applyLanguage(language) {

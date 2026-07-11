@@ -1,11 +1,15 @@
+// Source - https://stackoverflow.com/a/46181
+// Posted by John Rutherford, modified by community. License - CC BY-SA 4.0
+// Retrieved 2026-07-11
+
 let contactStatusHideTimer = null;
 
+const validateEmail = (email) => {
+    return email.match(/^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/) !== null;
+};
+
 function isValidEmailDomain(email) {
-    if (!email || !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) return false;
-    const domain = email.split('@')[1] || '';
-    const parts = domain.split('.');
-    const tld = parts[parts.length - 1] || '';
-    return parts.length >= 2 && tld.length >= 2 && /^[a-z]+$/i.test(tld);
+    return !email || validateEmail(email);
 }
 
 function setEmailValidationState(emailInput, errorMessage, isInvalid) {

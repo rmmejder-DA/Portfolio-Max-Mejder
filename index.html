@@ -359,25 +359,7 @@
                 <span class="review-dot" aria-hidden="true"></span>
                 <button type="button" class="review-arrow" aria-label="Next review">&#8594;</button>
             </div>
-            <button type="button" class="review-comment-open" id="openReviewCommentDialog">Leave a comment</button>
-            <dialog class="review-comment-dialog" id="reviewCommentDialog" aria-labelledby="reviewCommentDialogTitle">
-                <div class="review-comment-box">
-                    <button type="button" class="review-comment-close" id="closeReviewCommentDialog"
-                        aria-label="Close comment form">×</button>
-                    <h3 class="review-comment-title" id="reviewCommentDialogTitle">Leave a Comment</h3>
-                    <form id="reviewForm" class="review-comment-form" novalidate>
-                        <input id="reviewName" type="text" class="review-comment-input" placeholder="Your name"
-                            maxlength="60" required>
-                        <textarea id="reviewMessage" class="review-comment-textarea" placeholder="Your comment"
-                            maxlength="500" required></textarea>
-                        <p id="reviewCommentError" class="review-comment-error" aria-live="polite"></p>
-                        <label for="reviewPhoto" class="review-comment-file-label">Upload photo</label>
-                        <input id="reviewPhoto" type="file" class="review-comment-file" accept="image/*">
-                        <p class="review-comment-hint">Optional: upload a photo for your comment.</p>
-                        <button type="submit" class="review-comment-submit" disabled>Add Comment</button>
-                    </form>
-                </div>
-            </dialog>
+
         </section>
 
         <section id="contact_me" class="contact">
