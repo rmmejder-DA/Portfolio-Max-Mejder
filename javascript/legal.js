@@ -52,6 +52,17 @@ const EN_PRIVACY = {
     ],
 };
 
+const HEADER_NAV = {
+    de: {
+        desktop: ['Über mich', 'Meine Skills', 'Portfolio'],
+        mobile: ['Über mich', 'Meine Skills', 'Portfolio', 'Kontakt'],
+    },
+    en: {
+        desktop: ['About me', 'Skills', 'Portfolio'],
+        mobile: ['About me', 'Skills', 'Portfolio', 'Contact'],
+    },
+};
+
 const I18N = {
     de: {
         'legal-notice': { title: 'Rechtliches | Max Mejder', heading: 'Rechtliche Hinweise', tabLabel: 'Rechtliche Inhalte', tabImpressum: 'Impressum', tabDatenschutz: 'Datenschutz', backLink: 'Zurück zur Startseite', impressum: DE_IMPRESSUM, privacy: DE_PRIVACY },
@@ -126,6 +137,13 @@ function setLegalNoticeTabs(copy) {
     setText(q('.legal-tab[data-target="datenschutz"]'), copy.tabDatenschutz);
 }
 
+function applyHeaderNavigation(lang) {
+    const navTexts = HEADER_NAV[lang];
+    if (!navTexts) return;
+    navTexts.desktop.forEach((label, i) => setTextAt('.nav a', i, label));
+    navTexts.mobile.forEach((label, i) => setTextAt('.mobile-nav-links a', i, label));
+}
+
 function applyLegalNotice(copy) {
     setMeta(copy, copy === I18N.de['legal-notice'] ? 'de' : 'en');
     setLegalNoticeTabs(copy);
@@ -153,6 +171,7 @@ function applyLanguage(lang) {
     const pageKey = getPageKey();
     if (!pageKey || !I18N[lang] || !I18N[lang][pageKey]) return;
     const copy = I18N[lang][pageKey];
+    applyHeaderNavigation(lang);
     if (pageKey === 'legal-notice') applyLegalNotice(copy);
     if (pageKey !== 'legal-notice') applySingleLegalPage(copy, lang);
 }

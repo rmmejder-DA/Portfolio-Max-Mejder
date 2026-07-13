@@ -35,12 +35,27 @@ function isValidReview($review)
 switch ($_SERVER['REQUEST_METHOD']) {
     case 'GET':
         $action = $_GET['action'] ?? 'approved';
+        $language = $_GET['lang'] ?? 'en';
+        $language = in_array($language, ['de', 'en']) ? $language : 'en';
         
         if ($action === 'pending') {
             $pending = readReviews($pendingFile);
             echo json_encode(['success' => true, 'reviews' => array_values($pending)]);
         } else if ($action === 'approved') {
-            $reviews = readReviews($dataFile);
+            $allReviews = readReviews($dataFile);
+            
+            // Wenn es ein Objekt mit Sprachen ist, nimm die richtige Sprache
+            if (is_array($allReviews) && isset($allReviews[$language])) {
+                $reviews = $allReviews[$language];
+            } 
+            // Fallback für alte Struktur (einfaches Array)
+            else if (is_array($allReviews) && !isset($allReviews[0])) {
+                $reviews = isset($allReviews['en']) ? $allReviews['en'] : [];
+            } 
+            else {
+                $reviews = $allReviews;
+            }
+            
             echo json_encode(['success' => true, 'reviews' => array_values($reviews)]);
         } else {
             http_response_code(400);

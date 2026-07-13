@@ -1,7 +1,89 @@
-﻿@media (max-width: 1340px) {
+﻿@media (min-width: 1441px) {
+
+    .border-left,
+    .img-line-right {
+        position: relative;
+        width: 60px;
+    }
+
+    .img-line-right::before {
+        content: '';
+        position: absolute;
+        right: auto;
+        top: 0;
+        width: 100vw;
+        height: 4px;
+        background-color: #70e61c;
+    }
+
+    .skills-title-line {
+        position: relative;
+    }
+
+    .skills-title-line::before {
+        content: '';
+        position: absolute;
+        left: auto;
+        top: 0;
+        width: 100vw;
+        height: 4px;
+        background-color: #9747ff;
+    }
+
+    .portfolio-title-line {
+        position: relative;
+    }
+
+    .portfolio-title-line::before {
+        content: '';
+        position: absolute;
+        right: auto;
+        top: 0;
+        width: 100vw;
+        height: 4px;
+        background-color: #9747ff;
+    }
+
+    .portfolio-title-line-left {
+        position: relative;
+    }
+
+    .contact-title-line::before,
+    .border-left::before,
+    .portfolio-title-line-left::before {
+        content: '';
+        position: absolute;
+        right: 0;
+        top: 0;
+        width: 100vw;
+        height: 4px;
+        background-color: #9747ff;
+    }
+
+    .contact-title-line {
+        position: relative;
+    }
+
+    .review-avatar-line {
+        position: relative;
+    }
+
+    .review-avatar-line::before {
+        content: '';
+        position: absolute;
+        left: auto;
+        top: 0;
+        width: 100vw;
+        height: 3px;
+        background-color: #9747ff;
+    }
+}
+
+@media (max-width: 1360px) {
     :root {
         --h2-size: 60px;
     }
+
 
     .Name {
         font-size: 64px;
@@ -39,9 +121,14 @@
     }
 }
 
-@media (max-width: 1245px) {
+@media (max-width: 1252px) {
     .skills-description-wrap {
         padding: 0 10px !important;
+    }
+
+    .underline {
+        height: 460px;
+        top: 280px;
     }
 }
 
@@ -103,6 +190,11 @@
 
     .about {
         padding: 200px 58px 17px 58px;
+    }
+
+    .underline {
+        height: 300px;
+        top: 280px;
     }
 }
 
@@ -172,6 +264,7 @@
         --h2-size: 44px;
     }
 
+
     .Name {
         font-size: 48px;
         line-height: 70px;
@@ -209,7 +302,7 @@
     .contact-form-container {
         flex-direction: column;
         align-items: center;
-            padding: 0px 56px 0px;
+        padding: 0px 56px 0px;
     }
 
     .if_problem {
@@ -266,6 +359,7 @@
         height: 126%;
         transform: rotate(10deg);
     }
+
 
     .mail-to {
         display: none;
@@ -334,6 +428,9 @@
         width: 200px;
         height: 230px;
     }
+}
+
+@media (max-width: 600px) {
 }
 
 @media (min-width: 960px) {

@@ -133,16 +133,29 @@
     padding: 300px 58px 16px 58px;
     display: flex;
     align-items: center;
+    flex-direction: row;
     min-width: 320px;
     max-width: 1440px;
     height: auto;
     margin: 0 auto;
-    border-bottom-right-radius: 45% 50%;
+
+}
+
+.underline {
+    position: absolute;
+    display: block;
+    border-bottom-right-radius: 100% 100%;
+    border-bottom-left-radius: 60% 15%;
     box-shadow: -22px 62px 20px -36px #1f2a40;
-    border: 0.5px solid #141d2f;
     border-top-width: 0;
     border-left-width: 0;
     border-right-width: 0;
+    height: 400px;
+    width: 100vw;
+    top: auto;
+    left: 0;
+    right: 0;
+    margin: 0 auto;
 }
 
 .icon_plus_scroll_container {
@@ -206,10 +219,10 @@
 
 .img-line-right {
     display: inline-block;
-    width: 268px;
     height: 4px;
     background-color: #70e61c;
     z-index: 1;
+    width: 60px;
 }
 
 .about-me-text {

@@ -57,8 +57,8 @@ window.APP_COPY = {
         ],
     },
     en: {
-        navigationDesktop: ['About me', 'My skills', 'Portfolio'],
-        navigationMobile: ['About me', 'My skills', 'Portfolio', 'Contact'],
+        navigationDesktop: ['About me', 'Skills', 'Portfolio'],
+        navigationMobile: ['About me', 'Skills', 'Portfolio', 'Contact'],
         verticalHeadline: 'I am',
         jobTitle: 'FRONTEND DEVELOPER',
         scrollHtml: 'Scroll down<p class="arrow">&#x279C;</p>',

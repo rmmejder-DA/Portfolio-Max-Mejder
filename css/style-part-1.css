@@ -197,15 +197,10 @@ footer p {
 
 .border-left {
     display: inline-block;
-    /* allows explicit width and height */
-    width: 100px;
-    /* line length */
-    height: 2px;
-    /* Dicke der Linie */
+    height: 4px;
+    width: 42px;
     background-color: #9747ff;
-    /* Farbe der Linie */
     vertical-align: middle;
-    /* Ausrichtung im Text */
 }
 
 .scrollDown-vertical {
@@ -303,6 +298,7 @@ footer p {
 .footer-name:hover {
     transform: scale(1.05);
 }
+
 
 .nav {
     display: flex;

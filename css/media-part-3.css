@@ -281,7 +281,12 @@
     .admin-link {
         display: none;
     }
+
     section {
         scroll-margin-top: 92px;
+    }
+
+    .underline {
+        top: 260px;
     }
 }

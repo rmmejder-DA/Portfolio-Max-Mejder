@@ -1,17 +1,36 @@
-[
-    {
-        "name": "Sarah Wagner",
-        "text": "\"Max hat unsere Website von Grund auf neu entwickelt und das Ergebnis ist fantastisch. Seine Frontend-Skills sind beeindruckend, er arbeitet strukturiert und war immer offen für Feedback. Absolut zu empfehlen!\"",
-        "photo": "img/Sarah.png"
-    },
-    {
-        "name": "Thomas Mueller",
-        "text": "\"Ein großartiger Entwickler mit echtem Verständnis für UX. Max hat unser Projekt nicht nur technisch perfekt umgesetzt, sondern auch viele wertvolle Verbesserungsvorschläge gemacht. Wir arbeiten gerne wieder mit ihm zusammen.\"",
-        "photo": "img/Thomas.png"
-    },
-    {
-        "name": "Lisa Schmidt",
-        "text": "\"Max ist ein äußerst talentierter Frontend-Entwickler. Er kombiniert technisches Know-how mit Kreativität und hat unserer Anwendung ein modernes, benutzerfreundliches Interface gegeben. Sehr zuverlässig und professionell!\"",
-        "photo": "img/Lisa.png"
-    }
-]
+{
+    "de": [
+        {
+            "name": "Sarah Wagner",
+            "text": "\"Max hat unsere Website von Grund auf neu entwickelt und das Ergebnis ist fantastisch. Seine Frontend-Skills sind beeindruckend, er arbeitet strukturiert und war immer offen für Feedback. Absolut zu empfehlen!\"",
+            "photo": "img/Sarah.png"
+        },
+        {
+            "name": "Thomas Mueller",
+            "text": "\"Ein großartiger Entwickler mit echtem Verständnis für UX. Max hat unser Projekt nicht nur technisch perfekt umgesetzt, sondern auch viele wertvolle Verbesserungsvorschläge gemacht. Wir arbeiten gerne wieder mit ihm zusammen.\"",
+            "photo": "img/Thomas.png"
+        },
+        {
+            "name": "Lisa Schmidt",
+            "text": "\"Max ist ein äußerst talentierter Frontend-Entwickler. Er kombiniert technisches Know-how mit Kreativität und hat unserer Anwendung ein modernes, benutzerfreundliches Interface gegeben. Sehr zuverlässig und professionell!\"",
+            "photo": "img/Lisa.png"
+        }
+    ],
+    "en": [
+        {
+            "name": "Sarah Wagner",
+            "text": "\"Max redesigned our website from scratch and the results are fantastic. His frontend skills are impressive, he works in a structured manner, and was always open to feedback. Highly recommended!\"",
+            "photo": "img/Sarah.png"
+        },
+        {
+            "name": "Thomas Mueller",
+            "text": "\"A great developer with real understanding of UX. Max not only implemented our project technically perfectly, but also provided many valuable improvement suggestions. We love working with him again.\"",
+            "photo": "img/Thomas.png"
+        },
+        {
+            "name": "Lisa Schmidt",
+            "text": "\"Max is an extremely talented frontend developer. He combines technical know-how with creativity and has given our application a modern, user-friendly interface. Very reliable and professional!\"",
+            "photo": "img/Lisa.png"
+        }
+    ]
+}

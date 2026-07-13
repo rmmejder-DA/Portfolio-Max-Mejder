@@ -56,7 +56,8 @@ function renderEmptyReviewState(language = getSelectedLanguage()) {
 async function fetchServerReviews() {
     if (!shouldUseReviewApi()) return null;
     try {
-        const response = await fetch(REVIEWS_API_URL + '?action=approved', { headers: { 'Accept': 'application/json' } });
+        const language = getSelectedLanguage();
+        const response = await fetch(REVIEWS_API_URL + '?action=approved&lang=' + language, { headers: { 'Accept': 'application/json' } });
         if (!response.ok) return null;
         const data = await response.json().catch(() => ({}));
         return getSafeReviewList(data.reviews);
@@ -243,14 +244,30 @@ function reloadReviewsForLanguage(language) {
     const stored = localStorage.getItem(REVIEW_STORAGE_KEY);
     const storedReviews = stored ? JSON.parse(stored) : [];
     
-    if (storedReviews.length > 0) {
-        reviews = storedReviews;
-    } else {
-        reviews = defaultReviews;
-    }
-    
-    currentReviewIndex = 0;
-    rebuildReviewDots();
-    if (reviews.length) showReview(0);
-    if (!reviews.length) renderEmptyReviewState(language);
+    // Versuche, neue Kommentare vom Server in der neuen Sprache zu laden
+    fetchServerReviews().then((serverReviews) => {
+        if (serverReviews && serverReviews.length > 0) {
+            reviews = serverReviews;
+        } else if (storedReviews.length > 0) {
+            reviews = storedReviews;
+        } else {
+            reviews = defaultReviews;
+        }
+        saveReviews();
+        currentReviewIndex = 0;
+        rebuildReviewDots();
+        if (reviews.length) showReview(0);
+        if (!reviews.length) renderEmptyReviewState(language);
+    }).catch(() => {
+        if (storedReviews.length > 0) {
+            reviews = storedReviews;
+        } else {
+            reviews = defaultReviews;
+        }
+        saveReviews();
+        currentReviewIndex = 0;
+        rebuildReviewDots();
+        if (reviews.length) showReview(0);
+        if (!reviews.length) renderEmptyReviewState(language);
+    });
 }
