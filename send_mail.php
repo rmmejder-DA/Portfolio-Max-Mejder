@@ -33,11 +33,43 @@ switch ($_SERVER['REQUEST_METHOD']) {
             exit;
         }
 
+        // Versuche, Email über FormSubmit.co zu versenden (zuverlässig)
+        $formSubmitPayload = [
+            'name' => $name,
+            'email' => $email,
+            'message' => $userMessage,
+            '_subject' => 'Website Contact Form',
+            '_template' => 'table',
+            '_captcha' => 'false'
+        ];
+
+        $curlHandle = curl_init();
+        curl_setopt_array($curlHandle, [
+            CURLOPT_URL => 'https://formsubmit.co/ajax/' . $recipientEmail,
+            CURLOPT_RETURNTRANSFER => true,
+            CURLOPT_POST => true,
+            CURLOPT_HTTPHEADER => ['Content-Type: application/json'],
+            CURLOPT_POSTFIELDS => json_encode($formSubmitPayload),
+            CURLOPT_TIMEOUT => 10
+        ]);
+
+        $response = curl_exec($curlHandle);
+        $httpCode = curl_getinfo($curlHandle, CURLINFO_HTTP_CODE);
+        curl_close($curlHandle);
+
+        if ($httpCode === 200 && $response) {
+            $responseData = json_decode($response, true);
+            if ($responseData && ($responseData['success'] === 'true' || $responseData['success'] === true)) {
+                echo json_encode(['success' => true]);
+                exit;
+            }
+        }
+
+        // Fallback: Versuche native PHP mail() Funktion
         $safeName = htmlspecialchars($name, ENT_QUOTES, 'UTF-8');
         $safeEmail = htmlspecialchars($email, ENT_QUOTES, 'UTF-8');
         $safeMessage = nl2br(htmlspecialchars($userMessage, ENT_QUOTES, 'UTF-8'));
 
-        $recipient = $recipientEmail;
         $subject = 'Website Contact Form';
 
         $mailBody = "
@@ -51,10 +83,10 @@ switch ($_SERVER['REQUEST_METHOD']) {
         $headers[] = 'MIME-Version: 1.0';
         $headers[] = 'Content-type: text/html; charset=utf-8';
         $headers[] = 'From: Website Kontakt <' . $senderEmail . '>';
-        $headers[] = 'Reply-To: ' . $email;
+        $headers[] = 'Reply-To: ' . $safeEmail;
 
-        $success = mail(
-            $recipient,
+        $success = @mail(
+            $recipientEmail,
             $subject,
             $mailBody,
             implode("\r\n", $headers)
