@@ -143,7 +143,7 @@
     height: 90px;
 }
 
-.contact_input:required:valid:not(:placeholder-shown) {
+.contact_input:required:valid:not(:placeholder-shown):not(.email-invalid) {
     border-color: #70e61c;
     box-shadow: 0 0 0 3px rgba(112, 230, 28, 0.16);
     padding-right: 56px;
