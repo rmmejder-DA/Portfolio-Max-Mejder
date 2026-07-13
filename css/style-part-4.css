@@ -72,8 +72,7 @@
     min-height: 304px;
     display: flex;
     flex-direction: column;
-    justify-content: center;
-    gap: 24px;
+    justify-content: space-evenly;
 }
 
 .review-quote-mark {
@@ -119,13 +118,13 @@
 }
 
 .commentar_line {
-    width: 43%;
+    width: 80%;
     height: 2px;
     background: #9747ff;
 }
 
 .reviewOfperson_name {
-    font-size: 15px;
+    font-size: 16px;
     color: #f0f3ff;
     white-space: nowrap;
 }
@@ -141,7 +140,7 @@
     width: 204px;
     height: 204px;
     object-fit: cover;
-    object-position: 46% 36%;
+    object-position: 46% 85%;
     border-radius: 50%;
     border: 3px solid #9747ff;
     background: #ffffff;
@@ -191,125 +190,3 @@
 .review-arrow:focus-visible {
     color: #88f229;
 }
-
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    padding: 14px 22px;
-    margin: 0 auto;
-    border: none;
-    border-radius: 10px;
-    font-size: 16px;
-    font-weight: 700;
-    color: #ffffff;
-    background: linear-gradient(135deg, #70e61c, #88f229);
-    cursor: pointer;
-    transition: transform 0.2s ease, filter 0.2s ease;
-}
-
-    transform: translateY(-2px);
-    filter: brightness(1.04);
-}
-
-    width: min(760px, calc(100vw - 32px));
-    padding: 0;
-    border: none;
-    border-radius: 20px;
-    background: transparent;
-    margin: 0;
-    position: fixed;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-}
-
-    background: rgba(9, 14, 24, 0.78);
-    -webkit-backdrop-filter: blur(5px);
-    backdrop-filter: blur(5px);
-}
-
-    width: 100%;
-    max-width: none;
-    margin: 0;
-    padding: 22px;
-    border: 2px solid rgba(151, 71, 255, 0.45);
-    border-radius: 20px;
-    background: rgba(20, 29, 47, 0.96);
-    position: relative;
-}
-
-    position: absolute;
-    top: 12px;
-    right: 12px;
-    width: 38px;
-    height: 38px;
-    border: none;
-    border-radius: 50%;
-    color: #ffffff;
-    background: rgba(151, 71, 255, 0.24);
-    font-size: 26px;
-    line-height: 1;
-    cursor: pointer;
-}
-
-    background: rgba(151, 71, 255, 0.4);
-}
-
-    margin: 0 0 14px;
-    font-size: 22px;
-    color: #70e61c;
-}
-
-    display: flex;
-    flex-direction: column;
-    gap: 12px;
-    max-width: none;
-}
-
-    width: 100%;
-    border: 2px solid #9747ff;
-    border-radius: 10px;
-    background: rgba(11, 18, 29, 0.9);
-    color: #ffffff;
-    padding: 12px 14px;
-    font-size: 16px;
-    font-family: inherit;
-}
-
-    min-height: 110px;
-    resize: vertical;
-}
-
-    color: #b8c2da;
-}
-
-    outline: none;
-    border-color: #70e61c;
-}
-
-    border-color: #ff6b6b;
-}
-
-    min-height: 20px;
-    margin: -4px 0 0;
-    font-size: 14px;
-    color: #ff6b6b;
-}
-
-    width: fit-content;
-    border: none;
-    border-radius: 10px;
-    padding: 12px 20px;
-    font-size: 17px;
-    font-weight: 700;
-    color: #141d2f;
-    background: #70e61c;
-    cursor: pointer;
-    transition: transform 0.2s ease, background-color 0.2s ease;
-}
-
-    cursor: not-allowed;
-    background: #7d8a9f;
-    transform: none;
-}
-

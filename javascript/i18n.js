@@ -41,6 +41,7 @@ function applyContact(copy) {
     setText('.contact_me', copy.contactTitle);
     setText('.got_a_problem', copy.contactProblem);
     setText('.contact_text', copy.contactText);
+    setHtml('.contact_cta', copy.contactCta);
     setPlaceholder('.contact_input[type="text"]', copy.placeholderName);
     setPlaceholder('.contact_input[type="email"]', copy.placeholderEmail);
     setPlaceholder('.contact_textarea', copy.placeholderMessage);
@@ -69,6 +70,9 @@ function applyLanguage(language) {
     applyContact(copy);
     applyCustomButtons(copy);
     if (!hasReviews()) renderEmptyReviewState(language);
+    if (typeof reloadReviewsForLanguage === 'function') {
+        reloadReviewsForLanguage(language);
+    }
 }
 
 function markLanguageButtons(language) {

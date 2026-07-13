@@ -3,24 +3,20 @@ const PENDING_REVIEW_STORAGE_KEY = 'portfolioPendingReviews';
 const DEFAULT_REVIEW_PHOTO = 'data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iNDgiIGhlaWdodD0iNDgiIHZpZXdCb3g9IjAgMCA0OCA0OCIgc3Ryb2tlPSIjNzBFNjFDIiBzdHJva2Utd2lkdGg9IjIuNSIgc3Ryb2tlLWxpbmVjYXA9InJvdW5kIiBzdHJva2UtbGluZWpvaW49InJvdW5kIj48ZyB0cmFuc2Zvcm09InRyYW5zbGF0ZSg0LCAwKSI+PHBhdGggZD0iTTE4LjUgNi41QzIwLjk4NTMgNi41IDIzIDguNTE0NzIgMjMgMTFWMTNIMzFDMzIuNjU2OSAxMyA0NCAxNC4zNDMxIDQ0IDE2VjI0SDE2VjE1QzE2IDguNTE0NzIgMTguMDE0NyA2LjUgMTguNSA2LjVaIiBzdHJva2UtbGluZWNhcD0icm91bmQiIHN0cm9rZS13aWR0aD0iMi41IiBzdHJva2UtbGluZWpvaW49InJvdW5kIi8+PC9nPjwvc3ZnPg==';
 const REVIEWS_API_URL = 'reviews_api.php';
 
-let reviews = [
-    {
-        name: 'Sarah Wagner',
-        text: '"Max hat unsere Website von Grund auf neu entwickelt und das Ergebnis ist fantastisch. Seine Frontend-Skills sind beeindruckend, er arbeitet strukturiert und war immer offen für Feedback. Absolut zu empfehlen!"',
-        photo: DEFAULT_REVIEW_PHOTO
-    },
-    {
-        name: 'Thomas Mueller',
-        text: '"Ein großartiger Entwickler mit echtem Verständnis für UX. Max hat unser Projekt nicht nur technisch perfekt umgesetzt, sondern auch viele wertvolle Verbesserungsvorschläge gemacht. Wir arbeiten gerne wieder mit ihm zusammen."',
-        photo: DEFAULT_REVIEW_PHOTO
-    },
-    {
-        name: 'Lisa Schmidt',
-        text: '"Max ist ein äußerst talentierter Frontend-Entwickler. Er kombiniert technisches Know-how mit Kreativität und hat unserer Anwendung ein modernes, benutzerfreundliches Interface gegeben. Sehr zuverlässig und professionell!"',
-        photo: DEFAULT_REVIEW_PHOTO
-    }
-];
+let reviews = [];
 let currentReviewIndex = 0;
+
+function getDefaultReviews(language = 'en') {
+    const copy = getCopy(language);
+    if (copy && copy.reviews && Array.isArray(copy.reviews)) {
+        return copy.reviews.map(review => ({
+            name: review.name,
+            text: review.text,
+            photo: review.photo || DEFAULT_REVIEW_PHOTO
+        }));
+    }
+    return [];
+}
 
 function hasReviews() {
     return reviews.length > 0;
@@ -72,11 +68,21 @@ async function fetchServerReviews() {
 async function loadReviews() {
     try {
         const serverReviews = await fetchServerReviews();
-        if (serverReviews) reviews = serverReviews;
+        if (serverReviews) {
+            reviews = serverReviews;
+        } else {
+            const language = getSelectedLanguage();
+            reviews = getDefaultReviews(language);
+        }
         normalizeReviews();
     } catch (error) {
         const stored = localStorage.getItem(REVIEW_STORAGE_KEY);
-        if (stored) reviews = JSON.parse(stored);
+        if (stored) {
+            reviews = JSON.parse(stored);
+        } else {
+            const language = getSelectedLanguage();
+            reviews = getDefaultReviews(language);
+        }
     }
 }
 
@@ -230,4 +236,21 @@ async function initializeReviews() {
     rebuildReviewDots();
     if (reviews.length) showReview(0);
     if (!reviews.length) renderEmptyReviewState(getSelectedLanguage());
+}
+
+function reloadReviewsForLanguage(language) {
+    const defaultReviews = getDefaultReviews(language);
+    const stored = localStorage.getItem(REVIEW_STORAGE_KEY);
+    const storedReviews = stored ? JSON.parse(stored) : [];
+    
+    if (storedReviews.length > 0) {
+        reviews = storedReviews;
+    } else {
+        reviews = defaultReviews;
+    }
+    
+    currentReviewIndex = 0;
+    rebuildReviewDots();
+    if (reviews.length) showReview(0);
+    if (!reviews.length) renderEmptyReviewState(language);
 }

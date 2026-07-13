@@ -59,7 +59,7 @@ main {
     border: 1px solid #70e61c;
     background: transparent;
     color: #ffffff;
-    font-size: 14px;
+    font-size: 16px;
     font-weight: 700;
     cursor: pointer;
     transition: background-color 0.2s ease, color 0.2s ease, transform 0.2s ease;
@@ -94,7 +94,7 @@ main {
     color: #ffffff;
     border-radius: 999px;
     padding: 10px 18px;
-    font-size: 15px;
+    font-size: 16px;
     font-weight: 700;
     cursor: pointer;
     transition: background-color 0.2s ease, color 0.2s ease, border-color 0.2s ease;

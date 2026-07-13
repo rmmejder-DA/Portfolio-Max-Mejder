@@ -26,6 +26,7 @@ window.APP_COPY = {
         contactTitle: 'Kontakt',
         contactProblem: 'Hast du ein Problem zu lösen?',
         contactText: 'Ich bin offen für neue Projekte und spannende Herausforderungen. Schreib mir gerne, dann schauen wir gemeinsam auf eine passende Lösung.',
+        contactCta: 'Suchst du einen Frontend-Entwickler? <b>Kontaktiere mich!</b>',
         placeholderName: 'Dein Name',
         placeholderEmail: 'Deine E-Mail',
         placeholderMessage: 'Deine Nachricht',
@@ -37,6 +38,23 @@ window.APP_COPY = {
         emptyReviewName: 'Dein Kommentar erscheint hier',
         emptyReviewAlt: 'Platzhalter für Kommentare',
         reviewSubmittedNotification: 'Kommentar wird bald veröffentlicht',
+        reviews: [
+            {
+                name: 'Sarah Wagner',
+                text: '"Max hat unsere Website von Grund auf neu entwickelt und das Ergebnis ist fantastisch. Seine Frontend-Skills sind beeindruckend, er arbeitet strukturiert und war immer offen für Feedback. Absolut zu empfehlen!"',
+                photo: 'img/Sarah.png'
+            },
+            {
+                name: 'Thomas Mueller',
+                text: '"Ein großartiger Entwickler mit echtem Verständnis für UX. Max hat unser Projekt nicht nur technisch perfekt umgesetzt, sondern auch viele wertvolle Verbesserungsvorschläge gemacht. Wir arbeiten gerne wieder mit ihm zusammen."',
+                photo: 'img/Thomas.png'
+            },
+            {
+                name: 'Lisa Schmidt',
+                text: '"Max ist ein äußerst talentierter Frontend-Entwickler. Er kombiniert technisches Know-how mit Kreativität und hat unserer Anwendung ein modernes, benutzerfreundliches Interface gegeben. Sehr zuverlässig und professionell!"',
+                photo: 'img/Lisa.png'
+            }
+        ],
     },
     en: {
         navigationDesktop: ['About me', 'My skills', 'Portfolio'],
@@ -65,6 +83,7 @@ window.APP_COPY = {
         contactTitle: 'Contact',
         contactProblem: 'Got a problem to solve?',
         contactText: 'I am always open to new challenges and opportunities. If you have a project in mind or just want to say hi, feel free to reach out. Let\'s connect and see how we can work together!',
+        contactCta: 'Need a Frontend Developer? <b>Contact me!</b>',
         placeholderName: 'Your name',
         placeholderEmail: 'Your email',
         placeholderMessage: 'Your message',
@@ -76,5 +95,22 @@ window.APP_COPY = {
         emptyReviewName: 'Your comment will appear here',
         emptyReviewAlt: 'Placeholder for comments',
         reviewSubmittedNotification: 'Your comment will be published soon',
+        reviews: [
+            {
+                name: 'Sarah Wagner',
+                text: '"Max redesigned our website from scratch and the results are fantastic. His frontend skills are impressive, he works in a structured manner, and was always open to feedback. Highly recommended!"',
+                photo: 'img/Sarah.png'
+            },
+            {
+                name: 'Thomas Mueller',
+                text: '"A great developer with real understanding of UX. Max not only implemented our project technically perfectly, but also provided many valuable improvement suggestions. We love working with him again."',
+                photo: 'img/Thomas.png'
+            },
+            {
+                name: 'Lisa Schmidt',
+                text: '"Max is an extremely talented frontend developer. He combines technical know-how with creativity and has given our application a modern, user-friendly interface. Very reliable and professional!"',
+                photo: 'img/Lisa.png'
+            }
+        ],
     }
 };
