@@ -126,10 +126,7 @@
         padding: 0 10px !important;
     }
 
-    .underline {
-        height: 460px;
-        top: 280px;
-    }
+
 }
 
 @media (max-width: 1200px) {
@@ -192,10 +189,7 @@
         padding: 200px 58px 17px 58px;
     }
 
-    .underline {
-        height: 300px;
-        top: 280px;
-    }
+
 }
 
 @media (max-width: 1180px) {
@@ -352,15 +346,6 @@
 }
 
 @media (max-width: 900px) {
-    .about::after {
-        left: -60%;
-        width: 236%;
-        bottom: -74%;
-        height: 126%;
-        transform: rotate(10deg);
-    }
-
-
     .mail-to {
         display: none;
     }
