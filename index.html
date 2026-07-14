@@ -379,14 +379,20 @@
 
                 </div>
                 <form class="contact_form" action="send_mail.php" method="post">
-                    <input type="text" name="name" placeholder="Your name" class="contact_input" required>
+                    <div class="name-input-wrapper">
+                        <input type="text" name="name" placeholder="Your name" class="contact_input" pattern="[a-zA-Z\s]*" title="Please enter only letters and spaces" required>
+                        <div class="name-error-message">Please enter a valid name (letters and spaces only)</div>
+                    </div>
                     <div class="email-input-wrapper">
                         <input type="email" name="email" placeholder="Your email" class="contact_input" required>
                         <div class="email-error-message">Please enter a valid email address with a proper domain</div>
                     </div>
                     <input type="hidden" name="_captcha" value="false">
                     <input type="hidden" name="_template" value="table">
-                    <textarea name="message" placeholder="Your message" class="contact_textarea" maxlength="1000" required></textarea>
+                    <div class="message-input-wrapper">
+                        <textarea name="message" placeholder="Your message" class="contact_textarea" maxlength="1000" minlength="5" required></textarea>
+                        <div class="message-error-message">Message must be at least 5 characters long</div>
+                    </div>
                     <div class="contact_textarea_counter"><span id="charCount">0</span>/1000</div>
                     <div class="contact_policy_row">
                         <input type="checkbox" id="privacy-policy" class="contact_checkbox" required>

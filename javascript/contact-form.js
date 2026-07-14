@@ -7,9 +7,25 @@ let contactStatusHideTimer = null;
 const validateEmail = (email) => {
     return email.match(/^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/) !== null;
 };
+const validateName = (name) => {
+    return name.trim().length > 0 && /^[a-zA-Z\s]*$/.test(name);
+};
 
+const validateMessage = (message) => {
+    return message.trim().length >= 5;
+};
 function isValidEmailDomain(email) {
     return !email || validateEmail(email);
+}
+
+function setNameValidationState(nameInput, errorMessage, isInvalid) {
+    nameInput.classList.toggle('name-invalid', isInvalid);
+    if (errorMessage) errorMessage.classList.toggle('show', isInvalid);
+}
+
+function setMessageValidationState(messageInput, errorMessage, isInvalid) {
+    messageInput.classList.toggle('message-invalid', isInvalid);
+    if (errorMessage) errorMessage.classList.toggle('show', isInvalid);
 }
 
 function setEmailValidationState(emailInput, errorMessage, isInvalid) {
@@ -17,11 +33,20 @@ function setEmailValidationState(emailInput, errorMessage, isInvalid) {
     if (errorMessage) errorMessage.classList.toggle('show', isInvalid);
 }
 
-function syncContactFormState(contactForm, submitButton, emailInput, errorMessage) {
+function syncContactFormState(contactForm, submitButton, emailInput, errorMessage, nameInput, nameErrorMessage, messageInput, messageErrorMessage) {
     const emailValue = emailInput.value;
-    const hasValidDomain = !emailValue || isValidEmailDomain(emailValue);
-    setEmailValidationState(emailInput, errorMessage, emailValue.length > 0 && !hasValidDomain);
-    const valid = contactForm.checkValidity() && hasValidDomain;
+    const nameValue = nameInput.value;
+    const messageValue = messageInput.value;
+    
+    const hasValidEmail = !emailValue || validateEmail(emailValue);
+    const hasValidName = !nameValue || validateName(nameValue);
+    const hasValidMessage = !messageValue || validateMessage(messageValue);
+    
+    setEmailValidationState(emailInput, errorMessage, emailValue.length > 0 && !hasValidEmail);
+    setNameValidationState(nameInput, nameErrorMessage, nameValue.length > 0 && !hasValidName);
+    setMessageValidationState(messageInput, messageErrorMessage, messageValue.length > 0 && messageValue.length < 5);
+    
+    const valid = contactForm.checkValidity() && hasValidEmail && hasValidName && hasValidMessage;
     contactForm.classList.toggle('is-valid', valid);
     submitButton.disabled = !valid;
 }
@@ -104,13 +129,17 @@ function getContactFormElements(form) {
         email: form.querySelector('input[type="email"]'),
         error: q('.email-error-message'),
         name: form.querySelector('input[name="name"]'),
-        message: form.querySelector('textarea[name="message"]')
+        nameError: q('.name-error-message'),
+        message: form.querySelector('textarea[name="message"]'),
+        messageError: q('.message-error-message')
     };
 }
 
-function resetContactFormAfterSuccess(form, email, error, messages) {
+function resetContactFormAfterSuccess(form, email, error, name, nameError, message, messageError, messages) {
     form.reset();
     setEmailValidationState(email, error, false);
+    setNameValidationState(name, nameError, false);
+    setMessageValidationState(message, messageError, false);
     setContactStatus(form, messages.success, 'is-success');
 }
 
@@ -145,32 +174,39 @@ async function submitContactPayload(payload) {
 }
 
 async function runContactSubmit(form, elements, messages) {
-    const { submit, email, error, name, message } = elements;
+    const { submit, email, error, name, nameError, message, messageError } = elements;
     try {
+        if (!validateName(name.value)) throw new Error('Invalid name');
+        if (!validateMessage(message.value)) throw new Error('Message too short');
+        
         const payload = buildContactPayload(name, email, message);
         const success = await submitContactPayload(payload);
         if (!success) throw new Error('Contact submit failed');
-        resetContactFormAfterSuccess(form, email, error, messages);
+        resetContactFormAfterSuccess(form, email, error, name, nameError, message, messageError, messages);
     } catch (submitError) {
         setContactStatus(form, messages.error, 'is-error');
     } finally {
-        syncContactFormState(form, submit, email, error);
+        syncContactFormState(form, submit, email, error, name, nameError, message, messageError);
     }
 }
 
 async function sendContactForm(form) {
     const elements = getContactFormElements(form);
-    const { submit, email, error, name, message } = elements;
-    if (!submit || !email || !name || !message) return;
-    syncContactFormState(form, submit, email, error);
+    const { submit, email, error, name, nameError, message, messageError } = elements;
+    if (!submit || !email || !name || !nameError || !message || !messageError) return;
+    syncContactFormState(form, submit, email, error, name, nameError, message, messageError);
     if (submit.disabled) return;
     const messages = getContactMessages();
     setContactStatus(form, messages.sending, 'is-info');
     await runContactSubmit(form, elements, messages);
 }
 
-function bindContactFormEvents(form, email, error, textarea, charCount, submit) {
-    const sync = () => syncContactFormState(form, submit, email, error);
+function bindContactFormEvents(form, email, error, name, nameError, textarea, messageError, charCount, submit) {
+    const sync = () => {
+        const nameInput = form.querySelector('input[name="name"]');
+        const messageInput = form.querySelector('textarea[name="message"]');
+        syncContactFormState(form, submit, email, error, nameInput, nameError, messageInput, messageError);
+    };
     form.addEventListener('input', sync);
     form.addEventListener('change', sync);
     if (textarea && charCount) {
@@ -189,11 +225,14 @@ function initContactForm() {
     const form = q('.contact_form');
     const submit = q('.contact_submit');
     const email = form ? form.querySelector('input[type="email"]') : null;
+    const name = form ? form.querySelector('input[name="name"]') : null;
+    const nameError = q('.name-error-message');
     const textarea = form ? form.querySelector('.contact_textarea') : null;
+    const messageError = q('.message-error-message');
     const charCount = q('#charCount');
     const error = q('.email-error-message');
-    if (!form || !submit || !email) return;
-    bindContactFormEvents(form, email, error, textarea, charCount, submit);
+    if (!form || !submit || !email || !name || !nameError || !textarea || !messageError) return;
+    bindContactFormEvents(form, email, error, name, nameError, textarea, messageError, charCount, submit);
 }
 
 function bindContactFormValidation() {

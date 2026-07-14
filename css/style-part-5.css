@@ -138,6 +138,11 @@
     padding: 0 24px;
 }
 
+.name-input-wrapper {
+    position: relative;
+    height: 90px;
+}
+
 .email-input-wrapper {
     position: relative;
     height: 90px;
@@ -158,21 +163,36 @@
     box-shadow: 0 0 0 3px rgba(255, 95, 122, 0.14);
 }
 
-.contact_input.email-invalid {
+.contact_input.email-invalid,
+.contact_input.name-invalid {
     background: rgba(15, 29, 56, 0.9);
     border-color: #ff5f7a;
     box-shadow: 0 0 0 3px rgba(255, 95, 122, 0.14);
 }
 
-.email-error-message {
+.email-error-message,
+.name-error-message,
+.message-error-message {
     font-size: 16px;
     color: #ff5f7a;
     margin-top: 6px;
     display: none;
 }
 
-.email-error-message.show {
+.email-error-message.show,
+.name-error-message.show,
+.message-error-message.show {
     display: block;
+}
+
+.contact_textarea.message-invalid {
+    background: rgba(15, 29, 56, 0.9);
+    border-color: #ff5f7a;
+    box-shadow: 0 0 0 3px rgba(255, 95, 122, 0.14);
+}
+
+.message-input-wrapper {
+    position: relative;
 }
 
 .contact_textarea {
