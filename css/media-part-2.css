@@ -1,5 +1,4 @@
 ﻿@media (max-width: 860px) {
-
     .about-me-background {
         width: 100%;
         margin-bottom: 16px;
@@ -56,7 +55,10 @@
 }
 
 @media (max-width: 768px) {
+    .about::after {
+        top: 300px!important;
 
+    }
     .contact-form-container {
         padding: 10px !important;
         align-items: center;

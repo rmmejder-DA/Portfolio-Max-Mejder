@@ -289,6 +289,9 @@
 }
 
 @media (max-width: 1024px) {
+    .about::after {
+        top: 176px!important;
+    }
     .skills {
         justify-content: end;
     }
@@ -413,9 +416,6 @@
         width: 200px;
         height: 230px;
     }
-}
-
-@media (max-width: 600px) {
 }
 
 @media (min-width: 960px) {
