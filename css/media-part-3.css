@@ -334,7 +334,11 @@
         top: 100px !important;
     }
 }
-
+@media (max-width: 440px) {
+    .about::after {
+        top: 40px !important;
+    }
+}
 @media (max-width: 425px) {
     .about::after {
         top: 259px;
