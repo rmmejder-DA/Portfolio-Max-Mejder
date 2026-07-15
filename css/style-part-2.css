@@ -73,8 +73,8 @@
 
 .floating-skill-icons {
     position: absolute;
-    left: 86%;
-    top: 50%;
+    left: 60%;
+    top: 40%;
     width: 0;
     height: 0;
     pointer-events: none;
@@ -129,15 +129,11 @@
 }
 
 .about {
-    padding: 300px 58px 16px 58px;
     display: flex;
     align-items: center;
-    flex-direction: row;
-    min-width: 320px;
-    max-width: 1440px;
-    height: auto;
-    margin: 0 auto;
-
+    justify-content: center;
+    margin-top: 0;
+        height: 100vh;
 }
 
 .about::after {

@@ -334,11 +334,11 @@ footer p {
 }
 
 .profile-img {
-    width: 80%;
+width: 65%;
     height: auto;
     position: relative;
     z-index: 1;
-    top: 19px;
+    top: 25px;
 }
 
 .introduction {
@@ -349,4 +349,12 @@ footer p {
     width: 100%;
     right: 0;
     z-index: 1;
+}
+.profile-background-overlay {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    height: 100%;
+    width: 100%;
 }

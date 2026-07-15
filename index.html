@@ -11,7 +11,7 @@
     <script src="javascript/i18n.js" defer></script>
     <script src="javascript/contact-form.js" defer></script>
     <script src="javascript/script.js" defer></script>
-    
+
     <link rel="shortcut icon" href="icon/favicon-mm.ico">
     <link rel="icon" type="image/png" sizes="64x64" href="icon/favicon-mm.png">
     <link rel="icon" type="image/svg+xml" href="icon/favicon-mm.svg">
@@ -26,7 +26,8 @@
 <body>
     <header>
         <div class="header">
-            <a class="header-name" href="javascript:void(0)" onclick="window.scrollTo({top: 0, behavior: 'smooth'}); return false;">Max</a>
+            <a class="header-name" href="javascript:void(0)"
+                onclick="window.scrollTo({top: 0, behavior: 'smooth'}); return false;">Max</a>
             <button type="button" class="mobile-nav-toggle" aria-label="Navigation oeffnen" aria-expanded="false"
                 aria-controls="mobileMenu">
                 <span></span>
@@ -62,26 +63,57 @@
         <section id="about" class="about">
             <div class="profile-background">
                 <img class="profile-img" src="img/max-new-about.PNG" alt="Profile Picture">
-                <div class="floating-skill-icons" aria-hidden="true">
-                    <img src="img/html-icon.png" alt="" class="floating-icon icon-1">
-                    <img src="img/css-icon.png" alt="" class="floating-icon icon-2">
-                    <img src="img/js-icon.png" alt="" class="floating-icon icon-3">
-                    <img src="img/typescript-icon.svg" alt="" class="floating-icon icon-4">
-                    <img src="img/angular-icon.svg" alt="" class="floating-icon icon-5">
-                    <img src="img/selbstpraesentation-icon.svg" alt="" class="floating-icon icon-6">
-                    <img src="img/n8n-icon.svg" alt="" class="floating-icon icon-7">
-                </div>
-            </div>
-            <div class="introduction">
-                <span class="vertical-headline">I am</span>
-                <div class="job-name">
-                    <div class="horizontal-headline">
-                        <h1 class="Name">Max Mejder</h1>
-                        <span class="job-title">FRONTEND DEVELOPER</span>
+                <div class="profile-background-overlay" aria-hidden="true">
+                    <div class="floating-skill-icons" aria-hidden="true">
+                        <img src="img/html-icon.png" alt="" class="floating-icon icon-1">
+                        <img src="img/css-icon.png" alt="" class="floating-icon icon-2">
+                        <img src="img/js-icon.png" alt="" class="floating-icon icon-3">
+                        <img src="img/typescript-icon.svg" alt="" class="floating-icon icon-4">
+                        <img src="img/angular-icon.svg" alt="" class="floating-icon icon-5">
+                        <img src="img/selbstpraesentation-icon.svg" alt="" class="floating-icon icon-6">
+                        <img src="img/n8n-icon.svg" alt="" class="floating-icon icon-7">
                     </div>
-                    <button type="button" class="lets-talk-button" id="gotoContact">Let's talk!</button>
+                    <div class="introduction">
+                        <span class="vertical-headline">I am</span>
+                        <div class="job-name">
+                            <div class="horizontal-headline">
+                                <h1 class="Name">Max Mejder</h1>
+                                <span class="job-title">FRONTEND DEVELOPER</span>
+                            </div>
+                            <button type="button" class="lets-talk-button" id="gotoContact">Let's talk!</button>
+                        </div>
+                    </div>
                 </div>
+            <div class="icon_plus_scroll_container">
+                <div class="socials">
+                    <span class="border-left"></span>
+                    <a class="social-link social-link-light" rel="noopener noreferrer"
+                        href="https://www.linkedin.com/in/max-mejder-91591b1a1" target="_blank" aria-label="LinkedIn">
+                        <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+                            <path
+                                d="M4.98 3.5A2.5 2.5 0 1 0 5 8.5a2.5 2.5 0 0 0-.02-5ZM3 9h4v12H3V9Zm7 0h3.8v1.7h.05c.53-1 1.82-2.05 3.75-2.05C21.6 8.65 24 11.06 24 15.6V21h-4v-4.8c0-2.3-.04-5.25-3.2-5.25-3.2 0-3.69 2.5-3.69 5.1V21H9V9h1Z" />
+                        </svg>
+                    </a>
+                    <a class="social-link social-link-light" rel="noopener noreferrer"
+                        href="https://github.com/rmmejder-DA" target="_blank" aria-label="GitHub">
+                        <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+                            <path
+                                d="M12 .297a12 12 0 0 0-3.794 23.385c.6.111.82-.258.82-.577v-2.234c-3.338.726-4.043-1.61-4.043-1.61-.546-1.387-1.333-1.757-1.333-1.757-1.09-.745.083-.73.083-.73 1.205.084 1.84 1.237 1.84 1.237 1.07 1.834 2.807 1.304 3.492.997.108-.775.418-1.305.762-1.605-2.665-.304-5.467-1.334-5.467-5.93 0-1.31.468-2.381 1.236-3.221-.124-.303-.535-1.523.117-3.176 0 0 1.008-.322 3.3 1.23a11.49 11.49 0 0 1 6.005 0c2.29-1.552 3.296-1.23 3.296-1.23.655 1.653.244 2.873.12 3.176.77.84 1.235 1.911 1.235 3.221 0 4.608-2.807 5.623-5.48 5.921.43.372.814 1.103.814 2.222v3.293c0 .322.216.694.825.576A12.003 12.003 0 0 0 12 .297" />
+                        </svg>
+                    </a>
+                    <a class="social-link social-link-light" href="mailto:rmmejder@gmail.com" aria-label="E-Mail">
+                        <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+                            <path
+                                d="M2 5.5A2.5 2.5 0 0 1 4.5 3h15A2.5 2.5 0 0 1 22 5.5v13a2.5 2.5 0 0 1-2.5 2.5h-15A2.5 2.5 0 0 1 2 18.5v-13Zm2.6-.5 7.4 5.6L19.4 5h-14.8Zm15.4 2.5-6.8 5.2a2 2 0 0 1-2.4 0L4 7.5v11c0 .3.2.5.5.5h15c.3 0 .5-.2.5-.5v-11Z" />
+                        </svg>
+                    </a>
+                    <a class="mail-to" href="mailto:rmmejder@gmail.com" aria-label="E-Mail">rmmejder@gmail.com</a>
+                </div>
+                <span class="scrollDown-vertical">Scroll down<p class="arrow">&#x279C;</p>
+                </span>
             </div>
+            </div>
+
         </section>
         <div class="introduction-underlay">
             <h2 class="vertical-headline">I am</h2>
@@ -93,34 +125,7 @@
                 <button type="button" class="lets-talk-button" id="gotoContactMobile">Let's talk!</button>
             </div>
         </div>
-        <div class="icon_plus_scroll_container">
-            <div class="socials">
-                <span class="border-left"></span>
-                <a class="social-link social-link-light" rel="noopener noreferrer"
-                    href="https://www.linkedin.com/in/max-mejder-91591b1a1" target="_blank" aria-label="LinkedIn">
-                    <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false">
-                        <path
-                            d="M4.98 3.5A2.5 2.5 0 1 0 5 8.5a2.5 2.5 0 0 0-.02-5ZM3 9h4v12H3V9Zm7 0h3.8v1.7h.05c.53-1 1.82-2.05 3.75-2.05C21.6 8.65 24 11.06 24 15.6V21h-4v-4.8c0-2.3-.04-5.25-3.2-5.25-3.2 0-3.69 2.5-3.69 5.1V21H9V9h1Z" />
-                    </svg>
-                </a>
-                <a class="social-link social-link-light" rel="noopener noreferrer" href="https://github.com/rmmejder-DA"
-                    target="_blank" aria-label="GitHub">
-                    <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false">
-                        <path
-                            d="M12 .297a12 12 0 0 0-3.794 23.385c.6.111.82-.258.82-.577v-2.234c-3.338.726-4.043-1.61-4.043-1.61-.546-1.387-1.333-1.757-1.333-1.757-1.09-.745.083-.73.083-.73 1.205.084 1.84 1.237 1.84 1.237 1.07 1.834 2.807 1.304 3.492.997.108-.775.418-1.305.762-1.605-2.665-.304-5.467-1.334-5.467-5.93 0-1.31.468-2.381 1.236-3.221-.124-.303-.535-1.523.117-3.176 0 0 1.008-.322 3.3 1.23a11.49 11.49 0 0 1 6.005 0c2.29-1.552 3.296-1.23 3.296-1.23.655 1.653.244 2.873.12 3.176.77.84 1.235 1.911 1.235 3.221 0 4.608-2.807 5.623-5.48 5.921.43.372.814 1.103.814 2.222v3.293c0 .322.216.694.825.576A12.003 12.003 0 0 0 12 .297" />
-                    </svg>
-                </a>
-                <a class="social-link social-link-light" href="mailto:rmmejder@gmail.com" aria-label="E-Mail">
-                    <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false">
-                        <path
-                            d="M2 5.5A2.5 2.5 0 0 1 4.5 3h15A2.5 2.5 0 0 1 22 5.5v13a2.5 2.5 0 0 1-2.5 2.5h-15A2.5 2.5 0 0 1 2 18.5v-13Zm2.6-.5 7.4 5.6L19.4 5h-14.8Zm15.4 2.5-6.8 5.2a2 2 0 0 1-2.4 0L4 7.5v11c0 .3.2.5.5.5h15c.3 0 .5-.2.5-.5v-11Z" />
-                    </svg>
-                </a>
-                <a class="mail-to" href="mailto:rmmejder@gmail.com" aria-label="E-Mail">rmmejder@gmail.com</a>
-            </div>
-            <span class="scrollDown-vertical">Scroll down<p class="arrow">&#x279C;</p>
-            </span>
-        </div>
+
         <section class="about-me" id="about_me">
             <div class="about-me-background">
                 <h2 class="section-title">About me</h2>
@@ -329,8 +334,8 @@
                         tracking,
                         and secure payment processing.</p>
                     <div class="portfolio-buttons">
-                        <a href="https://el-pollo-loco.max-mejder.de" class="portfolio-btn portfolio-btn-live" target="_blank"
-                            rel="noopener noreferrer">Live
+                        <a href="https://el-pollo-loco.max-mejder.de" class="portfolio-btn portfolio-btn-live"
+                            target="_blank" rel="noopener noreferrer">Live
                             test</a>
                         <a href="https://github.com/rmmejder-DA/El-Pollo-Loco"
                             class="portfolio-btn portfolio-btn-github" target="_blank"
@@ -341,7 +346,8 @@
             <div class="reviewOfperson-container">
                 <div class="reviewOfperson reviewOfperson-card">
                     <span class="review-quote-mark" aria-hidden="true"></span>
-                    <p class="commentar_text" id="commentar-text">No comments yet. Leave your feedback using the button below.</p>
+                    <p class="commentar_text" id="commentar-text">No comments yet. Leave your feedback using the button
+                        below.</p>
                     <div class="review-meta-row">
                         <span class="commentar_line" aria-hidden="true"></span>
                         <p class="reviewOfperson_name">Your comment will appear here</p>
@@ -380,7 +386,8 @@
                 </div>
                 <form class="contact_form" action="send_mail.php" method="post">
                     <div class="name-input-wrapper">
-                        <input type="text" name="name" placeholder="Your name" class="contact_input" pattern="[a-zA-Z\s]*" title="Please enter only letters and spaces" required>
+                        <input type="text" name="name" placeholder="Your name" class="contact_input"
+                            pattern="[a-zA-Z\s]*" title="Please enter only letters and spaces" required>
                         <div class="name-error-message">Please enter a valid name (letters and spaces only)</div>
                     </div>
                     <div class="email-input-wrapper">
@@ -390,7 +397,8 @@
                     <input type="hidden" name="_captcha" value="false">
                     <input type="hidden" name="_template" value="table">
                     <div class="message-input-wrapper">
-                        <textarea name="message" placeholder="Your message" class="contact_textarea" maxlength="1000" minlength="5" required></textarea>
+                        <textarea name="message" placeholder="Your message" class="contact_textarea" maxlength="1000"
+                            minlength="5" required></textarea>
                         <div class="message-error-message">Message must be at least 5 characters long</div>
                     </div>
                     <div class="contact_textarea_counter"><span id="charCount">0</span>/1000</div>
@@ -412,7 +420,8 @@
     <footer>
         <div class="footer">
             <div class="legal-notice-left">
-                <a class="footer-name" href="javascript:void(0)" onclick="window.scrollTo({top: 0, behavior: 'smooth'}); return false;">Max</a>
+                <a class="footer-name" href="javascript:void(0)"
+                    onclick="window.scrollTo({top: 0, behavior: 'smooth'}); return false;">Max</a>
                 <nav class="legal-links" aria-label="Legal links">
                     <a href="legal-notice.html">Legal Notice</a>
                 </nav>
