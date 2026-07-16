@@ -1,4 +1,13 @@
-﻿@media (min-width: 1441px) {
+﻿@media (max-width: 1440px) {
+    .icon_plus_scroll_container {
+        padding-right: 58px;
+    }
+}
+
+@media (min-width: 1441px) {
+    .icon_plus_scroll_container {
+        padding-right: 0;
+    }
 
     .border-left,
     .img-line-right {
@@ -119,6 +128,14 @@
     .section-title {
         font-size: var(--h2-size);
     }
+
+    .border-bottom-line::after {
+        top: -462px !important;
+    }
+
+    .profile-background {
+        width: 94%;
+    }
 }
 
 @media (max-width: 1252px) {
@@ -127,6 +144,28 @@
     }
 
 
+}
+
+@media (max-width: 1252px) {
+    .floating-skill-icons {
+        position: absolute;
+        left: 67%;
+        top: -26%;
+        width: 0;
+        height: 0;
+        pointer-events: none;
+        z-index: 2;
+    }
+
+    .introduction {
+        position: relative;
+        display: flex;
+        align-items: start;
+        justify-content: end;
+        width: 100%;
+        left: 72px;
+        bottom: 64px;
+    }
 }
 
 @media (max-width: 1200px) {
@@ -184,12 +223,6 @@
     .review-avatar-line {
         display: none;
     }
-
-    .about {
-        padding: 200px 58px 17px 58px;
-    }
-
-
 }
 
 @media (max-width: 1180px) {
@@ -286,11 +319,15 @@
     .img-line-right {
         width: 80px;
     }
+
+    .border-bottom-line::after {
+        top: -446px !important;
+    }
 }
 
 @media (max-width: 1024px) {
     .border-bottom-line::after {
-        top: -462px !important;
+        top: -450px !important;
     }
 
     .skills {
@@ -312,14 +349,26 @@
         width: 100%;
         max-width: 640px;
     }
+
     .introduction {
         position: relative;
         display: flex;
         align-items: start;
-        justify-content: center;
+        justify-content: flex-end;
         width: 100%;
-        left: 0px;
-        bottom: 0px;
+        left: 100px;
+        bottom: 50px;
+        z-index: 1000;
+    }
+
+    .floating-skill-icons {
+        position: absolute;
+        left: 70%;
+        top: 20%;
+        width: 0;
+        height: 0;
+        pointer-events: none;
+        z-index: 2;
     }
 }
 
@@ -353,23 +402,28 @@
     }
 
     .floating-skill-icons {
-        left: 101%;
-        top: 66%;
+        left: 68%;
+        top: 20%;
     }
 }
+
 
 @media (max-width: 900px) {
     .mail-to {
         display: none;
     }
 
-    .scrollDown-vertical {
-        display: none;
+    .floating-skill-icons {
+        left: 73%;
+        top: 0;
     }
 
-    .floating-skill-icons {
-        left: 77%;
-        top: -248px;
+    .border-bottom-line::after {
+        top: -419px !important;
+    }
+
+    .introduction {
+        bottom: -42px;
     }
 
     .icon-1 {
@@ -420,7 +474,7 @@
     .icon_plus_scroll_container {
         height: auto;
         position: relative;
-        top: 140px;
+        top: 105px;
     }
 
     .about-me-decorative {

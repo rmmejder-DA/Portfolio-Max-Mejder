@@ -137,7 +137,7 @@
     .about {
         padding: 0;
         margin-top: 0;
-        height: 100vh;
+        height: 92vh!important;
     }
 
     .contact::after {
@@ -299,6 +299,9 @@
 
     section {
         scroll-margin-top: 92px;
+    }
+        .scrollDown-vertical {
+        display: none;
     }
 }
 
