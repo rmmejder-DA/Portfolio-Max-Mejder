@@ -289,9 +289,10 @@
 }
 
 @media (max-width: 1024px) {
-    .about::after {
-        top: 176px!important;
+    .border-bottom-line::after {
+        top: -462px !important;
     }
+
     .skills {
         justify-content: end;
     }
@@ -310,6 +311,15 @@
     .contact_form {
         width: 100%;
         max-width: 640px;
+    }
+    .introduction {
+        position: relative;
+        display: flex;
+        align-items: start;
+        justify-content: center;
+        width: 100%;
+        left: 0px;
+        bottom: 0px;
     }
 }
 
@@ -358,8 +368,8 @@
     }
 
     .floating-skill-icons {
-        left: 66%;
-        top: 39%;
+        left: 77%;
+        top: -248px;
     }
 
     .icon-1 {
@@ -404,12 +414,13 @@
 
     .lets-talk-button {
         margin-top: 12px;
-        width: 55%;
         height: 50px;
     }
 
     .icon_plus_scroll_container {
-        height: 100px;
+        height: auto;
+        position: relative;
+        top: 140px;
     }
 
     .about-me-decorative {

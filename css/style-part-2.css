@@ -73,8 +73,8 @@
 
 .floating-skill-icons {
     position: absolute;
-    left: 60%;
-    top: 40%;
+    left: 70%;
+    top: -80%;
     width: 0;
     height: 0;
     pointer-events: none;
@@ -128,27 +128,6 @@
     --dy: -230px;
 }
 
-.about {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    margin-top: 0;
-        height: 100vh;
-}
-
-.about::after {
-    content: '';
-    position: absolute;
-    bottom: 0;
-    left: 0;
-    top: 395px;
-    width: 100vw;
-    border-bottom: 4px solid #141d2f;
-    border-bottom-right-radius: 90% 180%;
-    border-top: none;
-    height: 400px;
-    box-shadow: 0px 20px 20px #000000;
-}
 
 .icon_plus_scroll_container {
     display: flex;
@@ -157,6 +136,7 @@
     width: 100%;
     max-width: 1440px;
     margin: 0 auto;
+        margin-bottom: 100px;
 }
 
 .job-name {
