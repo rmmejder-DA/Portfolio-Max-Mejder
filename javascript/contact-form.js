@@ -18,33 +18,75 @@ function isValidEmailDomain(email) {
     return !email || validateEmail(email);
 }
 
-function setNameValidationState(nameInput, errorMessage, isInvalid) {
+function setValidationMessage(errorMessage, mode) {
+    if (!errorMessage) return;
+    if (mode === 'empty' && errorMessage.dataset.empty) {
+        errorMessage.textContent = errorMessage.dataset.empty;
+        return;
+    }
+    if (mode === 'invalid' && errorMessage.dataset.invalid) {
+        errorMessage.textContent = errorMessage.dataset.invalid;
+    }
+}
+
+function setNameValidationState(nameInput, errorMessage, mode) {
+    const isInvalid = mode !== 'none';
     nameInput.classList.toggle('name-invalid', isInvalid);
+    setValidationMessage(errorMessage, mode);
     if (errorMessage) errorMessage.classList.toggle('show', isInvalid);
 }
 
-function setMessageValidationState(messageInput, errorMessage, isInvalid) {
+function setMessageValidationState(messageInput, errorMessage, mode) {
+    const isInvalid = mode !== 'none';
     messageInput.classList.toggle('message-invalid', isInvalid);
+    setValidationMessage(errorMessage, mode);
     if (errorMessage) errorMessage.classList.toggle('show', isInvalid);
 }
 
-function setEmailValidationState(emailInput, errorMessage, isInvalid) {
+function setEmailValidationState(emailInput, errorMessage, mode) {
+    const isInvalid = mode !== 'none';
     emailInput.classList.toggle('email-invalid', isInvalid);
+    setValidationMessage(errorMessage, mode);
     if (errorMessage) errorMessage.classList.toggle('show', isInvalid);
 }
 
-function syncContactFormState(contactForm, submitButton, emailInput, errorMessage, nameInput, nameErrorMessage, messageInput, messageErrorMessage) {
+function setRequiredEmptyState(field, isEmpty) {
+    if (!field) return;
+    field.classList.toggle('required-empty', isEmpty);
+}
+
+function syncContactFormState(contactForm, submitButton, emailInput, errorMessage, nameInput, nameErrorMessage, messageInput, messageErrorMessage, privacyCheckbox, forceRequiredIndicators = false) {
+    if (!contactForm || !submitButton || !emailInput || !nameInput || !messageInput) return;
     const emailValue = emailInput.value;
     const nameValue = nameInput.value;
     const messageValue = messageInput.value;
+
+    const isEmailEmpty = emailValue.trim().length === 0;
+    const isNameEmpty = nameValue.trim().length === 0;
+    const isMessageEmpty = messageValue.trim().length === 0;
+    const showEmptyRequired = forceRequiredIndicators || !!(privacyCheckbox && privacyCheckbox.checked);
     
     const hasValidEmail = !emailValue || validateEmail(emailValue);
     const hasValidName = !nameValue || validateName(nameValue);
     const hasValidMessage = !messageValue || validateMessage(messageValue);
+
+    setRequiredEmptyState(emailInput, showEmptyRequired && isEmailEmpty);
+    setRequiredEmptyState(nameInput, showEmptyRequired && isNameEmpty);
+    setRequiredEmptyState(messageInput, showEmptyRequired && isMessageEmpty);
     
-    setEmailValidationState(emailInput, errorMessage, emailValue.length > 0 && !hasValidEmail);
-    setNameValidationState(nameInput, nameErrorMessage, nameValue.length > 0 && !hasValidName);
-    setMessageValidationState(messageInput, messageErrorMessage, messageValue.length > 0 && messageValue.length < 5);
+    const emailMode = showEmptyRequired && isEmailEmpty
+        ? 'empty'
+        : (emailValue.length > 0 && !hasValidEmail ? 'invalid' : 'none');
+    const nameMode = showEmptyRequired && isNameEmpty
+        ? 'empty'
+        : (nameValue.length > 0 && !hasValidName ? 'invalid' : 'none');
+    const messageMode = showEmptyRequired && isMessageEmpty
+        ? 'empty'
+        : (messageValue.length > 0 && messageValue.length < 5 ? 'invalid' : 'none');
+
+    setEmailValidationState(emailInput, errorMessage, emailMode);
+    setNameValidationState(nameInput, nameErrorMessage, nameMode);
+    setMessageValidationState(messageInput, messageErrorMessage, messageMode);
     
     const valid = contactForm.checkValidity() && hasValidEmail && hasValidName && hasValidMessage;
     contactForm.classList.toggle('is-valid', valid);
@@ -131,15 +173,16 @@ function getContactFormElements(form) {
         name: form.querySelector('input[name="name"]'),
         nameError: q('.name-error-message'),
         message: form.querySelector('textarea[name="message"]'),
-        messageError: q('.message-error-message')
+        messageError: q('.message-error-message'),
+        privacy: form.querySelector('#privacy-policy')
     };
 }
 
 function resetContactFormAfterSuccess(form, email, error, name, nameError, message, messageError, messages) {
     form.reset();
-    setEmailValidationState(email, error, false);
-    setNameValidationState(name, nameError, false);
-    setMessageValidationState(message, messageError, false);
+    setEmailValidationState(email, error, 'none');
+    setNameValidationState(name, nameError, 'none');
+    setMessageValidationState(message, messageError, 'none');
     setContactStatus(form, messages.success, 'is-success');
 }
 
@@ -174,7 +217,7 @@ async function submitContactPayload(payload) {
 }
 
 async function runContactSubmit(form, elements, messages) {
-    const { submit, email, error, name, nameError, message, messageError } = elements;
+    const { submit, email, error, name, nameError, message, messageError, privacy } = elements;
     try {
         if (!validateName(name.value)) throw new Error('Invalid name');
         if (!validateMessage(message.value)) throw new Error('Message too short');
@@ -186,15 +229,15 @@ async function runContactSubmit(form, elements, messages) {
     } catch (submitError) {
         setContactStatus(form, messages.error, 'is-error');
     } finally {
-        syncContactFormState(form, submit, email, error, name, nameError, message, messageError);
+        syncContactFormState(form, submit, email, error, name, nameError, message, messageError, privacy);
     }
 }
 
 async function sendContactForm(form) {
     const elements = getContactFormElements(form);
-    const { submit, email, error, name, nameError, message, messageError } = elements;
+    const { submit, email, error, name, nameError, message, messageError, privacy } = elements;
     if (!submit || !email || !name || !nameError || !message || !messageError) return;
-    syncContactFormState(form, submit, email, error, name, nameError, message, messageError);
+    syncContactFormState(form, submit, email, error, name, nameError, message, messageError, privacy, true);
     if (submit.disabled) return;
     const messages = getContactMessages();
     setContactStatus(form, messages.sending, 'is-info');
@@ -202,16 +245,22 @@ async function sendContactForm(form) {
 }
 
 function bindContactFormEvents(form, email, error, name, nameError, textarea, messageError, charCount, submit) {
+    const privacyCheckbox = form.querySelector('#privacy-policy');
     const sync = () => {
         const nameInput = form.querySelector('input[name="name"]');
         const messageInput = form.querySelector('textarea[name="message"]');
-        syncContactFormState(form, submit, email, error, nameInput, nameError, messageInput, messageError);
+        syncContactFormState(form, submit, email, error, nameInput, nameError, messageInput, messageError, privacyCheckbox);
     };
     form.addEventListener('input', sync);
     form.addEventListener('change', sync);
     if (textarea && charCount) {
         textarea.addEventListener('input', () => {
             charCount.textContent = textarea.value.length;
+        });
+    }
+    if (privacyCheckbox) {
+        privacyCheckbox.addEventListener('change', () => {
+            syncContactFormState(form, submit, email, error, name, nameError, textarea, messageError, privacyCheckbox, privacyCheckbox.checked);
         });
     }
     form.addEventListener('submit', async (event) => {

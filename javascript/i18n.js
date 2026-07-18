@@ -45,6 +45,28 @@ function applyContact(copy) {
     setPlaceholder('.contact_input[type="text"]', copy.placeholderName);
     setPlaceholder('.contact_input[type="email"]', copy.placeholderEmail);
     setPlaceholder('.contact_textarea', copy.placeholderMessage);
+    if (copy.namePatternTitle) {
+        const nameInput = q('.contact_input[name="name"]');
+        if (nameInput) nameInput.setAttribute('title', copy.namePatternTitle);
+    }
+    const nameError = q('.name-error-message');
+    if (nameError) {
+        if (copy.nameErrorEmpty) nameError.dataset.empty = copy.nameErrorEmpty;
+        if (copy.nameErrorInvalid) nameError.dataset.invalid = copy.nameErrorInvalid;
+        setText('.name-error-message', copy.nameErrorInvalid || copy.nameErrorEmpty || '');
+    }
+    const emailError = q('.email-error-message');
+    if (emailError) {
+        if (copy.emailErrorEmpty) emailError.dataset.empty = copy.emailErrorEmpty;
+        if (copy.emailErrorInvalid) emailError.dataset.invalid = copy.emailErrorInvalid;
+        setText('.email-error-message', copy.emailErrorInvalid || copy.emailErrorEmpty || '');
+    }
+    const messageError = q('.message-error-message');
+    if (messageError) {
+        if (copy.messageErrorEmpty) messageError.dataset.empty = copy.messageErrorEmpty;
+        if (copy.messageErrorInvalid) messageError.dataset.invalid = copy.messageErrorInvalid;
+        setText('.message-error-message', copy.messageErrorInvalid || copy.messageErrorEmpty || '');
+    }
     setHtml('.contact_checkbox_label', copy.contactPolicyHtml);
     if (copy.contactSubmitButtonText) {
         const submitBtn = q('.contact_submit');

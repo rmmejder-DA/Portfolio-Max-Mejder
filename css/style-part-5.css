@@ -170,6 +170,21 @@
     box-shadow: 0 0 0 3px rgba(255, 95, 122, 0.14);
 }
 
+.contact_input.required-empty,
+.contact_textarea.required-empty {
+    border-color: #ff5f7a;
+    box-shadow: 0 0 0 3px rgba(255, 95, 122, 0.14);
+    padding-right: 56px;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='22' height='22' viewBox='0 0 22 22'%3E%3Ccircle cx='11' cy='11' r='11' fill='%23ff5f7a'/%3E%3Cpath d='M11 5.2v8.1' stroke='%23ffffff' stroke-width='2.1' stroke-linecap='round'/%3E%3Ccircle cx='11' cy='16.7' r='1.2' fill='%23ffffff'/%3E%3C/svg%3E");
+    background-repeat: no-repeat;
+    background-size: 22px 22px;
+    background-position: right 16px top 14px;
+}
+
+.contact_input.required-empty {
+    background-position: right 16px center;
+}
+
 .email-error-message,
 .name-error-message,
 .message-error-message {
@@ -183,6 +198,7 @@
 .name-error-message.show,
 .message-error-message.show {
     display: block;
+    text-align: center;
 }
 
 .contact_textarea.message-invalid {
