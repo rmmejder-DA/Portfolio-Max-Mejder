@@ -15,8 +15,12 @@ function applyNavigation(copy) {
 }
 
 function applyIntro(copy) {
-    setText('.vertical-headline', copy.verticalHeadline);
-    setText('.job-title', copy.jobTitle);
+    qa('.vertical-headline').forEach((node) => {
+        node.textContent = copy.verticalHeadline;
+    });
+    qa('.job-title').forEach((node) => {
+        node.textContent = copy.jobTitle;
+    });
     setHtml('.scrollDown-vertical', copy.scrollHtml);
     setText('.section-title', copy.sectionTitle);
     setText('.about-me-text', copy.aboutText);
