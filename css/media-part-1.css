@@ -89,6 +89,9 @@
         height: 3px;
         background-color: #9747ff;
     }
+    .about {
+        margin-top: 0;
+    }
 }
 
 @media (max-width: 1360px) {
