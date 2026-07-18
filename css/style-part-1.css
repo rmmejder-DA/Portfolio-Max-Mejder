@@ -101,9 +101,9 @@ footer p {
 .border-bottom-line {
     width: 100vw;
     position: relative;
-    z-index: 1;
-    margin-left: calc(-50vw + 50%);
-    z-index: 0;
+    z-index: -1;
+    /* margin-left: calc(-50vw + 50%); */
+    pointer-events: none;
 }
 
 .border-bottom-line::after {
@@ -122,7 +122,9 @@ footer p {
     height: 400px;
     box-shadow: 0px 20px 20px #000000;
     z-index: -1;
+    pointer-events: none;
 }
+
 .socials {
     display: flex;
     align-items: center;
@@ -311,7 +313,13 @@ footer p {
     transform: scale(1.05);
 }
 
-
+.about {
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    justify-content: center;
+    width: 100%;
+}
 .nav {
     display: flex;
     gap: 32px;
@@ -346,12 +354,12 @@ footer p {
 }
 
 .profile-img {
-    width: 60%;
+    width: 44%;
     height: auto;
     position: relative;
-    z-index: 1;
+    z-index: -1;
     top: 138px;
-    right: 0;
+    left: 50px;
 }
 
 .introduction {
@@ -360,8 +368,9 @@ footer p {
     align-items: start;
     justify-content: end;
     width: 100%;
-    left: 200px;
-    bottom: 200px;
+    left: 150px;
+    bottom: 0;
+    z-index: 1;
 }
 
 .profile-background-overlay {

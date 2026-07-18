@@ -306,9 +306,30 @@
     }
 }
 
-@media (max-width: 1280px) {
+@media (max-width: 1280px) and (max-height: 800px) {
     .border-bottom-line::after {
-        top: 346px;
+        top: -600px !important;
+        border-bottom-left-radius: 0% 0%;
+    }
+
+    .introduction {
+        bottom: 93px;
+    }
+
+    .profile-img {
+        top: 0;
+        left: 71px !important;
+    }
+
+    .floating-skill-icons {
+        left: 70%;
+        top: -32px;
+    }
+
+    .icon_plus_scroll_container {
+        padding-right: 58px;
+        top: -110px;
+        position: relative;
     }
 }
 
@@ -318,30 +339,24 @@
     }
 }
 
-@media (max-width: 853px) {
-    .about::after {
-        top: 386px !important;
+@media (max-width: 853px) and (max-height: 1280px) {
+    .border-bottom-line {
+        top: -160px !important;
     }
 
-    .about {
-        padding-top: 104px !important;
-        height: 93vh !important;
+    .icon_plus_scroll_container {
+        top: 171px !important;
+        position: relative;
     }
-        .border-bottom-line::after {
-        top: -561px !important;
-    }
+
     .introduction-underlay {
-        top: 54px;
-    }
-    .floating-skill-icons {
-        left: 84%;
-        top: -246px;
+        top: 80px !important;
     }
 }
 
-@media (max-width: 820px) {
+@media (max-width: 820px) and (max-height: 1180px) {
     .border-bottom-line::after {
-        top: -563px !important;
+        top: -568px !important;
     }
 
     .floating-skill-icons {
@@ -351,6 +366,49 @@
 
     .about {
         height: 100vh !important;
+    }
+
+    .icon_plus_scroll_container {
+        top: 120px !important;
+    }
+
+    .profile-img {
+        left: -51px !important;
+    }
+
+    .introduction-underlay {
+        top: 0 !important;
+    }
+
+    .border-bottom-line {
+        top: -20px !important;
+    }
+}
+
+@media (max-width: 768px) and (max-height: 1024px) {
+    .icon_plus_scroll_container {
+        top: 93px !important;
+    }
+
+    .profile-img {
+        left: -71px !important;
+        top: 20px !important;
+    }
+
+    .introduction-underlay {
+        top: 122px !important;
+    }
+
+    .floating-skill-icons {
+        left: 71% !important;
+    }
+
+    .border-bottom-line {
+        top: 10px !important;
+    }
+    .border-bottom-line::after {
+        border-bottom-right-radius: 55% 20%;
+        border-bottom-left-radius: 0% 0%;
     }
 }
 
@@ -373,19 +431,51 @@
         padding-top: 0 !important;
         height: 100vh !important;
     }
+
+    .border-bottom-line {
+        z-index: 0;
+    }
 }
 
-@media (max-width: 540px) {
-    .about::after {
-        top: 100px !important;
-    }
+@media (max-width: 540px) and (max-height: 720px) {
 
     .introduction-underlay {
-        top: 99px;
+        top: 120px !important;
     }
 
     .icon_plus_scroll_container {
-        top: 100px;
+        top: 120px !important;
+    }
+
+    .profile-img {
+        top: 0 !important;
+        left: -20px !important;
+    }
+
+    .floating-skill-icons {
+        left: 70% !important;
+        top: -100px !important;
+    }
+
+    .profile-background-overlay {
+        width: 100%;
+        height: 100%;
+    }
+
+    .border-bottom-line {
+        position: relative;
+        z-index: 0;
+        top: 0 !important;
+    }
+
+    .about-me::before {
+        top: 110% !important;
+    }
+
+    .about {
+        margin-top: 20px !important;
+        top: -66px !important;
+        position: relative;
     }
 }
 
@@ -396,66 +486,146 @@
 }
 
 @media (max-width: 425px) {
-    .about::after {
-        top: 259px;
-        height: 170px;
+    .icon_plus_scroll_container {
+        top: 180px !important;
     }
 }
 
-@media (max-width: 430px) {
-    .about::after {
-        top: 259px !important;
-        height: 170px;
+@media (max-width: 430px) and (max-height: 932px) {
+    .border-bottom-line::after {
+        top: -480px !important;
+        border-bottom-right-radius: 55% 20%;
+        border-bottom-left-radius: 0% 0%;
     }
 
-    .about {
-        padding-top: 104px !important;
+    .profile-background::after,
+    .profile-background::before {
+        z-index: -2;
     }
 
     .floating-skill-icons {
-        left: 93%;
-        top: -93px;
+        left: 82% !important;
+        top: -83px !important;
+    }
+
+    .profile-img {
+        left: -21px !important;
+        top: 0px !important;
     }
 
     .icon_plus_scroll_container {
         height: auto;
         position: relative;
-        top: 190px;
+        top: 210px !important;
+    }
+
+    .introduction-underlay {
+        top: 162px;
     }
 }
 
-@media (max-width: 414px) {
-    .about::after {
-        top: 250px !important;
-    }
-
+@media (max-width: 412px) and (max-height: 915px) {
     .about {
-        padding-top: 104px !important;
+        margin-top: 0px !important;
+        padding-top: 0px !important;
+        justify-content: center;
+        top: -20px !important;
+        position: relative;
+    }
+
+    .profile-img {
+        top: 0px !important;
+    }
+
+    .introduction-underlay {
+        top: 162px !important;
+    }
+
+    .profile-background::after,
+    .profile-background::before {
+        z-index: -2;
+    }
+
+    .border-bottom-line {
+        top: 10px !important;
     }
 }
 
-@media (max-width: 390px) {
-    .about::after {
-        top: 236px !important;
+@media (max-width: 414px) and (max-height: 896px) {
+    .about {
+        margin-top: 0 !important;
+        padding-top: 0 !important;
+        position: relative;
+        top: -100px !important;
     }
 
+    .profile-background::after,
+    .profile-background::before {
+        z-index: -2;
+    }
+
+    .profile-img {
+        left: -21px !important;
+        width: 90% !important;
+    }
+
+    .border-bottom-line {
+        top: 0px !important;
+        z-index: 0;
+    }
+
+    .border-bottom-line::after {
+        border-bottom-right-radius: 55% 20%;
+        border-bottom-left-radius: 0% 0%;
+        top: -460px !important;
+    }
+
+    .floating-skill-icons {
+        left: 82% !important;
+        top: -93px !important;
+    }
+        .introduction-underlay {
+        top: 161px !important;
+    }
+}
+
+@media (max-width: 390px) and (max-height: 844px) {
     .about {
         padding-top: 122px !important;
     }
+
+    .border-bottom-line::after {
+        top: -470px !important;
+    }
+
+    .icon_plus_scroll_container {
+        top: 184px !important;
+    }
 }
 
-@media (max-width: 375px) {
-    .about::after {
-        width: 100%;
-        left: 0%;
-        top: 230px !important;
-        height: 25%;
-        border-bottom-right-radius: 71% 125%;
+@media (max-width: 375px) and (max-height: 667px) {
+    .profile-img {
+        left: -36px !important;
+        top: 0px !important;
+    }
+
+    .floating-skill-icons {
+        left: 65% !important;
+        top: -65px !important;
     }
 
     .about {
-        height: 110vh !important;
-        padding-top: 36px !important;
+        padding-top: 0 !important;
+        position: relative;
+        top: -50px !important;
+    }
+
+    .border-bottom-line {
+        top: 0px !important;
+    }
+
+    .introduction-underlay {
+        top: 110px !important;
     }
 
     .about-me {
@@ -465,47 +635,63 @@
     .icon_plus_scroll_container {
         height: auto;
         position: relative;
-        top: 119px;
-    }
-
-    .floating-skill-icons {
-        left: 98% !important;
-        top: -65px !important;
+        top: 119px !important;
     }
 }
 
-@media (max-width: 360px) {
-    .about::after {
-        width: 100%;
-        left: 0%;
-        top: 220px !important;
-        height: 23%;
+@media (max-width: 360px) and (max-height: 740px) {
+    .about {
+        height: 110vh !important;
+        padding-top: 0 !important;
+        top: -120px !important;
     }
 
     .floating-skill-icons {
-        left: 95% !important;
+        left: 90% !important;
         top: -55px !important;
     }
 
     .icon_plus_scroll_container {
         top: 150px;
     }
+
+    .profile-img {
+        left: -36px !important;
+        top: 0px !important;
+    }
 }
 
-@media (max-width: 344px) {
-    .about::after {
-        width: 100%;
-        left: 0%;
-        top: 175px !important;
-        height: 23%;
+@media (max-width: 344px) and (max-height: 882px) {
+
+    .introduction-underlay {
+        top: 135px;
+    }
+
+    .icon_plus_scroll_container {
+        top: 230px;
+    }
+
+    .border-bottom-line {
+        z-index: 0;
+        top: 0px !important;
+    }
+
+    .border-bottom-line::after {
+        border-bottom-right-radius: 55% 20%;
+    }
+
+    .floating-skill-icons {
+        left: 85% !important;
+        top: -50px !important;
+    }
+
+    .profile-img {
+        left: -42px !important;
     }
 }
 
 @media (max-width: 320px) and (orientation: portrait) {
-    .about::after {
-        width: 100%;
-        left: 0%;
-        top: 30% !important;
-        height: 26%;
+    .border-bottom-line::after {
+        top: -442px !important;
     }
 }
