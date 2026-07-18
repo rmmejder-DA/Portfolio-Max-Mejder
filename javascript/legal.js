@@ -65,14 +65,14 @@ const HEADER_NAV = {
 
 const I18N = {
     de: {
-        'legal-notice': { title: 'Rechtliches | Max Mejder', heading: 'Rechtliche Hinweise', tabLabel: 'Rechtliche Inhalte', tabImpressum: 'Impressum', tabDatenschutz: 'Datenschutz', backLink: 'Zurück zur Startseite', impressum: DE_IMPRESSUM, privacy: DE_PRIVACY },
-        datenschutz: { title: 'Datenschutz | Max Mejder', heading: 'Datenschutzerklärung', intro: 'Informationen zum Umgang mit personenbezogenen Daten auf dieser Website.', backLink: 'Zurück zur Startseite', section: DE_PRIVACY },
-        impressum: { title: 'Impressum | Max Mejder', heading: 'Impressum', intro: 'Angaben gemäß Paragraph 5 TMG', backLink: 'Zurück zur Startseite', section: DE_IMPRESSUM },
+        'legal-notice': { title: 'Rechtliches | Max Mejder', heading: 'Rechtliche Hinweise', tabLabel: 'Rechtliche Inhalte', tabImpressum: 'Impressum', tabDatenschutz: 'Datenschutz', backLink: 'Zurück zur Startseite', legalNoticeLinkText: 'Rechtliche Hinweise', impressum: DE_IMPRESSUM, privacy: DE_PRIVACY },
+        datenschutz: { title: 'Datenschutz | Max Mejder', heading: 'Datenschutzerklärung', intro: 'Informationen zum Umgang mit personenbezogenen Daten auf dieser Website.', backLink: 'Zurück zur Startseite', legalNoticeLinkText: 'Rechtliche Hinweise', section: DE_PRIVACY },
+        impressum: { title: 'Impressum | Max Mejder', heading: 'Impressum', intro: 'Angaben gemäß Paragraph 5 TMG', backLink: 'Zurück zur Startseite', legalNoticeLinkText: 'Rechtliche Hinweise', section: DE_IMPRESSUM },
     },
     en: {
-        'legal-notice': { title: 'Legal Notice | Max Mejder', heading: 'Legal Notice', tabLabel: 'Legal content', tabImpressum: 'Imprint', tabDatenschutz: 'Privacy Policy', backLink: 'Back to homepage', impressum: EN_IMPRESSUM, privacy: EN_PRIVACY },
-        datenschutz: { title: 'Privacy Policy | Max Mejder', heading: 'Privacy Policy', intro: 'Information on how personal data is processed on this website.', backLink: 'Back to homepage', section: EN_PRIVACY },
-        impressum: { title: 'Imprint | Max Mejder', heading: 'Imprint', intro: 'Information according to Section 5 TMG', backLink: 'Back to homepage', section: EN_IMPRESSUM },
+        'legal-notice': { title: 'Legal Notice | Max Mejder', heading: 'Legal Notice', tabLabel: 'Legal content', tabImpressum: 'Imprint', tabDatenschutz: 'Privacy Policy', backLink: 'Back to homepage', legalNoticeLinkText: 'Legal Notice', impressum: EN_IMPRESSUM, privacy: EN_PRIVACY },
+        datenschutz: { title: 'Privacy Policy | Max Mejder', heading: 'Privacy Policy', intro: 'Information on how personal data is processed on this website.', backLink: 'Back to homepage', legalNoticeLinkText: 'Legal Notice', section: EN_PRIVACY },
+        impressum: { title: 'Imprint | Max Mejder', heading: 'Imprint', intro: 'Information according to Section 5 TMG', backLink: 'Back to homepage', legalNoticeLinkText: 'Legal Notice', section: EN_IMPRESSUM },
     },
 };
 
@@ -125,8 +125,8 @@ function setSectionContent(scope, sectionData) {
 function setMeta(copy, lang) {
     document.title = copy.title;
     document.documentElement.lang = lang;
-    setText(q('.legal-header h1'), copy.heading);
-    setText(q('.legal-header p'), copy.intro || '');
+    setText(q('.legal-header h1') || q('.legal-page-header h1'), copy.heading);
+    setText(q('.legal-header p') || q('.legal-page-header p'), copy.intro || '');
     setBackLinkText(copy.backLink);
 }
 
@@ -135,6 +135,16 @@ function setLegalNoticeTabs(copy) {
     if (tabList) tabList.setAttribute('aria-label', copy.tabLabel);
     setText(q('.legal-tab[data-target="impressum"]'), copy.tabImpressum);
     setText(q('.legal-tab[data-target="datenschutz"]'), copy.tabDatenschutz);
+}
+
+function setFooterLegalLinks(copy) {
+    if (!copy.legalNoticeLinkText) return;
+    qa('.legal-links a').forEach((link) => {
+        const href = (link.getAttribute('href') || '').toLowerCase();
+        if (href.includes('legal-notice.html')) {
+            link.textContent = copy.legalNoticeLinkText;
+        }
+    });
 }
 
 function applyHeaderNavigation(lang) {
@@ -147,12 +157,14 @@ function applyHeaderNavigation(lang) {
 function applyLegalNotice(copy) {
     setMeta(copy, copy === I18N.de['legal-notice'] ? 'de' : 'en');
     setLegalNoticeTabs(copy);
+    setFooterLegalLinks(copy);
     setSectionContent('#impressum', copy.impressum);
     setSectionContent('#datenschutz', copy.privacy);
 }
 
 function applySingleLegalPage(copy, lang) {
     setMeta(copy, lang);
+    setFooterLegalLinks(copy);
     setSectionContent('', copy.section);
 }
 
@@ -185,11 +197,29 @@ function onLanguageClick(button) {
 
 function initLegalTranslations() {
     const buttons = qa('.legal-translate button[data-lang]');
-    if (!buttons.length) return;
     const language = getSavedLanguage();
     markActiveLanguage(language);
     applyLanguage(language);
-    buttons.forEach((button) => button.addEventListener('click', () => onLanguageClick(button)));
+    if (buttons.length) {
+        buttons.forEach((button) => button.addEventListener('click', () => onLanguageClick(button)));
+    }
+
+    const originalSetActiveLanguage = typeof window.setActiveLanguage === 'function'
+        ? window.setActiveLanguage
+        : null;
+
+    if (!originalSetActiveLanguage || window.__legalSetActiveLanguageWrapped) return;
+
+    window.setActiveLanguage = function setActiveLanguageWithLegalTranslation(clickedButton) {
+        originalSetActiveLanguage(clickedButton);
+        const lang = clickedButton && clickedButton.textContent && clickedButton.textContent.trim().toLowerCase() === 'de'
+            ? 'de'
+            : 'en';
+        markActiveLanguage(lang);
+        applyLanguage(lang);
+    };
+
+    window.__legalSetActiveLanguageWrapped = true;
 }
 
 document.addEventListener('DOMContentLoaded', initLegalTranslations);

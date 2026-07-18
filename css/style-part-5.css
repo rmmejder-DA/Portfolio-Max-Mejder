@@ -193,6 +193,7 @@
 
 .message-input-wrapper {
     position: relative;
+    height: 222px;
 }
 
 .contact_textarea {

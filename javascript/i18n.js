@@ -58,6 +58,14 @@ function applyCustomButtons(copy) {
         setText('#gotoContact', copy.letsTalkButtonText);
         setText('#gotoContactMobile', copy.letsTalkButtonText);
     }
+    if (copy.legalNoticeLinkText) {
+        qa('.legal-links a').forEach((link) => {
+            const href = (link.getAttribute('href') || '').toLowerCase();
+            if (href.includes('legal-notice.html')) {
+                link.textContent = copy.legalNoticeLinkText;
+            }
+        });
+    }
 }
 
 function applyLanguage(language) {
