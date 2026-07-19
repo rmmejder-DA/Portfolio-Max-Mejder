@@ -320,6 +320,7 @@ footer p {
     justify-content: center;
     width: 100%;
 }
+
 .nav {
     display: flex;
     gap: 32px;
@@ -360,6 +361,31 @@ footer p {
     z-index: -1;
     top: 138px;
     left: 50px;
+    animation: profile-img 3s ease-in forwards;
+}
+
+@keyframes profile-img {
+    0% {
+        transform: scale(1.2);
+        opacity: 0.5;
+        top: 1000px;
+        left: 50px;
+    }
+
+    50% {
+        transform: scale(1.2);
+        opacity: 1;
+        left: 50px;
+        top: 88px;
+    }
+
+    100% {
+        transform: scale(1);
+        opacity: 1;
+        left: 50px;
+        top: 138px;
+    }
+
 }
 
 .introduction {
@@ -371,6 +397,39 @@ footer p {
     left: 150px;
     bottom: 0;
     z-index: 1;
+    animation: introduction 3s ease-in forwards;
+}
+
+@keyframes introduction {
+    0% {
+        transform: scale(1.2);
+        opacity: 0.5;
+        bottom: 1000px;
+        left: 150px;
+        opacity: 0.8;
+    }
+/* 
+    40% {
+        transform: scale(1.2);
+        opacity: 0.5;
+        bottom: -1000px;
+    } */
+
+    70% {
+        transform: scale(1.2);
+        opacity: 0.5;
+        left: 150px;
+        bottom: 0px;
+        opacity: 0.5;
+    }
+
+    100% {
+        transform: scale(1);
+        opacity: 1;
+        left: 150px;
+        bottom: 0px;
+        opacity: 1;
+    }
 }
 
 .profile-background-overlay {

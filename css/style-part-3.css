@@ -184,8 +184,8 @@
 .skills-contact-btn {
     margin-top: 18px;
     min-width: 220px;
-    height: 64px;
-    padding: 0 32px;
+    height: auto;
+    padding: 24px;
     border: none;
     border-radius: 10px;
     background-color: #70e61c;
@@ -198,8 +198,9 @@
 }
 
 .skills-contact-btn:hover {
-    background-color: #5fd016;
-    transform: translateY(-2px);
+    background-color: #9747ff;
+    transform: scale(1.1) translateZ(4px);
+    opacity: 1;
 }
 
 
