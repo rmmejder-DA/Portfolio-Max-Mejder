@@ -366,26 +366,19 @@ footer p {
 
 @keyframes profile-img {
     0% {
-        transform: scale(1.2);
+        transform: scale(0.7);
         opacity: 0.5;
-        top: 1000px;
-        left: 50px;
     }
 
     50% {
-        transform: scale(1.2);
+        transform: scale(0.9);
         opacity: 1;
-        left: 50px;
-        top: 88px;
     }
 
     100% {
         transform: scale(1);
         opacity: 1;
-        left: 50px;
-        top: 138px;
     }
-
 }
 
 .introduction {
