@@ -384,8 +384,8 @@ footer p {
     height: auto;
     position: relative;
     z-index: -1;
-    top: 138px;
-    left: 50px;
+    top: 150px;
+    left: 50px !important;
     animation: profile-img 3s ease-in forwards;
 }
 

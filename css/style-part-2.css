@@ -9,17 +9,19 @@
     justify-content: center;
     padding: 24px;
     background-color: #70e61c;
-    width: fit-content;
+    min-width: 220px;
     height: auto;
     margin-top: 24px;
-    line-height: 10px;
+    line-height: 1;
     color: #ffffff;
     text-decoration: none;
-    border-radius: 8px;
+    border-radius: 10px;
     font-size: 26px;
     font-weight: 500;
     cursor: pointer;
     border: none !important;
+    box-shadow: 0 6px 14px rgba(0, 0, 0, 0.35);
+    transition: transform 0.2s ease, background-color 0.2s ease;
 }
 
 .lets-talk-button:hover {
