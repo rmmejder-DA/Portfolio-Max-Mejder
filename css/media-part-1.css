@@ -1,7 +1,9 @@
 ﻿@media (max-width: 1440px) {
     .icon_plus_scroll_container {
         padding-right: 58px;
-
+    }
+        .footer{
+        padding: 16px 58px 16px 58px;
     }
 }
 
@@ -9,9 +11,11 @@
     .icon_plus_scroll_container {
         padding-right: 0;
         position: relative;
-        top: 0;
+        top: -48px;
     }
-
+    .footer{
+        padding: 0 0 0 0;
+    }
     .border-left,
     .img-line-right {
         position: relative;

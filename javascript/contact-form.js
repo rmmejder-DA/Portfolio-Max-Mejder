@@ -3,12 +3,15 @@
 // Retrieved 2026-07-11
 
 let contactStatusHideTimer = null;
+let emailErrorMessageTimer = null;
+let nameErrorMessageTimer = null;
+let messageErrorMessageTimer = null;
 
 const validateEmail = (email) => {
-    return email.match(/^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/) !== null;
+    return /^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/.test(email.trim());
 };
 const validateName = (name) => {
-    return name.trim().length > 0 && /^[a-zA-Z\s]*$/.test(name);
+    return name.trim().length >= 3 && /^[a-zA-Z]+$/.test(name.trim());
 };
 
 const validateMessage = (message) => {
@@ -20,34 +23,60 @@ function isValidEmailDomain(email) {
 
 function setValidationMessage(errorMessage, mode) {
     if (!errorMessage) return;
-    if (mode === 'empty' && errorMessage.dataset.empty) {
-        errorMessage.textContent = errorMessage.dataset.empty;
-        return;
-    }
-    if (mode === 'invalid' && errorMessage.dataset.invalid) {
-        errorMessage.textContent = errorMessage.dataset.invalid;
+    if (mode === 'empty' || mode === 'invalid') {
+        errorMessage.textContent = '!';
     }
 }
 
 function setNameValidationState(nameInput, errorMessage, mode) {
     const isInvalid = mode !== 'none';
+    const isValid = mode === 'none' && nameInput.value.trim().length >= 3;
     nameInput.classList.toggle('name-invalid', isInvalid);
-    setValidationMessage(errorMessage, mode);
-    if (errorMessage) errorMessage.classList.toggle('show', isInvalid);
+    nameInput.classList.toggle('name-valid', isValid);
+    if (isInvalid && errorMessage) {
+        showErrorMessageForSeconds(errorMessage, 3, 'nameErrorMessageTimer');
+    }
 }
 
 function setMessageValidationState(messageInput, errorMessage, mode) {
     const isInvalid = mode !== 'none';
+    const isValid = mode === 'none' && messageInput.value.trim().length >= 5;
     messageInput.classList.toggle('message-invalid', isInvalid);
-    setValidationMessage(errorMessage, mode);
-    if (errorMessage) errorMessage.classList.toggle('show', isInvalid);
+    messageInput.classList.toggle('message-valid', isValid);
+    if (isInvalid && errorMessage) {
+        showErrorMessageForSeconds(errorMessage, 3, 'messageErrorMessageTimer');
+    }
 }
 
 function setEmailValidationState(emailInput, errorMessage, mode) {
     const isInvalid = mode !== 'none';
+    const isValid = mode === 'none' && emailInput.value.trim().length > 0;
     emailInput.classList.toggle('email-invalid', isInvalid);
-    setValidationMessage(errorMessage, mode);
-    if (errorMessage) errorMessage.classList.toggle('show', isInvalid);
+    emailInput.classList.toggle('email-valid', isValid);
+    if (isInvalid && errorMessage) {
+        showErrorMessageForSeconds(errorMessage, 3, 'emailErrorMessageTimer');
+    }
+}
+
+function showErrorMessageForSeconds(errorMessage, timerName) {
+    if (timerName === 'emailErrorMessageTimer' && emailErrorMessageTimer) {
+        clearTimeout(emailErrorMessageTimer);
+    } else if (timerName === 'nameErrorMessageTimer' && nameErrorMessageTimer) {
+        clearTimeout(nameErrorMessageTimer);
+    } else if (timerName === 'messageErrorMessageTimer' && messageErrorMessageTimer) {
+        clearTimeout(messageErrorMessageTimer);
+    }
+    errorMessage.classList.add('show');
+    const timer = window.setTimeout(() => {
+        errorMessage.classList.remove('show');
+    }, 3000);
+    if (timerName === 'emailErrorMessageTimer') {
+        emailErrorMessageTimer = timer;
+    } else if (timerName === 'nameErrorMessageTimer') {
+        nameErrorMessageTimer = timer;
+    } else if (timerName === 'messageErrorMessageTimer') {
+        messageErrorMessageTimer = timer;
+    }
 }
 
 function setRequiredEmptyState(field, isEmpty) {
@@ -55,40 +84,32 @@ function setRequiredEmptyState(field, isEmpty) {
     field.classList.toggle('required-empty', isEmpty);
 }
 
+function computeValidationModes(emailValue, nameValue, messageValue, showEmptyRequired) {
+    return {
+        email: showEmptyRequired && emailValue.trim().length === 0 ? 'empty' : (emailValue.length > 0 && !validateEmail(emailValue) ? 'invalid' : 'none'),
+        name: showEmptyRequired && nameValue.trim().length === 0 ? 'empty' : (nameValue.length > 0 && !validateName(nameValue) ? 'invalid' : 'none'),
+        message: showEmptyRequired && messageValue.trim().length === 0 ? 'empty' : (messageValue.length > 0 && messageValue.length < 5 ? 'invalid' : 'none')
+    };
+}
+
+function updateValidationStates(inputs, modes) {
+    setEmailValidationState(inputs.emailInput, inputs.errorMessage, modes.email);
+    setNameValidationState(inputs.nameInput, inputs.nameErrorMessage, modes.name);
+    setMessageValidationState(inputs.messageInput, inputs.messageErrorMessage, modes.message);
+}
+
 function syncContactFormState(contactForm, submitButton, emailInput, errorMessage, nameInput, nameErrorMessage, messageInput, messageErrorMessage, privacyCheckbox, forceRequiredIndicators = false) {
     if (!contactForm || !submitButton || !emailInput || !nameInput || !messageInput) return;
     const emailValue = emailInput.value;
     const nameValue = nameInput.value;
     const messageValue = messageInput.value;
-
-    const isEmailEmpty = emailValue.trim().length === 0;
-    const isNameEmpty = nameValue.trim().length === 0;
-    const isMessageEmpty = messageValue.trim().length === 0;
     const showEmptyRequired = forceRequiredIndicators || !!(privacyCheckbox && privacyCheckbox.checked);
-    
-    const hasValidEmail = !emailValue || validateEmail(emailValue);
-    const hasValidName = !nameValue || validateName(nameValue);
-    const hasValidMessage = !messageValue || validateMessage(messageValue);
-
-    setRequiredEmptyState(emailInput, showEmptyRequired && isEmailEmpty);
-    setRequiredEmptyState(nameInput, showEmptyRequired && isNameEmpty);
-    setRequiredEmptyState(messageInput, showEmptyRequired && isMessageEmpty);
-    
-    const emailMode = showEmptyRequired && isEmailEmpty
-        ? 'empty'
-        : (emailValue.length > 0 && !hasValidEmail ? 'invalid' : 'none');
-    const nameMode = showEmptyRequired && isNameEmpty
-        ? 'empty'
-        : (nameValue.length > 0 && !hasValidName ? 'invalid' : 'none');
-    const messageMode = showEmptyRequired && isMessageEmpty
-        ? 'empty'
-        : (messageValue.length > 0 && messageValue.length < 5 ? 'invalid' : 'none');
-
-    setEmailValidationState(emailInput, errorMessage, emailMode);
-    setNameValidationState(nameInput, nameErrorMessage, nameMode);
-    setMessageValidationState(messageInput, messageErrorMessage, messageMode);
-    
-    const valid = contactForm.checkValidity() && hasValidEmail && hasValidName && hasValidMessage;
+    setRequiredEmptyState(emailInput, showEmptyRequired && emailValue.trim().length === 0);
+    setRequiredEmptyState(nameInput, showEmptyRequired && nameValue.trim().length === 0);
+    setRequiredEmptyState(messageInput, showEmptyRequired && messageValue.trim().length === 0);
+    const modes = computeValidationModes(emailValue, nameValue, messageValue, showEmptyRequired);
+    updateValidationStates({ emailInput, nameInput, messageInput, errorMessage, nameErrorMessage, messageErrorMessage }, modes);
+    const valid = contactForm.checkValidity() && (!emailValue || validateEmail(emailValue)) && (!nameValue || validateName(nameValue)) && (!messageValue || validateMessage(messageValue));
     contactForm.classList.toggle('is-valid', valid);
     submitButton.disabled = !valid;
 }
@@ -244,29 +265,30 @@ async function sendContactForm(form) {
     await runContactSubmit(form, elements, messages);
 }
 
-function bindContactFormEvents(form, email, error, name, nameError, textarea, messageError, charCount, submit) {
-    const privacyCheckbox = form.querySelector('#privacy-policy');
-    const sync = () => {
-        const nameInput = form.querySelector('input[name="name"]');
-        const messageInput = form.querySelector('textarea[name="message"]');
-        syncContactFormState(form, submit, email, error, nameInput, nameError, messageInput, messageError, privacyCheckbox);
-    };
-    form.addEventListener('input', sync);
-    form.addEventListener('change', sync);
+function attachCharCountListener(textarea, charCount) {
     if (textarea && charCount) {
         textarea.addEventListener('input', () => {
             charCount.textContent = textarea.value.length;
         });
     }
+}
+
+function attachPrivacyCheckboxListener(privacyCheckbox, form, submit, email, error, name, nameError, textarea, messageError) {
     if (privacyCheckbox) {
         privacyCheckbox.addEventListener('change', () => {
             syncContactFormState(form, submit, email, error, name, nameError, textarea, messageError, privacyCheckbox, privacyCheckbox.checked);
         });
     }
-    form.addEventListener('submit', async (event) => {
-        event.preventDefault();
-        await sendContactForm(form);
-    });
+}
+
+function bindContactFormEvents(form, email, error, name, nameError, textarea, messageError, charCount, submit) {
+    const privacyCheckbox = form.querySelector('#privacy-policy');
+    const sync = () => syncContactFormState(form, submit, email, error, name, nameError, textarea, messageError, privacyCheckbox);
+    form.addEventListener('input', sync);
+    form.addEventListener('change', sync);
+    attachCharCountListener(textarea, charCount);
+    attachPrivacyCheckboxListener(privacyCheckbox, form, submit, email, error, name, nameError, textarea, messageError);
+    form.addEventListener('submit', (event) => { event.preventDefault(); sendContactForm(form); });
     sync();
 }
 

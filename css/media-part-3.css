@@ -435,10 +435,12 @@
     .border-bottom-line {
         z-index: 0;
     }
-        .floating-skill-icons {
+
+    .floating-skill-icons {
         left: 70% !important;
         top: -135px !important;
     }
+
     .profile-img {
         left: -21px !important;
         top: 20px !important;
@@ -517,6 +519,7 @@
         left: 80% !important;
         top: -37px !important;
     }
+
     .about {
         position: relative;
         top: -72px !important;
@@ -727,12 +730,94 @@
     .border-bottom-line::after {
         top: -442px !important;
     }
-        .profile-img {
+
+    .profile-img {
         left: -36px !important;
         top: 20px !important;
     }
-        .floating-skill-icons {
+
+    .floating-skill-icons {
         left: 69% !important;
         top: -7px !important;
     }
+}
+
+@media (min-width: 2560px) and (max-width: 3400px) {
+    .icon_plus_scroll_container {
+        padding-right: 0;
+        position: relative;
+        top: 100px !important;
+    }
+
+    .about {
+        height: 100vh !important;
+    }
+
+    .border-bottom-line::after {
+        top: -500px !important;
+    }
+
+    .profile-img {
+        left: 0px !important;
+        width: 60% !important;
+    }
+
+    .floating-skill-icons {
+        left: 80% !important;
+        top: -100px !important;
+    }
+}
+
+@media (min-width: 3400px) and (max-width: 4096px) {
+    .icon_plus_scroll_container {
+        padding-right: 0;
+        position: relative;
+        top: 330px !important;
+    }
+
+    .about {
+        height: 100vh !important;
+    }
+
+    .border-bottom-line::after {
+        top: -490px !important;
+    }
+
+    .profile-img {
+        left: 0px !important;
+        width: 80% !important;
+    }
+
+    .floating-skill-icons {
+        left: 80% !important;
+        top: -400px !important;
+    }
+
+    .icon-1,
+    .icon-2,
+    .icon-3,
+    .icon-4,
+    .icon-5,
+    .icon-6,
+    .icon-7 {
+        width: 90px !important;
+        height: 90px !important;
+    }
+
+    .scrollDown-vertical {
+        font-size: 32px !important;
+    }
+
+    .mail-to {
+        font-size: 32px !important;
+    }
+
+    .introduction {
+        top: 50px !important;
+    }
+    .lets-talk-button {
+        font-size: 32px !important;
+        padding: 24px 48px !important;
+    }
+
 }
