@@ -427,7 +427,7 @@
 
 @media (max-width: 1024px) and (max-height: 1366px) {
     .icon_plus_scroll_container {
-        top: 60px;
+        top: 40px;
         position: relative;
     }
 
@@ -455,8 +455,9 @@
     }
 
     .profile-img {
-        top: -12px !important;
+        top: 2px !important;
         width: 75% !important;
+        left: -20px !important;
     }
 
     .floating-skill-icons {

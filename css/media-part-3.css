@@ -51,8 +51,6 @@
 
     .about-me-background {
         width: 100%;
-        margin-bottom: 16px;
-        margin-top: 16px;
     }
 
     .Name {
@@ -353,7 +351,7 @@
 
 @media (max-width: 853px) and (max-height: 1280px) {
     .border-bottom-line {
-        top: -160px !important;
+        top: -170px !important;
     }
 
     .icon_plus_scroll_container {
@@ -363,6 +361,10 @@
 
     .introduction-underlay {
         top: 80px !important;
+    }
+    .about {
+        top: -100px !important;
+        position: relative;
     }
 }
 
@@ -542,7 +544,7 @@
     }
 }
 
-@media (max-width: 430px) and (max-height: 932px) {
+@media (max-width: 440px) and (max-height: 956px) {
     .border-bottom-line::after {
         top: -480px !important;
         border-bottom-right-radius: 55% 20%;
@@ -561,7 +563,7 @@
 
     .profile-img {
         left: -21px !important;
-        top: 0px !important;
+        top: -15px !important;
     }
 
     .icon_plus_scroll_container {
@@ -572,6 +574,10 @@
 
     .introduction-underlay {
         top: 162px;
+    }
+    .about {
+        position: relative;
+        top: -125px !important;
     }
 }
 
@@ -621,7 +627,7 @@
     }
 
     .border-bottom-line {
-        top: 0px !important;
+        top: -19px !important;
         z-index: 0;
     }
 
@@ -644,7 +650,7 @@
 @media (max-width: 390px) and (max-height: 844px) {
 
     .border-bottom-line::after {
-        top: -470px !important;
+        top: -450px !important;
     }
 
     .icon_plus_scroll_container {
@@ -670,7 +676,7 @@
     }
 
     .border-bottom-line {
-        top: 0px !important;
+        top: -15px !important;
     }
 
     .introduction-underlay {
@@ -678,7 +684,7 @@
     }
 
     .about-me {
-        padding: 75px 10px 10px 10px;
+        padding: 10px!important;
     }
 
     .icon_plus_scroll_container {
@@ -721,7 +727,7 @@
 
     .border-bottom-line {
         z-index: 0;
-        top: 0px !important;
+        top: -5px !important;
     }
 
     .border-bottom-line::after {
